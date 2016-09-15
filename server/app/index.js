@@ -6,8 +6,6 @@ process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 // Export the application
 var app = require('./app');
 
-var config = require('../config');
-
 // global
 global.__basedir = __dirname + '/../..';
 global.rootRequire = function (name) {
