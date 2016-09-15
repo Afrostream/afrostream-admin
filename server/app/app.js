@@ -2,6 +2,7 @@
 var express = require('express');
 var path = require('path');
 var config = require('../config');
+var favicon = require('serve-favicon');
 
 var middlewareAuth = require('./middlewares/middleware-auth.js');
 
