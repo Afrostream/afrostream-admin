@@ -1,11 +1,11 @@
 .row.header
   .col-xs-12
     .user.pull-right
-      .item.dropdown(ng-show='isLoggedIn()' uib-dropdown)
-        a.dropdown-toggle(href='#' uib-dropdown-toggle)
+      .item.uib-dropdown(ng-show='isLoggedIn()' uib-dropdown)
+        a.uib-dropdown-toggle(href='#' uib-dropdown-toggle)
           img(src='../assets/images/avatar.jpg')
-        ul.dropdown-menu.dropdown-menu-right
-          li.dropdown-header {{ getCurrentUser().name }}
+        ul.uib-dropdown-menu.uib-dropdown-menu-right
+          li.uib-dropdown-header {{ getCurrentUser().name }}
           li.divider
           li.link(ng-hide='isLoggedIn()', ui-sref-active='active')
             a(ui-sref='signup') Sign up
@@ -16,11 +16,11 @@
           li.divider
           li.link(ng-show='isLoggedIn()')
             a(ui-sref='logout') Logout
-      .item.dropdown(ng-show='isLoggedIn()' uib-dropdown)
-        a.dropdown-toggle(href='#' uib-dropdown-toggle)
+      .item.uib-dropdown(ng-show='isLoggedIn()' uib-dropdown)
+        a.uib-dropdown-toggle(href='#' uib-dropdown-toggle)
           i.fa.fa-bell-o
-        ul.dropdown-menu.dropdown-menu-right
-          li.dropdown-header Notifications
+        ul.uib-dropdown-menu.uib-dropdown-menu-right
+          li.uib-dropdown-header Notifications
           li.divider
           li
             a(ui-sref='#') Server Down!

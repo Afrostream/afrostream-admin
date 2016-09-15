@@ -50,7 +50,7 @@ div(id='page-wrapper' ng-class='{open: toggle}' ng-cloak)
                     tr(dir-paginate='item in items | itemsPerPage : itemsPerPage | DataFormater' total-items='totalItems' current-page='pagination.current' pagination-id='itemsPagination')
                       td.text-center
                         span {{item._id}}
-                      td(ng-if='hasThumb()').thumbnail
+                      td(ng-if='hasThumb()' ng-class='item.genericThumb && item.genericThumb.imgix ? "thumbnail" : ""')
                         img.poster.img-responsive(src='{{item.genericThumb.imgix}}?fit=crop&w=200&h=160')
                       td.text-center
                         strong {{item.genericTitle}}

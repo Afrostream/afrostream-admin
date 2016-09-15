@@ -12,7 +12,7 @@ div(id='page-wrapper' ng-class='{open: toggle}' ng-cloak)
                         button(type="button" class="btn btn-primary" uib-dropdown-toggle ng-disabled="disabled")
                             | {{state}} &nbsp;
                             span(class="caret")
-                        ul(class="dropdown-menu" uib-dropdown-menu aria-labelledby="simple-dropdown")
+                        ul(class="uib-dropdown-menu" uib-dropdown-menu aria-labelledby="simple-uib-dropdown")
                             li(ng-repeat="newState in states")
                                 a(ng-click="setState(newState)")
                                     | {{newState}}
