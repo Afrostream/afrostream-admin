@@ -40,4 +40,4 @@ var webpackDevConfig = {
     }
 };
 
-module.exports = require( './webpack.config' )( webpackDevConfig );
+module.exports = require( './webpack.config.js' )( webpackDevConfig );

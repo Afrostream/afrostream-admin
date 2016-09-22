@@ -1,5 +1,10 @@
-.tmp
 .idea
-src/bower_components
-dist
-npm-debug.log
+.vagrant
+reports
+
+npm-debug.log*
+node_modules
+build
+
+deploy/keys
+selenium-debug.log

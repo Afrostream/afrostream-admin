@@ -53,4 +53,4 @@ var webpackProdConfig = {
     ]
 };
 
-module.exports = require( './webpack.config' )( webpackProdConfig );
+module.exports = require( './webpack.config.js' )( webpackProdConfig );

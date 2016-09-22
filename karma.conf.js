@@ -1,7 +1,7 @@
 /*eslint-env node */
 var webpack = require('webpack');
 var path = require('path');
-var webpackConfig = require('./webpack.dev');
+var webpackConfig = require('./webpack.dev.js');
 webpackConfig.devtool = 'inline-source-map';
 
 function pathAppTo() {
