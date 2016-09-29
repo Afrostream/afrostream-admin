@@ -14,7 +14,7 @@ var _signin = function (req) {
       client_id: config.backendApiKey,
       client_secret: config.backendApiSecret
     },
-    req: req
+    context: { req: req }
   });
 };
 
@@ -27,7 +27,7 @@ var _refresh = function (req) {
       client_id: config.backendApiKey,
       client_secret: config.backendApiSecret
     },
-    req: req
+    context: { req: req }
   });
 };
 
@@ -58,7 +58,7 @@ var signup = function (req, res) {
         backend.post({
           uri: '/api/users',
           body: req.body,
-          req: req
+          context: { req: req }
         })
           .then(
             function success () {
@@ -124,7 +124,7 @@ var reset = function (req, res) {
   return backend.post({
     uri: '/auth/reset',
     body: req.body,
-    req: req
+    context: { req: req }
   })
     .then(
       function success (data) {
