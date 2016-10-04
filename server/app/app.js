@@ -5,10 +5,12 @@ var config = require('../config');
 var favicon = require('serve-favicon');
 
 var middlewareAuth = require('./middlewares/middleware-auth.js');
+var middlewareDumpPostdata = require('./middlewares/middleware-dumppostdata.js');
 
 // pre-configured express app
 var AfrostreamNodeApp = require('afrostream-node-app');
 var app = AfrostreamNodeApp.create();
+app.use(middlewareDumpPostdata());
 app.use(middlewareAuth());
 
 switch (process.env.NODE_ENV) {
