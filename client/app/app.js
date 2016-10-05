@@ -29,19 +29,19 @@ angular.module('afrostreamAdminApp', [
 
     // inlining micro backo interceptor.
     // this interceptor will add ?backo=1 to every /api/* requests.
-    //$httpProvider.interceptors.push(function () {
-    //  return {
-    //    'request': function (config) {
-    //      if (config && config.url && config.url.match(/^\/api\/.*/)) {
-    //        config.params = config.params || {};
-    //        config.params.backo = 1;
-    //        config.headers = config.headers || {};
-    //        config.headers['Content-Type'] = 'application/json';
-    //      }
-    //      return config;
-    //    }
-    //  };
-    //});
+    $httpProvider.interceptors.push(function () {
+      return {
+        'request': function (config) {
+          if (config && config.url && config.url.match(/^\/api\/.*/)) {
+            config.params = config.params || {};
+            config.params.backo = 1;
+            config.headers = config.headers || {};
+            //config.headers['Content-Type'] = 'application/json';
+          }
+          return config;
+        }
+      };
+    });
   })
   .factory('authInterceptor', function ($rootScope, $q, $cookies, $injector) {
     var state;
