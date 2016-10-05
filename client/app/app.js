@@ -36,7 +36,7 @@ angular.module('afrostreamAdminApp', [
             config.params = config.params || {};
             config.params.backo = 1;
             config.headers = config.headers || {};
-            //config.headers['Content-Type'] = 'application/json';
+            config.headers['Content-Type'] = 'application/json';
           }
           return config;
         }
