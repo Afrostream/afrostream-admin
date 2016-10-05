@@ -18,23 +18,6 @@
 
 .form-group.form-group-heading
   .row.row-header
-    label.control-label Assets
-    button.btn.btn-xs.btn-primary.pull-right(ng-click='newElem(item.sources)')
-      span.glyphicon.glyphicon-plus
-  .row
-    .col-lg-12
-      .row(ng-repeat='asset in item.sources')
-        .col-md-6
-          input.form-control.input-sm(id='src' type='text' ng-model='asset.src' placeholder='Source')
-        .col-md-4
-          select.form-control.input-sm(id='type' type='text' ng-model='asset.type' placeholder='Type' ng-options='f for f in formats')
-        .col-md-2
-          .button-group-vertical
-            button.btn.btn-xs.btn-danger(ng-click='removeElem(asset,item.sources,"asset",$index)')
-              span.glyphicon.glyphicon-trash.pull-right
-
-.form-group.form-group-heading
-  .row.row-header
     label.control-label Captions
     button.btn.btn-xs.btn-primary.pull-right(ng-click='newElem(item.captions)')
       span.glyphicon.glyphicon-plus
