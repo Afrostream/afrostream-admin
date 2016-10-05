@@ -74,7 +74,7 @@
   },
   "scripts": {
     "start": "node server/server.js",
-    "staging": ". ~/.nvm/nvm.sh && nvm use 4.5.0 && node server/staging.js",
+    "staging": ". ~/.nvm/nvm.sh && nvm use 4.5.0 && grunt build && node server/staging.js",
     "postinstall": "bower install && grunt build",
     "dev": ". ~/.nvm/nvm.sh && nvm use 4.5.0 && grunt serve",
     "test": "grunt test",
