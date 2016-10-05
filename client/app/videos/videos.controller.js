@@ -81,7 +81,6 @@ angular.module('afrostreamAdminApp')
 
     $scope.$watch('item', function () {
       if (!$scope.item) return;
-      $scope.item.sources = $scope.item.sources || [];
       $scope.item.captions = $scope.item.captions || [];
     });
 
