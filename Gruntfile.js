@@ -35,6 +35,12 @@ module.exports = function (grunt) {
           debug: 5861
         }
       },
+      staging: {
+        options: {
+          script: 'server/staging.js',
+          debug: 5861
+        }
+      },
       prod: {
         options: {
           script: 'dist/server/server.js'
@@ -564,6 +570,8 @@ module.exports = function (grunt) {
   });
 
   grunt.registerTask('serve', function (target) {
+    target = target || 'dev'
+    console.log(target)
     grunt.task.run([
       'clean:server',
       'env:all',
@@ -572,7 +580,7 @@ module.exports = function (grunt) {
       'injector',
       'wiredep',
       'postcss',
-      'express:dev',
+      'express:' + target,
       'wait',
       'watch'
     ]);
