@@ -13,11 +13,6 @@ var app = AfrostreamNodeApp.create();
 app.use(middlewareDumpPostdata());
 app.use(middlewareAuth());
 
-app.use(function (req, res, next) {
-  console.log('BODY = ' + JSON.stringify(req.body));
-  next();
-});
-
 switch (process.env.NODE_ENV) {
   case 'production':
   case 'staging':
