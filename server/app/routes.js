@@ -7,7 +7,13 @@ var backend = require('./backend.js');
 
 var backendProxy = function (options) {
   return function (req, res) {
-    backend.proxy(req, res, {token: req.userAccessToken, timeout: options && options.timeout || null});
+    backend.proxy(req, res, {
+      token: req.userAccessToken,
+      timeout: options && options.timeout || null,
+      forwardedHeaders: {
+        Range: 'Range'
+      }
+    });
   };
 };
 
