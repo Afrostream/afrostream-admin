@@ -67,7 +67,7 @@ angular.module('afrostreamAdminApp')
           $scope.headers,
           {
             // @see https://www.npmjs.com/package/range-parser
-            Range: 'items=' + ((pageNumber - 1) * $scope.itemsPerPage) + '-' + ((pageNumber) * $scope.itemsPerPage)
+            'Range': 'items=' + ((pageNumber - 1) * $scope.itemsPerPage) + '-' + ((pageNumber) * $scope.itemsPerPage)
           }
         )
       })

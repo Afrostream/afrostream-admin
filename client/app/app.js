@@ -54,9 +54,7 @@ angular.module('afrostreamAdminApp', [
           return config;
         }
         if ($cookies.get('token')) {
-          config.headers = {
-            'Access-Token': $cookies.get('token')
-          };
+          config.headers['Access-Token'] = $cookies.get('token');
           //config.headers.Authorization = config.headers.Authorization || 'Bearer ' + $cookies.get('token');
         }
         return config;
