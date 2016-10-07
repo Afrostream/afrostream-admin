@@ -1,10 +1,10 @@
 'use strict';
 
 angular.module('afrostreamAdminApp')
-  .directive('posts', function () {
+  .directive('pins', function () {
     return {
-      templateUrl: 'app/posts/posts.html',
+      templateUrl: 'app/life/pins/pins.html',
       restrict: 'E',
-      controller: 'PostsCtrl'
+      controller: 'PinsCtrl'
     };
   });

@@ -81,7 +81,7 @@ angular.module('afrostreamAdminApp')
     }, {
       'title': 'Life',
       'state': 'life',
-      'icon': 'fa-code'
+      'icon': 'fa-user'
     }, {
       'title': 'Widgets',
       'state': 'widgets',

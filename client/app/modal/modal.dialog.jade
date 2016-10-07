@@ -5,7 +5,7 @@ script(type='text/ng-template' id='imagesTemplate.html')
 
 .modal-header(style='background-image:url({{item.poster.imgix}}?fit=crop&w=1000&h=200);')
   button.close(data-dismiss='modal' aria-hidden='true')
-  h4.modal-title {{item.title | limitTo:50}}
+  h4.modal-title(style='color:#000;') {{item.title | limitTo:50}}
 .modal-body
   form(role='form')
 
@@ -48,7 +48,10 @@ script(type='text/ng-template' id='imagesTemplate.html')
     div(ng-if='modalType === "store"')
       stores
 
-    div(ng-if='modalType !== "category" && modalType !== "video" && modalType !== "language" && modalType !== "image" && modalType !== "licensor" && modalType !== "client" && modalType !== "user" && modalType !== "actor" && modalType !== "post" && modalType !== "config" && modalType !== "widget" && modalType !== "work" && modalType !== "store"')
+    div(ng-if='modalType === "life/pin"')
+      pins
+
+    div(ng-if='modalType !== "category" && modalType !== "video" && modalType !== "language" && modalType !== "image" && modalType !== "licensor" && modalType !== "client" && modalType !== "user" && modalType !== "actor" && modalType !== "post" && modalType !== "config" && modalType !== "widget" && modalType !== "work" && modalType !== "store" && (~modalType.indexOf("life/pin"))')
       .form-group
         label(for='type').control-label Type
       .form-group

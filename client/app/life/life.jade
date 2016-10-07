@@ -1,16 +1,15 @@
-.form-group
-  label(for='title').control-label Title
-  input.form-control(id='title' type='text' ng-model='item.title' ng-change='slugify(item.title)' placeholder='Title')
-  label(for='slug').control-label Slug
-  input.form-control(id='slug' type='text' ng-model='item.slug' placeholder='Slug url')
-  label(for='synopsis').control-label Description
-  textarea.form-control(id='synopsis' rows='5' ng-model='item.description' placeholder='Description')
-  label(for='poster').control-label Poster
-  input.form-control(type='text' ng-model='item.poster' placeholder='Search poster' typeahead='image as image.name for image in loadImages($viewValue,"poster") | limitTo: 5' typeahead-template-url='imagesTemplate.html')
+div(id='page-wrapper' ng-class='{open: toggle}' ng-cloak)
+  side-bar
 
-.form-group
-  uib-tabset
-    uib-tab(heading='Source')
-      textarea.form-control(id='content' rows='12' ng-model='item.body' placeholder='Data')
-    uib-tab(heading='Rendu')
-      div(markdown-it='item.body' style='max-height:350px;overflow:auto;') {{item.body}}
+  div(id='content-wrapper')
+    navbar
+    .page-content
+      .row
+        .col-lg-3.col-md-6.col-xs-12
+          rd-widget
+            rd-widget-body
+              .widget-icon.green.pull-left
+                i.fa.fa-trophy
+              a(href='/life/pins')
+                .title Pins
+                .comment Pins

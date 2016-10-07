@@ -1,5 +1,5 @@
 'use strict';
 
 angular.module('afrostreamAdminApp')
-  .controller('PinsCtrl', function ($scope) {
+  .controller('LifeCtrl', function ($scope) {
   });
