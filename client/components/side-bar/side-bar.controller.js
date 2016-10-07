@@ -67,6 +67,10 @@ angular.module('afrostreamAdminApp')
       'state': 'posts',
       'icon': 'fa-newspaper-o'
     }, {
+      'title': 'Stores',
+      'state': 'stores',
+      'icon': 'fa-street-view'
+    }, {
       'title': 'Imports',
       'state': 'imports',
       'icon': 'fa-download'

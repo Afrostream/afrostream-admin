@@ -38,7 +38,7 @@ module.exports = function (grunt) {
       staging: {
         options: {
           script: 'server/staging.js',
-          debug: 5861
+          debug: 5862
         }
       },
       prod: {
@@ -94,7 +94,7 @@ module.exports = function (grunt) {
       },
       express: {
         files: ['server/**/*.{js,json}'],
-        tasks: ['express:dev', 'wait'],
+        tasks: ['express:dev', 'express:staging', 'wait'],
         options: {
           livereload: 35730,
           nospawn: true //Without this option specified express won't be reloaded
