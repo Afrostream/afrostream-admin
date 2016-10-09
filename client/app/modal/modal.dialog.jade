@@ -51,7 +51,7 @@ script(type='text/ng-template' id='imagesTemplate.html')
     div(ng-if='modalType === "life/pin"')
       pins
 
-    div(ng-if='modalType !== "category" && modalType !== "video" && modalType !== "language" && modalType !== "image" && modalType !== "licensor" && modalType !== "client" && modalType !== "user" && modalType !== "actor" && modalType !== "post" && modalType !== "config" && modalType !== "widget" && modalType !== "work" && modalType !== "store" && (~modalType.indexOf("life/pin"))')
+    div(ng-if='modalType !== "category" && modalType !== "video" && modalType !== "language" && modalType !== "image" && modalType !== "licensor" && modalType !== "client" && modalType !== "user" && modalType !== "actor" && modalType !== "post" && modalType !== "config" && modalType !== "widget" && modalType !== "work" && modalType !== "store" && modalType !=="life/pin"')
       .form-group
         label(for='type').control-label Type
       .form-group
