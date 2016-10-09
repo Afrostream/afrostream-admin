@@ -112,8 +112,9 @@ angular.module('afrostreamAdminApp')
       });
     };
 
-    $scope.uploadImage = function (type) {
+    $scope.uploadImage = function (type, key) {
       var imgType = type || 'poster';
+      var imgKey = key || imgType;
       var m = $uibModal.open({
         templateUrl: 'app/images/modal/upload.html',
         controller: 'ImagesUploadDialogCtrl',
@@ -127,7 +128,7 @@ angular.module('afrostreamAdminApp')
       });
       m.onClose = function (image) {
         if (image) {
-          $scope.item[imgType] = image;
+          $scope.item[imgKey] = image;
         }
       };
     };
