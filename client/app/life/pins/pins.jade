@@ -8,7 +8,7 @@
   label(for='image').control-label Image
   div
     input.form-control(type='text' ng-model='item.image' placeholder='Search image' typeahead='image as image.name for image in loadImages($viewValue,"pin") | limitTo: 5' typeahead-template-url='imagesTemplate.html')
-    button.btn.btn-s.btn-primary(ng-click='uploadPoster("pin")' style="display:inline") | Upload
+    button.btn.btn-s.btn-primary(ng-click='uploadImage("pin")' style="display:inline") | Upload
 .form-group
   uib-tabset
     uib-tab(heading='Source')

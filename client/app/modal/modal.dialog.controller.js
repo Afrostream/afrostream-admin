@@ -112,7 +112,7 @@ angular.module('afrostreamAdminApp')
       });
     };
 
-    $scope.uploadPoster = function (type) {
+    $scope.uploadImage = function (type) {
       var imgType = type || 'poster';
       var m = $uibModal.open({
         templateUrl: 'app/images/modal/upload.html',
@@ -132,24 +132,6 @@ angular.module('afrostreamAdminApp')
       };
     };
 
-    $scope.uploadThumb = function () {
-      var m = $uibModal.open({
-        templateUrl: 'app/images/modal/upload.html',
-        controller: 'ImagesUploadDialogCtrl',
-        size: 'lg',
-        scope: $scope,
-        resolve: {
-          type: function () {
-            return 'thumb';
-          }
-        }
-      });
-      m.onClose = function (image) {
-        if (image) {
-          $scope.item.thumb = image;
-        }
-      };
-    };
 
     $scope.cropImage = function (image, ratio) {
       var m = $uibModal.open({
