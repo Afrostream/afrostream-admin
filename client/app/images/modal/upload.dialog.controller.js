@@ -11,7 +11,7 @@ angular.module('afrostreamAdminApp')
     });
 
     uploader.onBeforeUploadItem = function (item) {
-      item.formData.push({dataType: item.file.dataType || 'poster'});
+      item.formData.push({dataType: item.file.dataType || type || 'poster'});
       item.headers['Access-Token'] = $cookies.get('token');
       //item.headers.Authorization = item.headers.Authorization || 'Bearer ' + $cookies.get('token');
     };
