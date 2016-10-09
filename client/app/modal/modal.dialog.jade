@@ -78,7 +78,7 @@ script(type='text/ng-template' id='imagesTemplate.html')
         label(for='poster').control-label Poster
         div
           input.form-control(type='text' ng-model='item.poster' placeholder='Search poster' typeahead='image as image.name for image in loadImages($viewValue,"poster") | limitTo: 5' typeahead-template-url='imagesTemplate.html' style="display:inline;width:80%")
-          button.btn.btn-s.btn-primary(ng-click='uploadPoster()' style="display:inline")
+          button.btn.btn-s.btn-primary(ng-click='uploadPoster("poster")' style="display:inline")
             | Upload
         h6.control-label Poster Profiles (16:31 adSpots)
         div(ng-if='item.poster' class='row fix-height')

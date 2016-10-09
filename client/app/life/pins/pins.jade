@@ -6,8 +6,9 @@
   label(for='description').control-label Description
   textarea.form-control(id='description' rows='5' ng-model='item.description' placeholder='Description')
   label(for='image').control-label Image
-  input.form-control(type='text' ng-model='item.image' placeholder='Search image' typeahead='image as image.name for image in loadImages($viewValue,"pin") | limitTo: 5' typeahead-template-url='imagesTemplate.html')
-
+  div
+    input.form-control(type='text' ng-model='item.image' placeholder='Search image' typeahead='image as image.name for image in loadImages($viewValue,"pin") | limitTo: 5' typeahead-template-url='imagesTemplate.html')
+    button.btn.btn-s.btn-primary(ng-click='uploadPoster("pin")' style="display:inline") | Upload
 .form-group
   uib-tabset
     uib-tab(heading='Source')
