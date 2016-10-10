@@ -1,20 +1,51 @@
-.form-group
-  label(for='originalUrl').control-label Original url
-  input.form-control(id='originalUrl' type='text' ng-model='item.originalUrl' ng-change='slugify(item.originalUrl)' placeholder='Original Url')
-.form-group
-  label(for='title').control-label Title
-  input.form-control(id='title' type='text' ng-model='item.title' ng-change='slugify(item.title)' placeholder='Title')
-  label(for='slug').control-label Slug
-  input.form-control(id='slug' type='text' ng-model='item.slug' placeholder='Slug url')
-  label(for='description').control-label Description
-  textarea.form-control(id='description' rows='5' ng-model='item.description' placeholder='Description')
-  label(for='image').control-label Image
-  div
-    input.form-control(type='text' ng-model='item.image' placeholder='Search image' typeahead='image as image.name for image in loadImages($viewValue,"pin") | limitTo: 5' typeahead-template-url='imagesTemplate.html')
-    button.btn.btn-s.btn-primary(ng-click='uploadImage("pin","image")' style="display:inline") Upload
-.form-group
-  uib-tabset
-    uib-tab(heading='Source')
-      textarea.form-control(id='content' rows='12' ng-model='item.body' placeholder='Data')
-    uib-tab(heading='Rendu')
-      div(markdown-it='item.body' style='max-height:350px;overflow:auto;') {{item.body}}
+script(type='text/ng-template' id='imagesTemplate.html')
+  a
+    img(ng-src='{{match.model.imgix}}?fit=crop&w=100&h=30')
+    span(ng-bind-html='match.label | typeaheadHighlight:query')
+
+.modal-header(style='background-image:url({{item.poster.imgix}}?fit=crop&w=1000&h=200);')
+  button.close(data-dismiss='modal' aria-hidden='true')
+  h4.modal-title(style='color:#000;') {{item.title | limitTo:50}}
+
+.modal-body
+  form(role='form')
+
+  .form-group(ng-if='!scrappedData && !item._id')
+    label(for='scrapUrl').control-label Scrapp url
+    input.form-control(id='scrapUrl' type='text' ng-model='item.scrapUrl' placeholder='Scrapp Url')
+
+  .form-group(ng-if='scrappedData || item._id')
+    label(for='originalUrl').control-label Original url
+    input.form-control(id='originalUrl' type='text' ng-model='item.originalUrl' ng-change='slugify(item.originalUrl)' placeholder='Original Url')
+
+    .form-group
+      label(for='title').control-label Title
+      input.form-control(id='title' type='text' ng-model='item.title' ng-change='slugify(item.title)' placeholder='Title')
+      label(for='slug').control-label Slug
+      input.form-control(id='slug' type='text' ng-model='item.slug' placeholder='Slug url')
+      label(for='description').control-label Description
+      textarea.form-control(id='description' rows='5' ng-model='item.description' placeholder='Description')
+      label(for='image').control-label Image
+      div(class="image-selector")
+        img(ng-src="{{item.image.imgix}}" class="img-thumbnail img-responsive img-scrap")
+        div(class="image-selector_list")
+          div(ng-repeat="(imgKey, imgValue) in scrappedData.imagesList | limitTo:5")
+            input(type="radio" id="{{'img_'+imgKey}}" value="{{imgValue}}" name="imageRadio" ng-model="item.imageUrl")
+            label(class="image-radio" for="{{'img_'+imgKey}}")
+              img(ng-src="{{imgValue}}" class="img-thumbnail img-responsive img-scrap")
+
+        button.btn.btn-s.btn-primary(ng-click='uploadImage("pin","image")' style="display:inline") Upload
+    .form-group
+      uib-tabset
+        uib-tab(heading='Source')
+          textarea.form-control(id='content' rows='12' ng-model='item.body' placeholder='Data')
+        uib-tab(heading='Rendu')
+          div(markdown-it='item.body' style='max-height:350px;overflow:auto;') {{item.body}}
+
+.modal-footer
+  .form-group
+    button.btn.btn-primary(type='submit' ng-click='scrapItem()' ng-if='!item._id') Scrapp
+    button.btn.btn-primary(type='submit' ng-click='addItem()' ng-if='!item._id && scrappedData') Add
+    button.btn.btn-primary(type='submit' ng-click='updateItem()' ng-if='item._id') Update
+    button.btn.btn-primary(ng-click='cancel()') Cancel
+

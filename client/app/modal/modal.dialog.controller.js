@@ -82,6 +82,18 @@ angular.module('afrostreamAdminApp')
       });
     };
 
+    $scope.scrapItem = function () {
+      $http.post('/api/' + $scope.directiveType + '/scrap', $scope.item).then(function (result) {
+        ngToast.create({
+          content: 'L\'objet ' + $scope.directiveType + ' à été scrappé'
+        });
+        $scope.scrappedData = $scope.item = result.data;
+      }, function (err) {
+        showError();
+        $log.debug(err);
+      });
+    };
+
     $scope.updateItem = function () {
       if (typeof $scope.modalHooks.beforeUpdate === 'function') {
         $scope.modalHooks.beforeUpdate();

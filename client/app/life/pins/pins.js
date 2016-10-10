@@ -8,6 +8,7 @@ angular.module('afrostreamAdminApp')
         templateUrl: 'app/data/data.html',
         controller: 'DataCtrl',
         type: 'life/pin',
+        modalTemplateUrl: 'app/life/pins/pins.html',
         resolve: {
           countries: 'DataEmpty',
           genres: 'DataEmpty' // unused
