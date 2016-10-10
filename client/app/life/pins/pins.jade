@@ -1,4 +1,7 @@
 .form-group
+  label(for='originalUrl').control-label Original url
+  input.form-control(id='originalUrl' type='text' ng-model='item.originalUrl' ng-change='slugify(item.originalUrl)' placeholder='Original Url')
+.form-group
   label(for='title').control-label Title
   input.form-control(id='title' type='text' ng-model='item.title' ng-change='slugify(item.title)' placeholder='Title')
   label(for='slug').control-label Slug
@@ -8,7 +11,7 @@
   label(for='image').control-label Image
   div
     input.form-control(type='text' ng-model='item.image' placeholder='Search image' typeahead='image as image.name for image in loadImages($viewValue,"pin") | limitTo: 5' typeahead-template-url='imagesTemplate.html')
-    button.btn.btn-s.btn-primary(ng-click='uploadImage("pin")' style="display:inline") | Upload
+    button.btn.btn-s.btn-primary(ng-click='uploadImage("pin","image")' style="display:inline") Upload
 .form-group
   uib-tabset
     uib-tab(heading='Source')

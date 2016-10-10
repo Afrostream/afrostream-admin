@@ -5,13 +5,15 @@
  */
 angular.module('afrostreamAdminApp')
   .controller('ImagesUploadDialogCtrl', function ($scope, $cookies, $uibModalInstance, FileUploader, type) {
+    $scope.type = type;
+
     var uploader = $scope.uploader = new FileUploader({
-      url: 'api/images/?type=' + type,
+      url: 'api/images',
       queueLimit: 1
     });
 
     uploader.onBeforeUploadItem = function (item) {
-      item.formData.push({dataType: item.file.dataType || type || 'poster'});
+      item.formData.push({dataType: item.file.dataType || $scope.type || 'poster'});
       item.headers['Access-Token'] = $cookies.get('token');
       //item.headers.Authorization = item.headers.Authorization || 'Bearer ' + $cookies.get('token');
     };
