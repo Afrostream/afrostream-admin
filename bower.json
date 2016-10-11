@@ -11,7 +11,6 @@
     "angular-sanitize": "1.4.11",
     "angular-bootstrap": "~0.14.3",
     "font-awesome": ">=4.1.0",
-    "lodash": "~2.4.1",
     "angular-ui-router": "~0.2.15",
     "rdash-ui": "1.0.*",
     "angular-file-upload": "~2.1.1",
@@ -25,7 +24,10 @@
     "angular-utils-pagination": "~0.8.3",
     "angular-markdown-it": "~0.6.1",
     "ng-img-crop": "ngImgCrop#~0.3.2",
-    "ng-img-crop-full-extended": "ngImgCropFullExtended#~0.5.5"
+    "ng-img-crop-full-extended": "ngImgCropFullExtended#~0.5.5",
+    "angular-file-to-json": "~0.0.2",
+    "angular-ui-grid": "~3.2.9",
+    "lodash": "~4.16.4"
   },
   "resolutions": {
     "angular": "1.4.11",

@@ -18,7 +18,9 @@ angular.module('afrostreamAdminApp', [
   'mdMarkdownIt',
   'angularUtils.directives.dirPagination',
   //IMAGE cropper
-  'ngImgCrop'
+  'ngImgCrop',
+  'ngFileToJson',
+  'ui.grid'
 ])
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
     $urlRouterProvider

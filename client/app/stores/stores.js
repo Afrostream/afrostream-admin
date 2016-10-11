@@ -5,7 +5,7 @@ angular.module('afrostreamAdminApp')
     $stateProvider
       .state('stores', {
         url: '/stores',
-        templateUrl: 'app/data/data.html',
+        templateUrl: 'app/stores/data.html',
         controller: 'DataCtrl',
         type: 'store',
         resolve: {

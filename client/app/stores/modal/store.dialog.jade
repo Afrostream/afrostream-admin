@@ -1,0 +1,15 @@
+.modal-header
+  button.close(data-dismiss='modal' aria-hidden='true')
+  h4.modal-title Import stores
+.modal-body
+  form.form-horizontal(role='form')
+    .form-group
+  .row
+    ng-file-to-json(result="storeList")
+    div(ng-if="storeList" ui-grid="{ data: storeList }" class="myGrid")
+  div
+    uib-progressbar(value='importProgress' type="{{importProgress === 100 ? 'success' : 'info'}}")
+
+.modal-footer
+  button.btn.btn-primary(type='submit' ng-click='importAll()' ng-disabled='!storeList' ) Import
+  button.btn.btn-primary(ng-click='close()') Cancel
