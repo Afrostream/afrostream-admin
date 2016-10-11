@@ -23,7 +23,7 @@ angular.module('afrostreamAdminApp')
     function importChunk (data) {
       $http.post('/api/stores/import', {
         storeList: data,
-        location: '{Adresse1},{CP},{Ville}'
+        location: '{Adresse1},{Adresse2},{CP},{Ville}'
       }).then(function (result) {
         $scope.imported += result.data.length;
       }, function (err) {
