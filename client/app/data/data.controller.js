@@ -273,6 +273,18 @@ angular.module('afrostreamAdminApp')
       return hasTmb;
     };
 
+    $scope.isAlgoliaImportable = function () {
+      var importable = false;
+      switch ($scope.type) {
+        case'movie':
+          importable = true;
+          break;
+        default:
+          break;
+      }
+      return importable;
+    };
+
     $scope.hasMail = function () {
       var hasTmb = false;
       switch ($scope.type) {
