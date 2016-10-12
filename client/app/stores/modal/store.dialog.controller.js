@@ -29,7 +29,11 @@ angular.module('afrostreamAdminApp')
         location: '{adresse},{cp},{Ville}'
       }).then(function (result) {
         $scope.imported = _.concat($scope.imported || [], result.data);
+
         $scope.importedError = _.concat($scope.importedError, _.differenceBy(data, result.data, 'mid'));
+        $scope.importedError = _.map($scope.importedError, function (errorImport) {
+          return _.pick(errorImport, ['mid', 'cp', 'name', 'phone', 'adresse', 'ville'])
+        });
         $log.warn($scope.importedError);
       }, function (err) {
         $log.debug(err);
