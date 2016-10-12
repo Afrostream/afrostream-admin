@@ -33,6 +33,16 @@ var userTokenRequired = function (req, res, next) {
   next();
 };
 
+
+var i = 0;
+router.get('/test/highwinds', function (req, res) {
+  res.noCache();
+  res.json({
+    nbHits: ++i,
+    now: Date.now()
+  });
+});
+
 router.use('/api/*', userTokenRequired, backendProxy());
 /*
  * AUTH
@@ -43,7 +53,6 @@ router.post('/auth/refresh', noCache, authController.refresh);
 router.post('/auth/signup', noCache, authController.signup);
 router.post('/auth/signin', noCache, authController.signin);
 router.post('/auth/reset', noCache, authController.reset);
-
 
 // Admin whitelist routes.
 router.route(/^\/(categorys|licensors|movies|seasons|episodes|videos|languages|images|users|subscriptions|clients|actors|settings|login|life|logout|jobs|posts|catchup|users\-logs|imports|configs|widgets|works|stores)/)
