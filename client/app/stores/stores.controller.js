@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('afrostreamAdminApp')
-  .controller('StoresCtrl', function ($scope, $uibModal) {
+  .controller('StoresCtrl', function ($scope, $http, $uibModal, ngToast) {
 
     $scope.importCSV = function () {
       var modalNewOpts = {
@@ -22,6 +22,25 @@ angular.module('afrostreamAdminApp')
         }
       };
       var $uibModalInstance = $uibModal.open(modalNewOpts);
+    };
+
+    $scope.importStore = function (item) {
+      if (typeof $scope.modalHooks.beforeUpdate === 'function') {
+        $scope.modalHooks.beforeUpdate();
+      }
+      $http.post('/api/stores/import', {
+        storeList: [item],
+        location: '{adresse},{cp},{ville}'
+      }).then(function (result) {
+        ngToast.create({
+          content: 'L\'objet  ' + $scope.type + ' ' + ' à été mise a jour'
+        });
+        if (typeof $scope.modalHooks.afterUpdate === 'function') {
+          $scope.modalHooks.afterUpdate(result.data);
+        }
+      }, function (err) {
+        $log.debug(err);
+      });
     };
 
     $scope.$watch('item.geometry.coordinates', function (json) {

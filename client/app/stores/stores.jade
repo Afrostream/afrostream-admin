@@ -1,4 +1,6 @@
 .form-group
+  label(for='name').control-label MID
+  input.form-control(id='mid' type='text' ng-model='item.mid'  placeholder='MID')
   label(for='name').control-label Name
   input.form-control(id='name' type='text' ng-model='item.name'  placeholder='Name')
   label(for='adresse').control-label Adresse
@@ -6,10 +8,12 @@
   label(for='ville').control-label Ville
   input.form-control(id='ville' type='text' ng-model='item.ville' placeholder='Ville')
   label(for='cp').control-label Code postal
-  input.form-control(id='cp' type='number' ng-model='item.cp' placeholder='Code postal')
+  input.form-control(id='cp' type='text' ng-model='item.cp' placeholder='Code postal')
   label(for='phone').control-label Telephone
   input.form-control(id='phone' type='number' ng-model='item.phone' placeholder='Telephone')
 
 .form-group(ng-class='{"has-error" : !wellFormed}')
   label(for='geometry').control-label Geo Position [lat,long]
   textarea.form-control(ng-model='jsonString' rows='2')
+
+  button.btn.btn-primary(type='submit' ng-click='importStore(item)' ) GeoCoder
