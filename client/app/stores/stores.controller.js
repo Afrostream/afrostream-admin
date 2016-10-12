@@ -32,11 +32,12 @@ angular.module('afrostreamAdminApp')
         storeList: [item],
         location: '{adresse},{cp},{ville}'
       }).then(function (result) {
+        $scope.item = result.data[0];
         ngToast.create({
           content: 'L\'objet  ' + $scope.type + ' ' + ' à été mise a jour'
         });
         if (typeof $scope.modalHooks.afterUpdate === 'function') {
-          $scope.modalHooks.afterUpdate(result.data);
+          $scope.modalHooks.afterUpdate(result.data[0]);
         }
       }, function (err) {
         $log.debug(err);
