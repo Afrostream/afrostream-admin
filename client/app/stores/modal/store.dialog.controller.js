@@ -26,7 +26,7 @@ angular.module('afrostreamAdminApp')
     function importChunk (data) {
       $http.post('/api/stores/import', {
         storeList: data,
-        location: '{Adresse1},{Adresse2},{CP},{Ville}'
+        location: '{adresse},{cp},{Ville}'
       }).then(function (result) {
         $scope.imported = _.concat($scope.imported || [], result.data);
         $scope.importedError = _.concat($scope.importedError, _.differenceBy(data, result.data, 'mid'));
