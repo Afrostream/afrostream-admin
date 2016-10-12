@@ -61,8 +61,13 @@ angular.module('afrostreamAdminApp')
       var promises = [];
 
       $scope.storeList = _.forEach($scope.storeList, function (store) {
-        store.CP = zeroPad(store.CP, 5);
+        store.cp = zeroPad(store.cp || store.CP, 5);
         store.mid = store.mid || store.MID;
+        store.name = store.name || store.Nom;
+        store.adresse = store.adresse || store.Adresse1 + ' ' + store.Adresse2;
+        store.ville = store.ville || store.Ville;
+        store.phone = store.phone || store.Telephone;
+
         store = _.forEach(store, function (value, key) {
           var newValue = value.replace(/[^a-zA-Z0-9]/g, ' ');
           newValue = newValue.replace(/\s\s+/g, ' ');
