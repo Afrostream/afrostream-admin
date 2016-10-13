@@ -3,7 +3,7 @@ script(type='text/ng-template' id='imagesTemplate.html')
     img(ng-src='{{match.model.imgix}}?fit=crop&w=100&h=30')
     span(ng-bind-html='match.label | typeaheadHighlight:query')
 
-.modal-header(style='background-image:url({{item.poster.imgix}}?fit=crop&w=1000&h=200);')
+.modal-header(style='background-image:url({{item.image.imgix}}?fit=crop&w=1000&h=200);')
   button.close(data-dismiss='modal' aria-hidden='true')
   h4.modal-title(style='color:#000;') {{item.title | limitTo:50}}
 
@@ -19,6 +19,27 @@ script(type='text/ng-template' id='imagesTemplate.html')
     input.form-control(id='originalUrl' type='text' ng-model='item.originalUrl' ng-change='slugify(item.originalUrl)' placeholder='Original Url')
 
     .form-group
+      .form-group
+        label(for='type').control-label Type
+      .form-group
+        .btn-group
+          label.btn.btn-primary(ng-model='item.type' btn-radio='"website"') Website
+          label.btn.btn-primary(ng-model='item.type' btn-radio='"article"') Article
+          label.btn.btn-primary(ng-model='item.type' btn-radio='"video"') Video
+          label.btn.btn-primary(ng-model='item.type' btn-radio='"audio"') Audio
+          label.btn.btn-primary(ng-model='item.type' btn-radio='"event"') Event
+          label.btn.btn-primary(ng-model='item.type' btn-radio='"image"') Image
+          label.btn.btn-primary(ng-model='item.type' btn-radio='"ads"') Ads
+
+      .form-group
+        label(for='role').control-label Acl (roles)
+      .form-group
+        .btn-group
+          label.btn.btn-primary(ng-model='item.role' btn-radio='"website"') free
+          label.btn.btn-primary(ng-model='item.role' btn-radio='"article"') user
+          label.btn.btn-primary(ng-model='item.role' btn-radio='"video"') premium
+          label.btn.btn-primary(ng-model='item.role' btn-radio='"audio"') vip
+
       label(for='title').control-label Title
       input.form-control(id='title' type='text' ng-model='item.title' ng-change='slugify(item.title)' placeholder='Title')
       label(for='slug').control-label Slug
