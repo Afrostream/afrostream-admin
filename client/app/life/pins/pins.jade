@@ -56,7 +56,7 @@ script(type='text/ng-template' id='imagesTemplate.html')
               img(ng-src="{{imgValue}}" class="img-thumbnail img-responsive img-scrap")
 
         button.btn.btn-s.btn-primary(ng-click='uploadImage("pin","image")' style="display:inline") Upload
-    .form-group
+    .form-group(ng-if='item.type === "article"')
       uib-tabset
         uib-tab(heading='Source')
           textarea.form-control(id='content' rows='12' ng-model='item.body' placeholder='Data')
