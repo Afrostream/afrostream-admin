@@ -1,0 +1,30 @@
+.modal-header(style='background-image:url({{item.image.imgix}}?fit=crop&w=1000&h=200);')
+  button.close(data-dismiss='modal' aria-hidden='true')
+  h4.modal-title(style='color:#000;') {{item.title | limitTo:50}}
+
+.modal-body
+  form(role='form')
+
+  .form-group
+    label(for='label').control-label Label
+    input.form-control(id='label' type='text' ng-model='item.label' ng-change='slugify(item.label)' placeholder='Label')
+    label(for='slug').control-label Slug
+    input.form-control(id='slug' type='text' ng-model='item.slug' placeholder='Slug url')
+
+  .form-group
+    label.control-label Associated pins
+    tags-input(ng-model='item.pins' placeholder='Search pin' add-from-autocomplete-only='true' display-property='title' key-property='_id')
+      auto-complete(source='searchFields("life/pins",$query)' template='life-pins-template' min-length='0'
+      load-on-focus='true'
+      load-on-empty='true'
+      max-results-to-show='32')
+    script(type='text/ng-template' id='life-pins-template')
+      .tag-template
+        span {{data.title}}
+
+.modal-footer
+  .form-group
+    button.btn.btn-primary(type='submit' ng-click='addItem()' ng-if='!item._id') Add
+    button.btn.btn-primary(type='submit' ng-click='updateItem()' ng-if='item._id') Update
+    button.btn.btn-primary(ng-click='cancel()') Cancel
+

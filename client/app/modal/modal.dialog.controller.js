@@ -33,6 +33,14 @@ angular.module('afrostreamAdminApp')
       $scope.item.slug = Slug.slugify(input);
     };
 
+    $scope.searchFields = function (path, query) {
+      return $http.get('/api/' + path, {
+        params: {
+          query: query,
+        }
+      });
+    };
+
     $scope.extractProfile = function (image, ratio) {
       if (!image) {
         return;
