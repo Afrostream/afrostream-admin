@@ -84,7 +84,7 @@ angular.module('afrostreamAdminApp')
       $scope.item.captions = $scope.item.captions || [];
     });
 
-    $scope.newElemFromMam = function (data) {
+    $scope.newElemFromPF = function (data) {
       $uibModal.open({
         templateUrl: 'app/videos/modal/videos.html', // Url du template HTML
         controller: 'VideosDialogCtrl',

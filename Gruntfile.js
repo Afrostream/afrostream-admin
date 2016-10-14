@@ -35,6 +35,12 @@ module.exports = function (grunt) {
           debug: 5861
         }
       },
+      localstaging: {
+        options: {
+          script: 'server/server.js',
+          debug: 5861
+        }
+      },
       staging: {
         options: {
           script: 'server/staging.js',
@@ -442,6 +448,13 @@ module.exports = function (grunt) {
       prod: {
         NODE_ENV: 'production'
       },
+      staging: {
+        NODE_ENV: 'staging'
+      },
+      localstaging: {
+        AFROSTREAM_API_SECRET: 'fe4be408-c93a-43dc-8f57-5dbd9060cac8',
+        AFROSTREAM_API_KEY: '50cc564f-4803-4221-894b-714c4b272d57'
+      },
       all: {}
     },
 
@@ -574,7 +587,7 @@ module.exports = function (grunt) {
     console.log(target)
     grunt.task.run([
       'clean:server',
-      'env:all',
+      'env:' + (target || 'all'),
       'injector:less',
       'concurrent:server',
       'injector',
