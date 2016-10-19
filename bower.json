@@ -26,7 +26,8 @@
     "ng-img-crop-full-extended": "ngImgCropFullExtended#~0.5.5",
     "angular-file-to-json": "~0.0.2",
     "angular-ui-grid": "~3.2.9",
-    "lodash": "~4.16.4"
+    "lodash": "~4.16.4",
+    "textAngular": "~1.5.12"
   },
   "resolutions": {
     "angular": "1.5.8",
