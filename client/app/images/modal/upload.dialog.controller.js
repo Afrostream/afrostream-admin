@@ -4,7 +4,7 @@
  * simplified version of images.dialog (single upload)
  */
 angular.module('afrostreamAdminApp')
-  .controller('ImagesUploadDialogCtrl', function ($scope, $cookies, $uibModalInstance, FileUploader, type) {
+  .controller('ImagesUploadDialogCtrl', function ($scope, $log, $cookies, $uibModalInstance, FileUploader, type) {
     $scope.type = type;
 
     var uploader = $scope.uploader = new FileUploader({
@@ -13,7 +13,8 @@ angular.module('afrostreamAdminApp')
     });
 
     uploader.onBeforeUploadItem = function (item) {
-      item.formData.push({dataType: item.file.dataType || $scope.type || 'poster'});
+      $log.debug('upload : ', item);
+      item.formData.push({dataType: item.file.dataType || $scope.type || type || 'poster'});
       item.headers['Access-Token'] = $cookies.get('token');
       //item.headers.Authorization = item.headers.Authorization || 'Bearer ' + $cookies.get('token');
     };

@@ -38,6 +38,8 @@ angular.module('afrostreamAdminApp')
         params: {
           query: query,
         }
+      }).then(function (result) {
+        return result.data;
       });
     };
 

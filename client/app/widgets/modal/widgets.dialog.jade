@@ -8,7 +8,7 @@ script(type='text/ng-template' id='couponsTemplate.html')
 .form-group
   label(for='coupon').control-label Coupon
   div
-    input.form-control(id='coupon' type='text' ng-model='item.data.coupon'  placeholder='Search Coupon' typeahead='coupon as coupon.name for coupon in coupons' typeahead-template-url='couponsTemplate.html' style="display:inline;width:80%")
+    input.form-control(id='coupon' type='text' ng-model='item.data.coupon'  placeholder='Search Coupon' uib-typeahead='coupon as coupon.name for coupon in coupons' uib-typeahead-template-url='couponsTemplate.html' style="display:inline;width:80%")
 .form-group(ng-if="hasCoupon()")
   .form-group
     label(for='class').control-label Class
@@ -19,7 +19,7 @@ script(type='text/ng-template' id='couponsTemplate.html')
   .form-group
     label(for='image').control-label Image
     div
-      input.form-control(id="image" type='text' ng-model='item.image' placeholder='Search image' typeahead='image as image.name for image in loadImages($viewValue,"widget") | limitTo: 5' typeahead-template-url='imagesTemplate.html' style="display:inline;width:80%")
+      input.form-control(id="image" type='text' ng-model='item.image' placeholder='Search image' uib-typeahead='image as image.name for image in loadImages($viewValue,"widget") | limitTo: 5' uib-typeahead-template-url='imagesTemplate.html' style="display:inline;width:80%")
       button.btn.btn-s.btn-primary(ng-click='uploadWidget()' style="display:inline")
         | Upload
   .form-group(ng-if="item.image")

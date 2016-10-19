@@ -1,0 +1,50 @@
+script(type='text/ng-template' id='imagesTemplate.html')
+  a
+    img(ng-src='{{match.model.imgix}}?fit=crop&w=100&h=30')
+    span(ng-bind-html='match.label | typeaheadHighlight:query')
+
+.modal-header(style='background-image:url({{item.image.imgix}}?fit=crop&w=1000&h=200);')
+  button.close(data-dismiss='modal' aria-hidden='true')
+  h4.modal-title(style='color:#000;') {{item.title | limitTo:50}}
+
+.modal-body
+  form(role='form')
+
+  .form-group
+    label(for='title').control-label Title
+    input.form-control(id='title' type='text' ng-model='item.title' ng-change='slugify(item.title)' placeholder='Title')
+    label(for='description').control-label Description
+    textarea.form-control(id='description' rows='5' ng-model='item.description' placeholder='Description')
+
+  .form-group
+    label(for='image').control-label Image
+    div
+      img(ng-src="{{item.image.imgix}}" class="img-thumbnail img-responsive")
+      input.form-control(type='text' ng-model='item.image' placeholder='Search image' uib-typeahead='image as image.name for image in loadImages($viewValue, "spot") | limitTo: 30' uib-typeahead-template-url='imagesTemplate.html' style="display:inline;width:80%")
+      button.btn.btn-s.btn-primary(ng-click='uploadImage("spot","image")' style="display:inline") Upload
+
+  .form-group
+    label.control-label Dates
+    .row
+      .col-md-6
+        label.control-label From (inclu)
+        p.input-group
+          input.form-control(id='dateFrom' type='text' ng-model='item.dateFrom' is-open='opened' placeholder='FROM' uib-datepicker-popup='{{format}}' uib-datepicker-options='dateOptions' date-disabled='disabled(date, mode)' close-text='Close')
+          span.input-group-btn
+            button.btn.btn-default(ng-click='opened=!opened')
+              i.glyphicon.glyphicon-calendar
+      .col-md-6
+        label.control-label To (exclu)
+        p.input-group
+          input.form-control(id='dateTo' type='text' ng-model='item.dateTo' is-open='opened2' placeholder='TO' uib-datepicker-popup='{{format}}' min-date='item.dateFrom'  uib-datepicker-options='dateOptions' date-disabled='disabled(date, mode)' close-text='Close')
+          span.input-group-btn
+            button.btn.btn-default(ng-click='opened2=!opened2')
+              i.glyphicon.glyphicon-calendar
+
+
+.modal-footer
+  .form-group
+    button.btn.btn-primary(type='submit' ng-click='addItem()' ng-if='!item._id') Add
+    button.btn.btn-primary(type='submit' ng-click='updateItem()' ng-if='item._id') Update
+    button.btn.btn-primary(ng-click='cancel()') Cancel
+

@@ -67,14 +67,14 @@ script(type='text/ng-template' id='imagesTemplate.html')
       .form-group
         label(for='thumb').control-label Thumb
         div
-          input.form-control(type='text' ng-model='item.thumb' placeholder='Search thumb' typeahead='image as image.name for image in loadImages($viewValue, "thumb") | limitTo: 30' typeahead-template-url='imagesTemplate.html' style="display:inline;width:80%")
+          input.form-control(type='text' ng-model='item.thumb' placeholder='Search thumb' uib-typeahead='image as image.name for image in loadImages($viewValue, "thumb") | limitTo: 30' uib-typeahead-template-url='imagesTemplate.html' style="display:inline;width:80%")
           button.btn.btn-s.btn-primary(ng-click='uploadImage("thumb")' style="display:inline")
             | Upload
 
       .form-group
         label(for='poster').control-label Poster
         div
-          input.form-control(type='text' ng-model='item.poster' placeholder='Search poster' typeahead='image as image.name for image in loadImages($viewValue,"poster") | limitTo: 5' typeahead-template-url='imagesTemplate.html' style="display:inline;width:80%")
+          input.form-control(type='text' ng-model='item.poster' placeholder='Search poster' uib-typeahead='image as image.name for image in loadImages($viewValue,"poster") | limitTo: 5' uib-typeahead-template-url='imagesTemplate.html' style="display:inline;width:80%")
           button.btn.btn-s.btn-primary(ng-click='uploadImage("poster")' style="display:inline")
             | Upload
         h6.control-label Poster Profiles (16:31 adSpots)
@@ -88,14 +88,14 @@ script(type='text/ng-template' id='imagesTemplate.html')
           .col-md-6
             label.control-label From (inclu)
             p.input-group
-              input.form-control(id='dateFrom' type='text' ng-model='item.dateFrom' is-open='opened' placeholder='FROM' datepicker-popup='{{format}}' datepicker-options='dateOptions' date-disabled='disabled(date, mode)' close-text='Close')
+              input.form-control(id='dateFrom' type='text' ng-model='item.dateFrom' is-open='opened' placeholder='FROM' uib-datepicker-popup='{{format}}' uib-datepicker-options='dateOptions' date-disabled='disabled(date, mode)' close-text='Close')
               span.input-group-btn
                 button.btn.btn-default(ng-click='opened=!opened')
                   i.glyphicon.glyphicon-calendar
           .col-md-6
             label.control-label To (exclu)
             p.input-group
-              input.form-control(id='dateTo' type='text' ng-model='item.dateTo' is-open='opened2' placeholder='TO' datepicker-popup='{{format}}' min-date='item.dateFrom'  datepicker-options='dateOptions' date-disabled='disabled(date, mode)' close-text='Close')
+              input.form-control(id='dateTo' type='text' ng-model='item.dateTo' is-open='opened2' placeholder='TO' uib-datepicker-popup='{{format}}' min-date='item.dateFrom'  uib-datepicker-options='dateOptions' date-disabled='disabled(date, mode)' close-text='Close')
               span.input-group-btn
                 button.btn.btn-default(ng-click='opened2=!opened2')
                   i.glyphicon.glyphicon-calendar

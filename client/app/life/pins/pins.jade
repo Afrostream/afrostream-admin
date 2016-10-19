@@ -52,6 +52,10 @@ script(type='text/ng-template' id='imagesTemplate.html')
           .tag-template
             span {{data && data.label}}
 
+      .form-group
+        label.control-label User
+        input.form-control(type='text' ng-model='item.user' placeholder='Search user' uib-typeahead='user as user.email for user in searchFields("users",$viewValue) | limitTo: 5')
+
       label(for='title').control-label Title
       input.form-control(id='title' type='text' ng-model='item.title' ng-change='slugify(item.title)' placeholder='Title')
       label(for='slug').control-label Slug

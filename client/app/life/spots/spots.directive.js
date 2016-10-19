@@ -3,8 +3,8 @@
 angular.module('afrostreamAdminApp')
   .directive('pins', function () {
     return {
-      templateUrl: 'app/life/pins/pins.html',
+      templateUrl: 'app/life/spots/spots.html',
       restrict: 'E',
-      controller: 'LifePinCtrl'
+      controller: 'LifeSpotCtrl'
     };
   });

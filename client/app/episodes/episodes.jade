@@ -34,11 +34,11 @@
 
 .form-group
   label.control-label Season
-  input.form-control(type='text' ng-model='item.season' placeholder='Search season' typeahead='season as season.title for season in loadSeasons($viewValue) | limitTo: 5' typeahead-template-url='imagesTemplate.html')
+  input.form-control(type='text' ng-model='item.season' placeholder='Search season' uib-typeahead='season as season.title for season in loadSeasons($viewValue) | limitTo: 5' uib-typeahead-template-url='imagesTemplate.html')
 
 .form-group
   label.control-label Video
-  input.form-control(type='text' ng-model='item.video' placeholder='Search video' typeahead='video as video.name for video in loadVideo($viewValue) | limitTo: 5' typeahead-template-url='imagesTemplate.html')
+  input.form-control(type='text' ng-model='item.video' placeholder='Search video' uib-typeahead='video as video.name for video in loadVideo($viewValue) | limitTo: 5' uib-typeahead-template-url='imagesTemplate.html')
   a(ng-if="mpd" target="_backoplayer" href="https://afrostream-player.herokuapp.com/?url={{mpd}}")
     | https://afrostream-player.herokuapp.com/?url={{mpd}}
 
