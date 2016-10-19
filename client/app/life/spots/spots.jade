@@ -17,6 +17,17 @@ script(type='text/ng-template' id='imagesTemplate.html')
     textarea.form-control(id='description' rows='5' ng-model='item.description' placeholder='Description')
 
   .form-group
+    label.control-label Theme
+    tags-input(ng-model='item.themes' placeholder='Search theme' add-from-autocomplete-only='true' display-property='label' key-property='_id')
+      auto-complete(source='searchFields("life/themes",$query)' template='life-themes-template' min-length='0'
+      load-on-focus='true'
+      load-on-empty='true'
+      max-results-to-show='32')
+    script(type='text/ng-template' id='life-themes-template')
+      .tag-template
+        span {{data && data.label}}
+
+  .form-group
     label(for='image').control-label Image
     div
       img(ng-src="{{item.image.imgix}}" class="img-thumbnail img-responsive")
