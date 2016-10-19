@@ -8,15 +8,13 @@ angular.module('afrostreamAdminApp')
     $scope.type = type;
 
     var uploader = $scope.uploader = new FileUploader({
-      url: 'api/images',
+      url: 'api/images?type=' + $scope.type,
       queueLimit: 1
     });
 
     uploader.onBeforeUploadItem = function (item) {
       $log.debug('upload : ', item);
-      item.formData.push({dataType: item.file.dataType || $scope.type || type || 'poster'});
       item.headers['Access-Token'] = $cookies.get('token');
-      //item.headers.Authorization = item.headers.Authorization || 'Bearer ' + $cookies.get('token');
     };
 
     uploader.onCompleteItem = function (item, response) {

@@ -14,7 +14,7 @@ angular.module('afrostreamAdminApp')
     };
 
     $scope.updateItem = function () {
-      $http.put('/api/' + $scope.directiveType + '/' + $scope.item._id, $scope.item).then(function (result) {
+      $http.put('/api/' + $scope.directiveType + '/' + $scope.item._id, $scope.item + '?type=' + ($scope.item.file.imgType || $scope.item.type)).then(function (result) {
         ngToast.create({
           content: 'La ' + $scope.item.type + ' ' + result.data.title + ' à été Uploadé'
         });
@@ -33,14 +33,12 @@ angular.module('afrostreamAdminApp')
     };
 
     var uploader = $scope.uploader = new FileUploader({
-      url: 'api/' + $scope.directiveType + '/'
+      url: 'api/' + $scope.directiveType + '/' + '?type=' + ($scope.item.file.imgType || $scope.item.type)
     });
 
     // CALLBACKS
     uploader.onBeforeUploadItem = function (item) {
-      item.formData.push({dataType: item.file.dataType || $scope.item.type || 'poster'});
       item.headers['Access-Token'] = $cookies.get('token');
-      //item.headers.Authorization = item.headers.Authorization || 'Bearer ' + $cookies.get('token');
     };
 
     uploader.onCompleteItem = function (item, response) {
