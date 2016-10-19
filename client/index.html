@@ -17,18 +17,20 @@
   <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
   <!-- build:css(client) app/vendor.css -->
   <!-- bower:css -->
-  <link rel="stylesheet" href="bower_components/rdash-ui/dist/css/rdash.css" />
-  <link rel="stylesheet" href="bower_components/rdash-ui/dist/css/rdash.min.css" />
-  <link rel="stylesheet" href="bower_components/ngtoast/dist/ngToast.css" />
-  <link rel="stylesheet" href="bower_components/ng-tags-input/ng-tags-input.css" />
-  <link rel="stylesheet" href="bower_components/seiyria-bootstrap-slider/dist/css/bootstrap-slider.css" />
-  <link rel="stylesheet" href="bower_components/ng-img-crop/compile/minified/ng-img-crop.css" />
-  <link rel="stylesheet" href="bower_components/ng-img-crop-full-extended/compile/minified/ng-img-crop.css" />
-  <link rel="stylesheet" href="bower_components/angular-ui-grid/ui-grid.css" />
-  <link rel="stylesheet" href="bower_components/angular-ui-grid/ui-grid.min.css" />
+  <link rel="stylesheet" href="bower_components/rdash-ui/dist/css/rdash.css"/>
+  <link rel="stylesheet" href="bower_components/rdash-ui/dist/css/rdash.min.css"/>
+  <link rel="stylesheet" href="bower_components/ngtoast/dist/ngToast.css"/>
+  <link rel="stylesheet" href="bower_components/ng-tags-input/ng-tags-input.css"/>
+  <link rel="stylesheet" href="bower_components/seiyria-bootstrap-slider/dist/css/bootstrap-slider.css"/>
+  <link rel="stylesheet" href="bower_components/ng-img-crop/compile/minified/ng-img-crop.css"/>
+  <link rel="stylesheet" href="bower_components/ng-img-crop-full-extended/compile/minified/ng-img-crop.css"/>
+  <link rel="stylesheet" href="bower_components/angular-ui-grid/ui-grid.css"/>
+  <link rel="stylesheet" href="bower_components/angular-ui-grid/ui-grid.min.css"/>
   <!-- endbower -->
+  <link rel="stylesheet" href="bower_components/textAngular/dist/textAngular.css"/>
   <!-- endbuild -->
   <!-- build:css({.tmp,client}) app/app.css -->
+  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css"/>
   <link rel="stylesheet" href="app/app.css">
   <!-- injector:css -->
   <!-- endinjector -->
@@ -64,6 +66,7 @@
 <!--[if lt IE 9]>
 <script src="bower_components/es5-shim/es5-shim.js"></script>
 <script src="bower_components/json3/lib/json3.min.js"></script>
+<script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
 <![endif]-->
 <!-- build:js({client,node_modules}) app/vendor.js -->
 <!-- bower:js -->
@@ -86,8 +89,6 @@
 <script src="bower_components/angular-ui-sortable/sortable.js"></script>
 <script src="bower_components/angular-paginate-anything/dist/paginate-anything-tpls.js"></script>
 <script src="bower_components/angular-utils-pagination/dirPagination.js"></script>
-<script src="bower_components/markdown-it/dist/markdown-it.js"></script>
-<script src="bower_components/angular-markdown-it/dist/ng-markdownit.js"></script>
 <script src="bower_components/ng-img-crop/compile/minified/ng-img-crop.js"></script>
 <script src="bower_components/ng-img-crop-full-extended/compile/minified/ng-img-crop.js"></script>
 <script src="bower_components/angular-file-to-json/angular-file-to-json.js"></script>
@@ -95,6 +96,10 @@
 <script src="bower_components/angular-ui-grid/ui-grid.min.js"></script>
 <script src="bower_components/lodash/lodash.js"></script>
 <!-- endbower -->
+<script src="bower_components/textAngular/dist/textAngular.js"></script>
+<script src="bower_components/textAngular/dist/textAngular-rangy.min.js"></script>
+<script src="bower_components/textAngular/dist/textAngular-sanitize.min.js"></script>
+<script src="bower_components/textAngular/dist/textAngularSetup.js"></script>
 <!-- endbuild -->
 <!-- build:js(.tmp) app/app.js -->
 <script src="app/app.js"></script>
@@ -155,9 +160,6 @@
 <script src="app/movies/movies.controller.js"></script>
 <script src="app/movies/movies.directive.js"></script>
 <script src="app/movies/movies.js"></script>
-<script src="app/posts/posts.controller.js"></script>
-<script src="app/posts/posts.directive.js"></script>
-<script src="app/posts/posts.js"></script>
 <script src="app/seasons/seasons.controller.js"></script>
 <script src="app/seasons/seasons.directive.js"></script>
 <script src="app/seasons/seasons.js"></script>

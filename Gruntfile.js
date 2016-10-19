@@ -583,8 +583,8 @@ module.exports = function (grunt) {
   });
 
   grunt.registerTask('serve', function (target) {
-    target = target || 'dev'
-    console.log(target)
+    var expressTarget = target || 'dev';
+    console.log(expressTarget);
     grunt.task.run([
       'clean:server',
       'env:' + (target || 'all'),
@@ -593,7 +593,7 @@ module.exports = function (grunt) {
       'injector',
       'wiredep',
       'postcss',
-      'express:' + target,
+      'express:' + expressTarget,
       'wait',
       'watch'
     ]);
