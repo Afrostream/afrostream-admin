@@ -33,7 +33,7 @@ angular.module('afrostreamAdminApp')
     };
 
     var uploader = $scope.uploader = new FileUploader({
-      url: 'api/' + $scope.directiveType + '/' + '?type=' + ($scope.item.file.imgType || $scope.item.type)
+      url: 'api/' + $scope.directiveType + '/' + '?type=' + ($scope.item.file && $scope.item.file.imgType || $scope.item.type)
     });
 
     // CALLBACKS
