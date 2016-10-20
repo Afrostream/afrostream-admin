@@ -41,6 +41,12 @@ script(type='text/ng-template' id='imagesTemplate.html')
     textarea.form-control(id='pixelUrl' rows='5' ng-model='item.pixelUrl' placeholder='Pixels')
 
   .form-group
+    label(for='displayWidth').control-label Width
+    input.form-control(id='displayWidth' type='text' ng-model='item.displayWidth'  placeholder='Width')
+    label(for='displayHeight').control-label Height
+    input.form-control(id='displayHeight' type='text' ng-model='item.displayHeight'  placeholder='Height')
+
+  .form-group
     label.control-label Dates
     .row
       .col-md-6
