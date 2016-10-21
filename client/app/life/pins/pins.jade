@@ -58,8 +58,6 @@ script(type='text/ng-template' id='imagesTemplate.html')
 
       label(for='title').control-label Title
       input.form-control(id='title' type='text' ng-model='item.title' ng-change='slugify(item.title)' placeholder='Title')
-      label(for='slug').control-label Slug
-      input.form-control(id='slug' type='text' ng-model='item.slug' placeholder='Slug url')
       label(for='description').control-label Description
       textarea.form-control(id='description' rows='5' ng-model='item.description' placeholder='Description')
 
