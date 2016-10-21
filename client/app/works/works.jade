@@ -7,8 +7,5 @@
   textarea.form-control(id='synopsis' rows='5' ng-model='item.description' placeholder='Description')
 
 .form-group
-  uib-tabset
-    uib-tab(heading='Source')
-      textarea.form-control(id='content' rows='12' ng-model='item.body' placeholder='Data')
-    uib-tab(heading='Rendu')
-      div(markdown-it='item.body' style='max-height:350px;overflow:auto;') {{item.body}}
+  <!-- editor -->
+  text-angular( ng-model="item.body" class="markdown")
