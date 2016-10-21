@@ -17,6 +17,15 @@ script(type='text/ng-template' id='imagesTemplate.html')
     textarea.form-control(id='description' rows='5' ng-model='item.description' placeholder='Description')
 
   .form-group
+    label(for='type').control-label Type
+  .form-group
+    .btn-group
+      label.btn.btn-primary(ng-model='item.type' btn-radio='"banner"') Banner
+      label.btn.btn-primary(ng-model='item.type' btn-radio='"horizontal"') Rectangle
+      label.btn.btn-primary(ng-model='item.type' btn-radio='"carre"') Carre
+      label.btn.btn-primary(ng-model='item.type' btn-radio='"vertical"') Vertical
+
+  .form-group
     label.control-label Theme
     tags-input(ng-model='item.themes' placeholder='Search theme' add-from-autocomplete-only='true' display-property='label' key-property='_id')
       auto-complete(source='searchFields("life/themes",$query)' template='life-themes-template' min-length='0'
