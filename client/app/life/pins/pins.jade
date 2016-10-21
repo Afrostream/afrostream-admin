@@ -10,11 +10,11 @@ script(type='text/ng-template' id='imagesTemplate.html')
 .modal-body
   form(role='form')
 
-  .form-group(ng-if='!scrappedData && !item._id')
+  .form-group
     label(for='scrapUrl').control-label Scrapp url
     input.form-control(id='scrapUrl' type='text' ng-model='item.scrapUrl' placeholder='Scrapp Url')
 
-  .form-group(ng-if='scrappedData || item._id')
+  .form-group
     label(for='originalUrl').control-label Original url
     input.form-control(id='originalUrl' type='text' ng-model='item.originalUrl' ng-change='slugify(item.originalUrl)' placeholder='Original Url')
 
