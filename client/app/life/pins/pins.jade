@@ -75,7 +75,8 @@ script(type='text/ng-template' id='imagesTemplate.html')
               img(ng-src="{{imgValue}}" class="img-thumbnail img-responsive img-scrap")
 
         button.btn.btn-s.btn-primary(ng-click='uploadImage("pin","image")' style="display:inline") Upload
-    .form-group(ng-if='item.type === "article"')
+
+    .form-group
       <!-- editor -->
       text-angular( ng-model="item.body" class="markdown")
 
