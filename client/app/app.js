@@ -81,6 +81,62 @@ angular.module('afrostreamAdminApp', [
       animation: 'slide' // or 'fade'
     });
   }])
+  //Text wisiwyg editor
+  .config(function ($provide) {
+    $provide.decorator('taOptions', ['taRegisterTool', '$delegate', '$uibModal', '$log', function (taRegisterTool, taOptions, $uibModal, $log) {
+      taRegisterTool('uploadImage', {
+        buttontext: 'Upload Image',
+        iconclass: "fa fa-image",
+        action: function (deferred, restoreSelection) {
+          var _editor = this.$editor();
+          var m = $uibModal.open({
+            controller: 'UploadImageModalInstance',
+            templateUrl: 'app/images/modal/upload.html',
+            resolve: {
+              type: function () {
+                return 'pin-upload';
+              }
+            }
+          }).result.then(
+            function (image) {
+              if (image) {
+                var urlLink = 'https://afrostream.imgix.net' + image.path + '?fm=jpg&q=65&w=1280';
+                restoreSelection();
+                _editor.wrapSelection('insertImage', urlLink, true);
+                deferred.resolve();
+              }
+            },
+            function () {
+              deferred.resolve();
+            }
+          );
+          return false;
+        }
+      });
+      taOptions.toolbar[1].push('uploadImage');
+      return taOptions;
+    }]);
+  })
+  .controller('UploadImageModalInstance', function ($scope, $log, type, $cookies, $uibModalInstance, FileUploader) {
+
+    var uploader = $scope.uploader = new FileUploader({
+      url: 'api/images?type=' + type,
+      queueLimit: 1
+    });
+
+    uploader.onBeforeUploadItem = function (item) {
+      item.headers['Access-Token'] = $cookies.get('token');
+    };
+
+    uploader.onCompleteItem = function (item, data) {
+      $scope.image = data;
+      close();
+    };
+
+    var close = function () {
+      $uibModalInstance.close($scope.image);
+    };
+  })
   .run(function ($rootScope, $state, Auth) {
     // Redirect to login if route requires auth and you're not logged in
     $rootScope.$on('$stateChangeStart', function (event, next) {
