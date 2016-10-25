@@ -83,7 +83,7 @@ angular.module('afrostreamAdminApp', [
   }])
   //Text wisiwyg editor
   .config(function ($provide) {
-    $provide.decorator('taOptions', ['taRegisterTool', '$delegate', '$uibModal', '$log', function (taRegisterTool, taOptions, $uibModal, $log) {
+    $provide.decorator('taOptions', ['taRegisterTool', 'taSelection', '$delegate', '$uibModal', '$log', function (taRegisterTool, taSelection, taOptions, $uibModal, $log) {
       taRegisterTool('uploadImage', {
         buttontext: 'Upload Image',
         iconclass: "fa fa-image",
