@@ -86,6 +86,10 @@ angular.module('afrostreamAdminApp')
       'title': 'Works',
       'state': 'works',
       'icon': 'fa-building-o'
+    }, {
+      'title': 'Press',
+      'state': 'press',
+      'icon': 'fa-newspaper-o'
     }];
 
     $scope.isCollapsed = true;

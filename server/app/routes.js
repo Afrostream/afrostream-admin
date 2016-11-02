@@ -55,7 +55,7 @@ router.post('/auth/signin', noCache, authController.signin);
 router.post('/auth/reset', noCache, authController.reset);
 
 // Admin whitelist routes.
-router.route(/^\/(categorys|licensors|movies|seasons|episodes|videos|languages|images|users|subscriptions|clients|actors|settings|login|life|logout|jobs|posts|catchup|users\-logs|imports|configs|widgets|works|stores)/)
+router.route(/^\/(categorys|licensors|movies|seasons|episodes|videos|languages|images|users|subscriptions|clients|actors|settings|login|life|logout|jobs|posts|catchup|users\-logs|imports|configs|widgets|works|press|stores)/)
   .get(function (req, res) {
     res.set('Cache-Control', 'public, max-age=0');
     res.sendFile(path.resolve(req.app.get('appPath') + '/index.html'));

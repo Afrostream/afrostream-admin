@@ -265,6 +265,7 @@ angular.module('afrostreamAdminApp')
         case'config':
         case'store':
         case'work':
+        case'press':
           hasTmb = false;
           break;
         default:
