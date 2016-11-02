@@ -13,6 +13,12 @@
       button.btn.btn-s.btn-primary(ng-click='uploadImage("press","image")' style="display:inline") Upload
 
   .form-group
+    label(for='pdf').control-label Pdf
+    div
+      input.form-control(id='pdf' type='text' ng-model='item.pdf' placeholder='Search image' uib-typeahead='image as image.name for image in loadImages($viewValue,"press") | limitTo: 5' uib-typeahead-template-url='imagesTemplate.html' style="display:inline;width:80%")
+      button.btn.btn-s.btn-primary(ng-click='uploadImage("press","pdf")' style="display:inline") Upload
+
+  .form-group
     label.control-label Date
     p.input-group
       input.form-control(id='date' type='text' ng-model='item.date' is-open='opened' placeholder='DATE' uib-datepicker-popup='{{format}}' uib-datepicker-options='dateOptions' date-disabled='disabled(date, mode)' close-text='Close')
