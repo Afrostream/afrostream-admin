@@ -7,6 +7,12 @@
     textarea.form-control(id='description' rows='5' ng-model='item.description' placeholder='Description')
 
   .form-group
+    label(for='image').control-label Image
+    div
+      input.form-control(type='text' ng-model='item.image' placeholder='Search image' uib-typeahead='image as image.name for image in loadImages($viewValue,"press") | limitTo: 5' uib-typeahead-template-url='imagesTemplate.html' style="display:inline;width:80%")
+      button.btn.btn-s.btn-primary(ng-click='uploadImage("press","image")' style="display:inline") Upload
+
+  .form-group
     .row
       .col-md-12
         label.control-label Date
