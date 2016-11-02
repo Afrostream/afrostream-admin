@@ -1,3 +1,8 @@
+script(type='text/ng-template' id='imagesTemplate.html')
+  a
+    img(ng-src='{{match.model.imgix}}?fit=crop&w=100&h=30')
+    span(ng-bind-html='match.label | typeaheadHighlight:query')
+
 .form-group
   label(for='title').control-label Title
   input.form-control(id='title' type='text' ng-model='item.title' placeholder='Title')
