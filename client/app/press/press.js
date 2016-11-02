@@ -7,7 +7,7 @@ angular.module('afrostreamAdminApp')
         url: '/press',
         templateUrl: 'app/data/data.html',
         controller: 'DataCtrl',
-        type: 'press',
+        type: 'pres',
         resolve: {
           countries: 'DataEmpty',
           genres: 'DataEmpty' // unused
