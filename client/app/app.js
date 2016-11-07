@@ -98,19 +98,23 @@ angular.module('afrostreamAdminApp', [
         action: function (deferred, restoreSelection) {
           var _editor = this.$editor();
           var m = $uibModal.open({
-            controller: 'UploadImageModalInstance',
-            templateUrl: 'app/images/modal/upload.html',
+            controller: 'PinUploadImagesDialogController',
+            templateUrl: 'app/life/pins/upload.html',
             resolve: {
               type: function () {
                 return 'pin-upload';
               }
             }
           }).result.then(
-            function (image) {
-              if (image) {
-                var urlLink = 'https://afrostream.imgix.net' + image.path + '?fm=jpg&q=65&w=1280';
-                restoreSelection();
-                _editor.wrapSelection('insertImage', urlLink, true);
+            function (listImages) {
+              if (listImages) {
+
+                angular.forEach(listImages, function (value) {
+                  var urlLink = 'https://afrostream.imgix.net' + value.path + '?fm=jpg&q=65&w=1280';
+                  restoreSelection();
+                  _editor.wrapSelection('insertImage', urlLink, true);
+                });
+
                 deferred.resolve();
               }
             },
@@ -263,29 +267,9 @@ angular.module('afrostreamAdminApp', [
         }
       });
 
-      taOptions.toolbar[2].push('pushMedia');
+      taOptions.toolbar[1].push('pushMedia');
       return taOptions;
     }]);
-  })
-  .controller('UploadImageModalInstance', function ($scope, $log, type, $cookies, $uibModalInstance, FileUploader) {
-
-    var uploader = $scope.uploader = new FileUploader({
-      url: 'api/images?type=' + type,
-      queueLimit: 1
-    });
-
-    uploader.onBeforeUploadItem = function (item) {
-      item.headers['Access-Token'] = $cookies.get('token');
-    };
-
-    uploader.onCompleteItem = function (item, data) {
-      $scope.image = data;
-      close();
-    };
-
-    var close = function () {
-      $uibModalInstance.close($scope.image);
-    };
   })
   .run(function ($rootScope, $state, Auth) {
     // Redirect to login if route requires auth and you're not logged in
