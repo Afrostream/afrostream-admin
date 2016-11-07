@@ -74,7 +74,7 @@ script(type='text/ng-template' id='imagesTemplate.html')
 
     .form-group
       <!-- editor -->
-      text-angular( ng-model="item.body" class="markdown")
+      text-angular( ng-model="item.body" class="markdown" ta-unsafe-sanitizer="true")
 
 .modal-footer
   .form-group

@@ -262,7 +262,7 @@ angular.module('afrostreamAdminApp', [
         },
         onElementSelect: {
           element: 'img',
-          onlyWithAttrs: ['ta-insert-video'],
+          onlyWithAttrs: ['ta-insert-video', 'ta-insert-type'],
           action: taToolFunctions.imgOnSelectAction
         }
       });
