@@ -141,59 +141,59 @@ angular.module('afrostreamAdminApp', [
             return false;
           };
 
+          var regexs = {
+            spotify: {
+              regex: /https?:\/\/(?:embed\.|open\.)(?:spotify\.com\/)(?:track\/|\?uri=spotify:track:)((\w|-){22})/,
+              idMatchIndex: 1,
+              image: function (videoId) {
+                var d = $q.defer();
+                $http.get('https://api.spotify.com/v1/tracks/' + videoId).success(function (data) {
+                  d.resolve(data.album.images[0]['url']);
+                });
+                return d.promise;
+              }
+            },
+            soundcloud: {
+              regex: /^https?:\/\/soundcloud\.com\/\S+\/\S+$/i,
+              api: 'https://api.soundcloud.com/resolve.json?url=',
+            },
+            deezer: {
+              regex: /^https?:\/\/(?:www\.)?deezer\.com\/(track|album|playlist)\/(\d+)/i,
+              idMatchIndex: 2,
+              image: function (videoId) {
+                var d = $q.defer();
+                $http.jsonp('https://api.deezer.com/track/' + videoId + '?output=jsonp&callback=JSON_CALLBACK').success(function (data) {
+                  d.resolve(data.album['cover_big']);
+                });
+                return d.promise;
+              }
+            },
+
+            youtube: {
+              regex: /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/i,
+              idMatchIndex: 2,
+              image: 'https://img.youtube.com/vi/{videoId}/hqdefault.jpg'
+            },
+            vimeo: {
+              regex: /^https?:\/\/(?:www\.)?vimeo\.com.+?(\d+).*$/i,
+              idMatchIndex: 1,
+              image: function (videoId) {
+                var d = $q.defer();
+                $http.jsonp('http://vimeo.com/api/v2/video/' + videoId + '.json?callback=JSON_CALLBACK').success(function (data) {
+                  d.resolve(data[0]['thumbnail_large']);
+                });
+                return d.promise;
+              }
+            },
+            dailymotion: {
+              regex: /^.+dailymotion.com\/((video|hub)\/([^_]+))?[^#]*(#video=([^_&]+))?/i,
+              idMatchIndex: 3,
+              image: 'http://www.dailymotion.com/thumbnail/video/{videoId}'
+            }
+          };
+
           var extractEmbedType = function (link) {
             var deferred = $q.defer();
-
-            var regexs = {
-              spotify: {
-                regex: /https?:\/\/(?:embed\.|open\.)(?:spotify\.com\/)(?:track\/|\?uri=spotify:track:)((\w|-){22})/,
-                idMatchIndex: 1,
-                image: function (videoId) {
-                  var d = $q.defer();
-                  $http.get('https://api.spotify.com/v1/tracks/' + videoId).success(function (data) {
-                    d.resolve(data.album.images[0]['url']);
-                  });
-                  return d.promise;
-                }
-              },
-              soundcloud: {
-                regex: /^https?:\/\/soundcloud\.com\/\S+\/\S+$/i,
-                api: 'https://api.soundcloud.com/resolve.json?url=',
-              },
-              deezer: {
-                regex: /^https?:\/\/(?:www\.)?deezer\.com\/(track|album|playlist)\/(\d+)/i,
-                idMatchIndex: 2,
-                image: function (videoId) {
-                  var d = $q.defer();
-                  $http.jsonp('https://api.deezer.com/track/' + videoId + '?output=jsonp&callback=JSON_CALLBACK').success(function (data) {
-                    d.resolve(data.album['cover_big']);
-                  });
-                  return d.promise;
-                }
-              },
-
-              youtube: {
-                regex: /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/i,
-                idMatchIndex: 2,
-                image: 'https://img.youtube.com/vi/{videoId}/hqdefault.jpg'
-              },
-              vimeo: {
-                regex: /^https?:\/\/(?:www\.)?vimeo\.com.+?(\d+).*$/i,
-                idMatchIndex: 1,
-                image: function (videoId) {
-                  var d = $q.defer();
-                  $http.jsonp('http://vimeo.com/api/v2/video/' + videoId + '.json?callback=JSON_CALLBACK').success(function (data) {
-                    d.resolve(data[0]['thumbnail_large']);
-                  });
-                  return d.promise;
-                }
-              },
-              dailymotion: {
-                regex: /^.+dailymotion.com\/((video|hub)\/([^_]+))?[^#]*(#video=([^_&]+))?/i,
-                idMatchIndex: 3,
-                image: 'http://www.dailymotion.com/thumbnail/video/{videoId}'
-              }
-            };
 
             var typeEmbed = null;
 
