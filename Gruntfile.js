@@ -62,9 +62,9 @@ module.exports = function (grunt) {
       injectJS: {
         files: [
           '<%= yeoman.client %>/{app,components}/**/!(*.spec|*.mock).js',
-          '!<%= yeoman.client %>/app/app.js'
+          '<%= yeoman.client %>/app/app.js'
         ],
-        tasks: ['newer:babel:client', 'injector:scripts']
+        tasks: ['injector:scripts']
       },
       injectCss: {
         files: ['<%= yeoman.client %>/{app,components}/**/*.css'],
@@ -95,14 +95,14 @@ module.exports = function (grunt) {
           '<%= yeoman.client %>/assets/images/{,*//*}*.{png,jpg,jpeg,gif,webp,svg}'
         ],
         options: {
-          livereload: 35730
+          livereload: true
         }
       },
       express: {
         files: ['server/**/*.{js,json}'],
         tasks: ['express:dev', 'wait'],
         options: {
-          livereload: 35730,
+          livereload: true,
           nospawn: true //Without this option specified express won't be reloaded
         }
       }
