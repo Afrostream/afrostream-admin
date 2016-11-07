@@ -250,7 +250,7 @@ angular.module('afrostreamAdminApp', [
               extractEmbedType(urlPrompt).then(function (embed) {
                 if (embed) {
                   var urlLink = urlPrompt;
-                  var embed = '<div class="ta-insert-video" ta-insert-video="' + urlLink + '" ta-insert-type="' + embed.type + '" ><img src="' + embed.imageUrl + '" /></div>';
+                  var embed = '<div class="ta-insert-video" ><div class="ta-insert-video-btn" /><img src="' + embed.imageUrl + '" ta-insert-video="' + urlLink + '" ta-insert-type="' + embed.type + '" contenteditable="false" allowfullscreen="true" frameborder="0"/></div>';
                   if (taSelection.getSelectionElement().tagName && taSelection.getSelectionElement().tagName.toLowerCase() === 'a') {
                     taSelection.setSelectionAfterElement(taSelection.getSelectionElement());
                   }
