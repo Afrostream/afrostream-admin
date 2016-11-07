@@ -261,7 +261,7 @@ angular.module('afrostreamAdminApp', [
           }
         },
         onElementSelect: {
-          element: 'img',
+          element: 'div',
           onlyWithAttrs: ['ta-insert-video', 'ta-insert-type'],
           action: taToolFunctions.imgOnSelectAction
         }
