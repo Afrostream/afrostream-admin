@@ -227,7 +227,17 @@ angular.module('afrostreamAdminApp', [
             return deferred.promise;
           };
 
-          urlPrompt = $window.prompt(taTranslations.insertVideo.dialogPrompt, 'https://');
+          //PROMPT TITLE
+          var titlePrompt = taTranslations.insertVideo.dialogPrompt + '(';
+          Object.keys(regexs).forEach(function (key) {
+            titlePrompt += key + ' | '
+          });
+
+          titlePrompt += ')';
+
+          //PROMPT TITLE
+
+          urlPrompt = $window.prompt(titlePrompt, 'https://');
 
           if (!blockJavascript(urlPrompt)) {
 
