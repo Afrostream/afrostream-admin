@@ -20,7 +20,8 @@ angular.module('afrostreamAdminApp', [
   //IMAGE cropper
   'ngImgCrop',
   'ngFileToJson',
-  'ui.grid'
+  'ui.grid',
+  'ui.bootstrap.datetimepicker'
 ])
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
     $urlRouterProvider
