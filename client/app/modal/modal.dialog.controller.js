@@ -12,7 +12,8 @@ angular.module('afrostreamAdminApp')
     }
 
     $scope.toHumanDate = function (date) {
-      return moment(date).toString()
+      var d = moment(date);
+      return d.isValid() ? d.toString() : '';
     }
 
     $scope.modalType = type;
