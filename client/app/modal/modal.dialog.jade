@@ -91,14 +91,14 @@ script(type='text/ng-template' id='imagesTemplate.html')
           .col-md-6
             div(uib-dropdown class="input-group")
               a(uib-dropdown-toggle id="dateFromToggle" class="dropdown-toggle-datefrom")
-                input.form-control(type='text' value='{{item.dateFrom.toString()}}' readonly="true" style="min-width:300px" placeholder="FROM")
+                input.form-control(type='text' value='{{toHumanDate(item.dateFrom)}}' readonly="true" style="min-width:300px;background-color:white;" placeholder="FROM")
               ul(class="dropdown-menu" uib-dropdown-menu aria-labelledby="simple-dropdown")
                 li
                   datetimepicker(id='dateFrom' ng-model='item.dateFrom' ng-datetimepicker-config="{ dropdownSelector: '.dropdown-toggle-datefrom' }")
           .col-md-6
             div(uib-dropdown class="input-group")
               a(uib-dropdown-toggle id="dateToToggle" class="dropdown-toggle-dateto")
-                input.form-control(type='text' value='{{item.dateTo.toString()}}' readonly="true" style="min-width:300px" placeholder="TO")
+                input.form-control(type='text' value='{{toHumanDate(item.dateTo)}}' readonly="true" style="min-width:300px;background-color:white;" placeholder="TO")
               ul(class="dropdown-menu" uib-dropdown-menu aria-labelledby="simple-dropdown")
                 li
                   datetimepicker(id='dateTo' ng-model='item.dateTo' ng-datetimepicker-config="{ dropdownSelector: '.dropdown-toggle-dateto' }")
