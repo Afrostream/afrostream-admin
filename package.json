@@ -49,7 +49,7 @@
     "grunt-svgmin": "^3.3.0",
     "grunt-usemin": "^3.1.1",
     "grunt-wiredep": "^3.0.1",
-    "jade": "1.2.0",
+    "jade": "^1.11.0",
     "jit-grunt": "^0.10.0",
     "joi": "^9.0.4",
     "jshint-stylish": "^2.2.1",
@@ -69,15 +69,15 @@
     "mocha": "^3.0.2"
   },
   "engines": {
-    "node": "4.5.0",
+    "node": "6.9.1",
     "npm": "3.10.7"
   },
   "scripts": {
     "start": "node server/server.js",
-    "localstaging": ". ~/.nvm/nvm.sh && nvm use 4.5.0 && grunt serve:localstaging",
-    "staging": ". ~/.nvm/nvm.sh && nvm use 4.5.0 && grunt serve:staging",
+    "localstaging": ". ~/.nvm/nvm.sh && nvm use 6.9.1 && grunt serve:localstaging",
+    "staging": ". ~/.nvm/nvm.sh && nvm use 6.9.1 && grunt serve:staging",
     "postinstall": "bower install && grunt build",
-    "dev": ". ~/.nvm/nvm.sh && nvm use 4.5.0 && grunt serve",
+    "dev": ". ~/.nvm/nvm.sh && nvm use 6.9.1 && grunt serve",
     "test": "grunt test",
     "seed": "export SEED_DB=true && npm run dev",
     "cron-daily-queries": "node server/cron/daily-queries.js",

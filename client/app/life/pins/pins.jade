@@ -57,7 +57,10 @@ script(type='text/ng-template' id='imagesTemplate.html')
         input.form-control(type='text' ng-model='item.user' placeholder='Search user' uib-typeahead='user as user.email for user in searchFields("users",$viewValue) | limitTo: 5')
 
       label(for='title').control-label Title
+      localize-button(ng-model="item" ng-key="title")
+
       input.form-control(id='title' type='text' ng-model='item.title' ng-change='slugify(item.title)' placeholder='Title')
+
       label(for='description').control-label Description
       textarea.form-control(id='description' rows='5' ng-model='item.description' placeholder='Description')
 
@@ -75,6 +78,7 @@ script(type='text/ng-template' id='imagesTemplate.html')
     .form-group
       <!-- editor -->
       text-angular( ng-model="item.body" class="markdown" ta-unsafe-sanitizer="true")
+      localize-button( ng-model="item" ng-key="body" ng-tag="text-angular" )
 
 .modal-footer
   .form-group
