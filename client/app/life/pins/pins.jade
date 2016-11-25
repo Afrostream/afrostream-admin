@@ -62,6 +62,8 @@ script(type='text/ng-template' id='imagesTemplate.html')
       input.form-control(id='title' type='text' ng-model='item.title' ng-change='slugify(item.title)' placeholder='Title')
 
       label(for='description').control-label Description
+      localize-button(ng-model="item" ng-key="description" ng-tag="textarea")
+
       textarea.form-control(id='description' rows='5' ng-model='item.description' placeholder='Description')
 
       label(for='image').control-label Image
@@ -77,8 +79,10 @@ script(type='text/ng-template' id='imagesTemplate.html')
 
     .form-group
       <!-- editor -->
-      text-angular( ng-model="item.body" class="markdown" ta-unsafe-sanitizer="true")
+      label(for='body').control-label Body
       localize-button( ng-model="item" ng-key="body" ng-tag="text-angular" )
+
+      text-angular( ng-model="item.body" class="markdown" ta-unsafe-sanitizer="true")
 
 .modal-footer
   .form-group

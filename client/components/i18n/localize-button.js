@@ -44,7 +44,7 @@ angular.module('afrostreamAdminApp')
       link: function ($scope, element, attributes, ngModel, ngTag, ngKey, ngLang) {
         $scope.tag = attributes.ngTag;
         $scope.$watch('tag', function (html) {
-          var htmlTag = `<${html} class="form-control ${html}" ta-unsafe-sanitizer="true" ng-model="ngModel[ngKey][ngLang]"/>`;
+          var htmlTag = '<' + html + ' class="form-control ' + html + '" ta-unsafe-sanitizer="true" ng-model="ngModel[ngKey][ngLang]"/>';
           element.html(htmlTag);
           $compile(element.contents())($scope);
         });
@@ -54,7 +54,7 @@ angular.module('afrostreamAdminApp')
   .directive('localizeButton', function ($uibModal) {
     return {
       restrict: 'E',
-      template: '<button type="button" class="btn btn-xs btn-primary" ng-click="openI18nModal()" >translate</button>',
+      template: '<button type="button" class="btn btn-localize btn-xs btn-primary" ng-click="openI18nModal()" >translate</button>',
       transclude: true,
       scope: {
         ngModel: '&',
