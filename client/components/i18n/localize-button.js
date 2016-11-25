@@ -9,7 +9,9 @@ angular.module('afrostreamAdminApp')
     //$scope.key = key;
     //$scope.item = item;
     $scope.item = $scope.ngModel();
-
+    $scope.removeDefaultLocale = function (lang) {
+      return lang.lang !== 'fr';
+    };
     //$scope.$watch('item.translations', function (json) {
     //  $scope.jsonString = $filter('json')(json);
     //}, true);
