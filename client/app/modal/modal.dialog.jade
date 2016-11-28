@@ -69,18 +69,23 @@ script(type='text/ng-template' id='imagesTemplate.html')
         input.form-control(id='slug' type='text' ng-model='item.slug' placeholder='Slug url')
 
       .form-group
+        label(for='thumb').control-label Logo
+        div
+          input.form-control(type='text' ng-model='item.logo' placeholder='Search logo' uib-typeahead='image as image.name for image in loadImages($viewValue, "logo") | limitTo: 30' uib-typeahead-template-url='imagesTemplate.html' style="display:inline;width:80%")
+          button.btn.btn-s.btn-primary(ng-click='uploadImage("logo")' style="display:inline") Upload
+
+      .form-group
         label(for='thumb').control-label Thumb
         div
           input.form-control(type='text' ng-model='item.thumb' placeholder='Search thumb' uib-typeahead='image as image.name for image in loadImages($viewValue, "thumb") | limitTo: 30' uib-typeahead-template-url='imagesTemplate.html' style="display:inline;width:80%")
-          button.btn.btn-s.btn-primary(ng-click='uploadImage("thumb")' style="display:inline")
-            | Upload
+          button.btn.btn-s.btn-primary(ng-click='uploadImage("thumb")' style="display:inline") Upload
 
       .form-group
         label(for='poster').control-label Poster
         div
           input.form-control(type='text' ng-model='item.poster' placeholder='Search poster' uib-typeahead='image as image.name for image in loadImages($viewValue,"poster") | limitTo: 5' uib-typeahead-template-url='imagesTemplate.html' style="display:inline;width:80%")
-          button.btn.btn-s.btn-primary(ng-click='uploadImage("poster")' style="display:inline")
-            | Upload
+          button.btn.btn-s.btn-primary(ng-click='uploadImage("poster")' style="display:inline") Upload
+
         h6.control-label Poster Profiles (16:31 adSpots)
         div(ng-if='item.poster' class='row fix-height')
           div(class='img-ratio-adspot col-md-3')
