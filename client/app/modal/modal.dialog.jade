@@ -63,6 +63,7 @@ script(type='text/ng-template' id='imagesTemplate.html')
 
       .form-group
         label(for='title').control-label Title
+        localize-button(ng-model="item" ng-key="title")
         input.form-control(id='title' type='text' ng-model='item.title' ng-change='slugify(item.title)' placeholder='Title')
         label(for='slug').control-label Slug
         input.form-control(id='slug' type='text' ng-model='item.slug' placeholder='Slug url')
