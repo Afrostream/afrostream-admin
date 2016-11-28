@@ -111,6 +111,7 @@ script(type='text/ng-template' id='imagesTemplate.html')
 
       .form-group
         label(for='synopsis').control-label Synopsis
+        localize-button(ng-model="item" ng-key="synopsis")
         textarea.form-control(id='synopsis' rows='4' ng-model='item.synopsis' placeholder='Description')
 
       movies(ng-if='isFilm()')
