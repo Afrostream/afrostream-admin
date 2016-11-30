@@ -23,49 +23,56 @@
       "resolved": "https://registry.npmjs.org/acorn-globals/-/acorn-globals-1.0.9.tgz"
     },
     "afrostream-node-app": {
-      "version": "2.4.0",
-      "from": "git+https://afrostream-tech:d51e355769ddd0fd212084c35fb99f71ab4146b2@github.com/Afrostream/afrostream-node-app.git#v2.4.0",
-      "resolved": "git+https://afrostream-tech:d51e355769ddd0fd212084c35fb99f71ab4146b2@github.com/Afrostream/afrostream-node-app.git#4acbb1436bc21b7d0b59905faddda8bb5323008b"
+      "version": "2.4.1",
+      "from": "git+https://afrostream-tech:39378b0626f1b2d4c733eeb5c5be73908b3c8c53@github.com/Afrostream/afrostream-node-app.git#v2.4.1",
+      "resolved": "git+https://afrostream-tech:39378b0626f1b2d4c733eeb5c5be73908b3c8c53@github.com/Afrostream/afrostream-node-app.git#5a4f1a199e702e8a2507c0afb580aa35b40b2f48"
     },
     "afrostream-node-client-backend": {
-      "version": "2.4.2",
-      "from": "git+https://afrostream-tech:d51e355769ddd0fd212084c35fb99f71ab4146b2@github.com/Afrostream/afrostream-node-client-backend.git#v2.4.2",
-      "resolved": "git+https://afrostream-tech:d51e355769ddd0fd212084c35fb99f71ab4146b2@github.com/Afrostream/afrostream-node-client-backend.git#b25a19b254124e270917d94a2adc15e8114e1883"
+      "version": "3.1.1",
+      "from": "git+https://afrostream-tech:39378b0626f1b2d4c733eeb5c5be73908b3c8c53@github.com/Afrostream/afrostream-node-client-backend.git#v3.1.1",
+      "resolved": "git+https://afrostream-tech:39378b0626f1b2d4c733eeb5c5be73908b3c8c53@github.com/Afrostream/afrostream-node-client-backend.git#bf16c25e7f8fda4855517eb8349630e9a77bcc00",
+      "dependencies": {
+        "afrostream-node-config": {
+          "version": "3.1.0",
+          "from": "git+https://afrostream-tech:39378b0626f1b2d4c733eeb5c5be73908b3c8c53@github.com/Afrostream/afrostream-node-config.git#v3.1.0",
+          "resolved": "git+https://afrostream-tech:39378b0626f1b2d4c733eeb5c5be73908b3c8c53@github.com/Afrostream/afrostream-node-config.git#5be4a1a00b60b3f5965e6d3b4f9bb0e7e6ce4176"
+        }
+      }
     },
     "afrostream-node-config": {
-      "version": "2.2.0",
-      "from": "git+https://afrostream-tech:d51e355769ddd0fd212084c35fb99f71ab4146b2@github.com/Afrostream/afrostream-node-config.git#v2.2.0",
-      "resolved": "git+https://afrostream-tech:d51e355769ddd0fd212084c35fb99f71ab4146b2@github.com/Afrostream/afrostream-node-config.git#575639b5be99a9b912af5d447164642a23ed149e"
+      "version": "3.1.1",
+      "from": "git+https://afrostream-tech:39378b0626f1b2d4c733eeb5c5be73908b3c8c53@github.com/Afrostream/afrostream-node-config.git#v3.1.1",
+      "resolved": "git+https://afrostream-tech:39378b0626f1b2d4c733eeb5c5be73908b3c8c53@github.com/Afrostream/afrostream-node-config.git#3bcfea5870baba7393da2fbe0c1d0fa5b74d2651"
     },
     "afrostream-node-middleware-allowcrossdomain": {
       "version": "1.0.0",
-      "from": "git+https://afrostream-tech:d51e355769ddd0fd212084c35fb99f71ab4146b2@github.com/Afrostream/afrostream-node-middleware-allowcrossdomain.git#v1.0.0",
-      "resolved": "git+https://afrostream-tech:d51e355769ddd0fd212084c35fb99f71ab4146b2@github.com/Afrostream/afrostream-node-middleware-allowcrossdomain.git#c680397e1319f8a3e30f22e582b71f765a9b7acf"
+      "from": "git+https://afrostream-tech:39378b0626f1b2d4c733eeb5c5be73908b3c8c53@github.com/Afrostream/afrostream-node-middleware-allowcrossdomain.git#v1.0.0",
+      "resolved": "git+https://afrostream-tech:39378b0626f1b2d4c733eeb5c5be73908b3c8c53@github.com/Afrostream/afrostream-node-middleware-allowcrossdomain.git#c680397e1319f8a3e30f22e582b71f765a9b7acf"
     },
     "afrostream-node-middleware-allowpreflight": {
       "version": "1.0.0",
-      "from": "git+https://afrostream-tech:d51e355769ddd0fd212084c35fb99f71ab4146b2@github.com/Afrostream/afrostream-node-middleware-allowpreflight.git#v1.0.0",
-      "resolved": "git+https://afrostream-tech:d51e355769ddd0fd212084c35fb99f71ab4146b2@github.com/Afrostream/afrostream-node-middleware-allowpreflight.git#5691a362bfd596e1a3bae72936e873a77faa6286"
+      "from": "git+https://afrostream-tech:39378b0626f1b2d4c733eeb5c5be73908b3c8c53@github.com/Afrostream/afrostream-node-middleware-allowpreflight.git#v1.0.0",
+      "resolved": "git+https://afrostream-tech:39378b0626f1b2d4c733eeb5c5be73908b3c8c53@github.com/Afrostream/afrostream-node-middleware-allowpreflight.git#5691a362bfd596e1a3bae72936e873a77faa6286"
     },
     "afrostream-node-middleware-cachehandler": {
       "version": "1.0.1",
-      "from": "git+https://afrostream-tech:d51e355769ddd0fd212084c35fb99f71ab4146b2@github.com/Afrostream/afrostream-node-middleware-cachehandler.git#v1.0.1",
-      "resolved": "git+https://afrostream-tech:d51e355769ddd0fd212084c35fb99f71ab4146b2@github.com/Afrostream/afrostream-node-middleware-cachehandler.git#050b3355abc6853db477d328768d8e32fd912f2f"
+      "from": "git+https://afrostream-tech:39378b0626f1b2d4c733eeb5c5be73908b3c8c53@github.com/Afrostream/afrostream-node-middleware-cachehandler.git#v1.0.1",
+      "resolved": "git+https://afrostream-tech:39378b0626f1b2d4c733eeb5c5be73908b3c8c53@github.com/Afrostream/afrostream-node-middleware-cachehandler.git#050b3355abc6853db477d328768d8e32fd912f2f"
     },
     "afrostream-node-middleware-morgan": {
       "version": "1.0.0",
-      "from": "git+https://afrostream-tech:d51e355769ddd0fd212084c35fb99f71ab4146b2@github.com/Afrostream/afrostream-node-middleware-morgan.git#v1.0.0",
-      "resolved": "git+https://afrostream-tech:d51e355769ddd0fd212084c35fb99f71ab4146b2@github.com/Afrostream/afrostream-node-middleware-morgan.git#64d09a63a2f2d93a52a5a4af20078afa7ec47045"
+      "from": "git+https://afrostream-tech:39378b0626f1b2d4c733eeb5c5be73908b3c8c53@github.com/Afrostream/afrostream-node-middleware-morgan.git#v1.0.0",
+      "resolved": "git+https://afrostream-tech:39378b0626f1b2d4c733eeb5c5be73908b3c8c53@github.com/Afrostream/afrostream-node-middleware-morgan.git#64d09a63a2f2d93a52a5a4af20078afa7ec47045"
     },
     "afrostream-node-middleware-userip": {
       "version": "1.0.0",
-      "from": "git+https://afrostream-tech:d51e355769ddd0fd212084c35fb99f71ab4146b2@github.com/Afrostream/afrostream-node-middleware-userip.git#v1.0.0",
-      "resolved": "git+https://afrostream-tech:d51e355769ddd0fd212084c35fb99f71ab4146b2@github.com/Afrostream/afrostream-node-middleware-userip.git#dd685a221bc027bffb0a47d50f6795930d2e872b"
+      "from": "git+https://afrostream-tech:39378b0626f1b2d4c733eeb5c5be73908b3c8c53@github.com/Afrostream/afrostream-node-middleware-userip.git#v1.0.0",
+      "resolved": "git+https://afrostream-tech:39378b0626f1b2d4c733eeb5c5be73908b3c8c53@github.com/Afrostream/afrostream-node-middleware-userip.git#dd685a221bc027bffb0a47d50f6795930d2e872b"
     },
     "afrostream-node-request": {
-      "version": "2.4.1",
-      "from": "git+https://afrostream-tech:d51e355769ddd0fd212084c35fb99f71ab4146b2@github.com/Afrostream/afrostream-node-request.git#v2.4.1",
-      "resolved": "git+https://afrostream-tech:d51e355769ddd0fd212084c35fb99f71ab4146b2@github.com/Afrostream/afrostream-node-request.git#0bea75552b24d0541c5094b515e3c3975ffe73f0",
+      "version": "2.5.0",
+      "from": "git+https://afrostream-tech:39378b0626f1b2d4c733eeb5c5be73908b3c8c53@github.com/Afrostream/afrostream-node-request.git#v2.5.0",
+      "resolved": "git+https://afrostream-tech:39378b0626f1b2d4c733eeb5c5be73908b3c8c53@github.com/Afrostream/afrostream-node-request.git#8936fdd3cc6470bfa65bc7f950f411c90037fcc2",
       "dependencies": {
         "lodash": {
           "version": "4.15.0",
@@ -994,9 +1001,9 @@
       }
     },
     "caniuse-db": {
-      "version": "1.0.30000587",
+      "version": "1.0.30000590",
       "from": "caniuse-db@>=1.0.30000578 <2.0.0",
-      "resolved": "https://registry.npmjs.org/caniuse-db/-/caniuse-db-1.0.30000587.tgz"
+      "resolved": "https://registry.npmjs.org/caniuse-db/-/caniuse-db-1.0.30000590.tgz"
     },
     "capture-stack-trace": {
       "version": "1.0.0",
@@ -1757,9 +1764,9 @@
       "resolved": "https://registry.npmjs.org/ee-first/-/ee-first-1.1.1.tgz"
     },
     "ejs": {
-      "version": "2.5.2",
+      "version": "2.5.3",
       "from": "ejs@>=2.4.1 <3.0.0",
-      "resolved": "https://registry.npmjs.org/ejs/-/ejs-2.5.2.tgz"
+      "resolved": "https://registry.npmjs.org/ejs/-/ejs-2.5.3.tgz"
     },
     "encodeurl": {
       "version": "1.0.1",
@@ -3192,9 +3199,9 @@
           "resolved": "https://registry.npmjs.org/pretty-bytes/-/pretty-bytes-3.0.1.tgz"
         },
         "uglify-js": {
-          "version": "2.7.4",
+          "version": "2.7.5",
           "from": "uglify-js@>=2.7.0 <2.8.0",
-          "resolved": "https://registry.npmjs.org/uglify-js/-/uglify-js-2.7.4.tgz"
+          "resolved": "https://registry.npmjs.org/uglify-js/-/uglify-js-2.7.5.tgz"
         }
       }
     },
@@ -3217,7 +3224,7 @@
     },
     "grunt-contrib-jade": {
       "version": "1.0.0",
-      "from": "grunt-contrib-jade@latest",
+      "from": "grunt-contrib-jade@>=1.0.0 <2.0.0",
       "resolved": "https://registry.npmjs.org/grunt-contrib-jade/-/grunt-contrib-jade-1.0.0.tgz"
     },
     "grunt-contrib-jshint": {
@@ -3248,9 +3255,9 @@
           "resolved": "https://registry.npmjs.org/async/-/async-0.2.10.tgz"
         },
         "uglify-js": {
-          "version": "2.7.4",
+          "version": "2.7.5",
           "from": "uglify-js@>=2.7.0 <2.8.0",
-          "resolved": "https://registry.npmjs.org/uglify-js/-/uglify-js-2.7.4.tgz"
+          "resolved": "https://registry.npmjs.org/uglify-js/-/uglify-js-2.7.5.tgz"
         }
       }
     },
@@ -4147,7 +4154,7 @@
     },
     "jade": {
       "version": "1.11.0",
-      "from": "jade@latest",
+      "from": "jade@>=1.11.0 <2.0.0",
       "resolved": "https://registry.npmjs.org/jade/-/jade-1.11.0.tgz",
       "dependencies": {
         "commander": {
@@ -4299,9 +4306,9 @@
       "resolved": "https://registry.npmjs.org/json-stringify-safe/-/json-stringify-safe-5.0.1.tgz"
     },
     "json5": {
-      "version": "0.5.0",
+      "version": "0.5.1",
       "from": "json5@>=0.5.0 <0.6.0",
-      "resolved": "https://registry.npmjs.org/json5/-/json5-0.5.0.tgz"
+      "resolved": "https://registry.npmjs.org/json5/-/json5-0.5.1.tgz"
     },
     "jsonify": {
       "version": "0.0.0",
@@ -4676,9 +4683,9 @@
       "resolved": "https://registry.npmjs.org/merge-descriptors/-/merge-descriptors-1.0.1.tgz"
     },
     "merge-stream": {
-      "version": "1.0.0",
+      "version": "1.0.1",
       "from": "merge-stream@>=1.0.0 <2.0.0",
-      "resolved": "https://registry.npmjs.org/merge-stream/-/merge-stream-1.0.0.tgz",
+      "resolved": "https://registry.npmjs.org/merge-stream/-/merge-stream-1.0.1.tgz",
       "dependencies": {
         "isarray": {
           "version": "1.0.0",
@@ -5491,9 +5498,9 @@
       "resolved": "https://registry.npmjs.org/qs/-/qs-6.2.0.tgz"
     },
     "randomatic": {
-      "version": "1.1.5",
+      "version": "1.1.6",
       "from": "randomatic@>=1.1.3 <2.0.0",
-      "resolved": "https://registry.npmjs.org/randomatic/-/randomatic-1.1.5.tgz"
+      "resolved": "https://registry.npmjs.org/randomatic/-/randomatic-1.1.6.tgz"
     },
     "range-parser": {
       "version": "1.2.0",
@@ -6196,9 +6203,9 @@
       "resolved": "https://registry.npmjs.org/through/-/through-2.3.8.tgz"
     },
     "through2": {
-      "version": "2.0.1",
+      "version": "2.0.3",
       "from": "through2@>=2.0.0 <3.0.0",
-      "resolved": "https://registry.npmjs.org/through2/-/through2-2.0.1.tgz",
+      "resolved": "https://registry.npmjs.org/through2/-/through2-2.0.3.tgz",
       "dependencies": {
         "isarray": {
           "version": "1.0.0",
@@ -6206,9 +6213,9 @@
           "resolved": "https://registry.npmjs.org/isarray/-/isarray-1.0.0.tgz"
         },
         "readable-stream": {
-          "version": "2.0.6",
-          "from": "readable-stream@>=2.0.0 <2.1.0",
-          "resolved": "https://registry.npmjs.org/readable-stream/-/readable-stream-2.0.6.tgz"
+          "version": "2.2.2",
+          "from": "readable-stream@>=2.1.5 <3.0.0",
+          "resolved": "https://registry.npmjs.org/readable-stream/-/readable-stream-2.2.2.tgz"
         }
       }
     },
@@ -6809,7 +6816,7 @@
     },
     "xtend": {
       "version": "4.0.1",
-      "from": "xtend@>=4.0.0 <4.1.0",
+      "from": "xtend@>=4.0.1 <4.1.0",
       "resolved": "https://registry.npmjs.org/xtend/-/xtend-4.0.1.tgz"
     },
     "yargs": {
