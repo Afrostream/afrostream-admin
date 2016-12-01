@@ -13,6 +13,11 @@ var backendProxy = function (options) {
       forwardedHeaders: {
         Range: 'Range'
       }
+    }, {
+      hookBeforeSendSync: function (res) {
+        // enforce no cache
+        res.noCache();
+      }
     });
   };
 };
