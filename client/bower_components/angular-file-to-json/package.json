@@ -1,0 +1,35 @@
+{
+  "name": "angular-file-to-json",
+  "version": "0.0.2",
+  "description": "Upload various files to convert to JSON objects",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/aburchette/angular-file-to-json.git"
+  },
+  "keywords": [
+    "angular",
+    "csv",
+    "txt",
+    "json",
+    "file"
+  ],
+  "author": "Alan Burchette <alanburchette1@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/aburchette/angular-file-to-json/issues"
+  },
+  "homepage": "https://github.com/aburchette/angular-file-to-json",
+  "devDependencies": {
+    "grunt": "0.4.5",
+    "grunt-contrib-concat": "^0.5.0",
+    "grunt-contrib-jshint": "0.11.0",
+    "grunt-contrib-uglify": "0.7.0",
+    "grunt-contrib-watch": "0.6.1",
+    "install": "0.1.8",
+    "npm": "2.5.1"
+  }
+}

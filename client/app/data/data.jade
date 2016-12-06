@@ -11,6 +11,12 @@ div(id='page-wrapper' ng-class='{open: toggle}' ng-cloak)
               .row
                 input.form-control.input-sm(type='text' placeholder='Find a {{type}} here.' ng-model='$parent.$parent.$parent.searchField')
               .row
+              button.btn.btn-xs.btn-primary.pull-left(ng-if="type == 'life/pin'" ng-click="filterUserToggle('mine')" ng-class="{active: filterList == 'all'}")
+                  span All Pins
+                button.btn.btn-xs.btn-primary.pull-left(ng-if="type == 'life/pin'" ng-click="filterUserToggle('mine')" ng-class="{active: filterList == 'mine'}")
+                  span My Pins
+                button.btn.btn-xs.btn-primary.pull-left(ng-if="type == 'life/pin'" ng-click="filterUserToggle('others')" ng-class="{active: filterList == 'others'}")
+                  span Other Pins
                 button.btn.btn-xs.btn-primary.pull-right(ng-click='newIndex()')
                   span.glyphicon.glyphicon-plus
                   span Add new
@@ -47,7 +53,7 @@ div(id='page-wrapper' ng-class='{open: toggle}' ng-cloak)
                       th.text-center(ng-if="type == 'episode'") Episode Number In prod
                       th.text-center Actions
                   tbody(ng-model='items' directive-if="{'ui-sortable': 'sortable === true'}" ui-sortable='sortableOptions' )
-                    tr(dir-paginate='item in items | itemsPerPage : itemsPerPage | DataFormater' total-items='totalItems' current-page='pagination.current' pagination-id='itemsPagination')
+                    tr(dir-paginate='item in items | filter: filterListFunction | itemsPerPage : itemsPerPage | DataFormater' total-items='totalItems' current-page='pagination.current' pagination-id='itemsPagination')
                       td.text-center
                         span {{item._id}}
                       td(ng-if='hasThumb()' ng-class='item.genericThumb && item.genericThumb.imgix ? "thumbnail" : ""')

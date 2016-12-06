@@ -14,11 +14,12 @@ angular.module('afrostreamAdminApp')
       return items;
     };
   })
-  .controller('DataCtrl', function ($scope, $log, $http, $uibModal, ngToast, $state, Modal, genres, countries) {
+  .controller('DataCtrl', function ($scope, $log, $http, $uibModal, ngToast, $state, Modal, genres, countries, $window) {
     var defaultPerPage = 30;
 
     $scope.type = $state.current.type || 'movie';
     $scope.items = [];
+    $scope.filterList = "all";
     $scope.itemsPerPage = defaultPerPage;
     $scope.totalItems = 0;
     $scope.currentItem = {};
@@ -34,6 +35,21 @@ angular.module('afrostreamAdminApp')
 
     $scope.reload = function () {
       $scope.loadPage($scope.pagination.current);
+    };
+
+    $scope.filterUserToggle = function(filter) {
+      $scope.filterList = filter;
+    };
+
+    $scope.filterListFunction = function(element){
+      switch ($scope.filterList) {
+        case "mine":
+          return element.userId == $scope.user._id;
+        case "others":
+          return element.userId != $scope.user._id;
+        default:
+          return true;
+      }
     };
 
     $scope.loadPage = function (page) {
