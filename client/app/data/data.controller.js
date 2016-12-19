@@ -294,7 +294,7 @@ angular.module('afrostreamAdminApp')
       var importable = false;
       switch ($scope.type) {
         case'movie':
-        case'pin':
+        case'life/pin':
           importable = true;
           break;
         default:
