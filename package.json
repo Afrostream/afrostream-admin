@@ -74,7 +74,7 @@
   },
   "scripts": {
     "start": "node server/server.js",
-    "localstaging": ". ~/.nvm/nvm.sh && nvm use 6.9.1 && grunt serve:localstaging",
+    "localstaging": ". ~/.nvm/nvm.sh && nvm use 6.9.1 && export AFROSTREAM_BACK_END_BASEURL=\"http://localhost:9000\" && grunt serve:localstaging",
     "staging": ". ~/.nvm/nvm.sh && nvm use 6.9.1 && grunt serve:staging",
     "postinstall": "bower install && grunt build",
     "dev": ". ~/.nvm/nvm.sh && nvm use 6.9.1 && grunt serve",

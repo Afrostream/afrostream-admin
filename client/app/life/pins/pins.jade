@@ -61,7 +61,11 @@ script(type='text/ng-template' id='imagesTemplate.html')
 
       input.form-control(id='title' type='text' ng-model='item.title' ng-change='slugify(item.title)' placeholder='Title')
 
-      label(for='description').control-label Description
+      label(for='description' style="margin-right:5px;").control-label Description
+      span(ng-if="item.description.length>=0&&item.description.length<255")
+        | {{item.description.length}}/255
+      span(ng-if="item.description.length>=255" style="color:red")
+        | {{item.description.length}}/255
       localize-button(ng-model="item" ng-key="description" ng-tag="textarea")
 
       textarea.form-control(id='description' rows='5' ng-model='item.description' placeholder='Description')
@@ -82,7 +86,12 @@ script(type='text/ng-template' id='imagesTemplate.html')
       label(for='body').control-label Body
       localize-button( ng-model="item" ng-key="body" ng-tag="text-angular" )
 
-      text-angular( ng-model="item.body" class="markdown" ta-unsafe-sanitizer="true" taPaste="onPasteWisiwyg($html)")
+      .form-group.pull-right.action-bar
+        button.btn.btn-primary(type='submit' ng-click='scrapItem()' ng-if='!item._id') Scrapp
+        button.btn.btn-primary(type='submit' ng-click='addItem()' ng-if='!item._id') Add
+        button.btn.btn-primary(type='submit' ng-click='updateItem()' ng-if='item._id') Update
+        button.btn.btn-primary(ng-click='cancel()') Cancel
+      text-angular( ng-model="item.body" class="markdown" ta-unsafe-sanitizer="true")
 
 .modal-footer
   .form-group
@@ -90,4 +99,3 @@ script(type='text/ng-template' id='imagesTemplate.html')
     button.btn.btn-primary(type='submit' ng-click='addItem()' ng-if='!item._id') Add
     button.btn.btn-primary(type='submit' ng-click='updateItem()' ng-if='item._id') Update
     button.btn.btn-primary(ng-click='cancel()') Cancel
-
