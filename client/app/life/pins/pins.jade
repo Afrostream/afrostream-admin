@@ -82,7 +82,7 @@ script(type='text/ng-template' id='imagesTemplate.html')
       label(for='body').control-label Body
       localize-button( ng-model="item" ng-key="body" ng-tag="text-angular" )
 
-      text-angular( ng-model="item.body" class="markdown" ta-unsafe-sanitizer="true")
+      text-angular( ng-model="item.body" class="markdown" ta-unsafe-sanitizer="true" taPaste="onPasteWisiwyg($html)")
 
 .modal-footer
   .form-group

@@ -11,6 +11,10 @@ angular.module('afrostreamAdminApp')
       return item;
     }
 
+    $scope.onPasteWisiwyg = function (html) {
+      return $sanitize(html)
+    }
+
     $scope.toHumanDate = function (date) {
       var d = moment(date);
       return d.isValid() ? d.toString() : '';
