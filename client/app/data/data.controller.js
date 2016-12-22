@@ -37,11 +37,11 @@ angular.module('afrostreamAdminApp')
       $scope.loadPage($scope.pagination.current);
     };
 
-    $scope.filterUserToggle = function(filter) {
+    $scope.filterUserToggle = function (filter) {
       $scope.filterList = filter;
     };
 
-    $scope.filterListFunction = function(element){
+    $scope.filterListFunction = function (element) {
       switch ($scope.filterList) {
         case "mine":
           return element.userId == $scope.user._id;
@@ -294,6 +294,7 @@ angular.module('afrostreamAdminApp')
       var importable = false;
       switch ($scope.type) {
         case'movie':
+        case'actor':
         case'life/pin':
           importable = true;
           break;
