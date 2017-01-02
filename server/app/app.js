@@ -6,10 +6,12 @@ var favicon = require('serve-favicon');
 
 var middlewareAuth = require('./middlewares/middleware-auth.js');
 var middlewareDumpPostdata = require('./middlewares/middleware-dumppostdata.js');
+var middlewareRedirect = require('./middlewares/middleware-redirect.js');
 
 // pre-configured express app
 var AfrostreamNodeApp = require('afrostream-node-app');
 var app = AfrostreamNodeApp.create();
+app.use(middlewareRedirect.forceSSL());
 app.use(middlewareDumpPostdata());
 app.use(middlewareAuth());
 
