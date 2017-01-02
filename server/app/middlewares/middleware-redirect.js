@@ -1,9 +1,11 @@
+const config = rootRequire('config');
+
 module.exports.forceSSL = () =>  {
   return function (req, res, next) {
     if (process.env.NODE_ENV !== 'production' && process.env.NODE_ENV !== 'staging') {
       return next();
     }
-    const proto = req.get('x-forwarded-proto')
+    const proto = req.get('x-forwarded-proto');
 
     if (!proto || proto === 'https') {
       return next()
