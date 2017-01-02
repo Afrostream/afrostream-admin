@@ -1,4 +1,4 @@
-const config = rootRequire('config');
+const config = rootRequire('server/config');
 
 module.exports.forceSSL = () =>  {
   return function (req, res, next) {
