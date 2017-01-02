@@ -94,21 +94,32 @@ script(type='text/ng-template' id='imagesTemplate.html')
       .form-group
         label.control-label Dates
         .row
-          .col-md-6
-            div(uib-dropdown class="input-group")
-              a(uib-dropdown-toggle id="dateFromToggle" class="dropdown-toggle-datefrom")
-                input.form-control(type='text' value='{{toHumanDate(item.dateFrom)}}' readonly="true" style="min-width:300px;background-color:white;" placeholder="FROM")
-              ul(class="dropdown-menu" uib-dropdown-menu aria-labelledby="simple-dropdown")
-                li
-                  datetimepicker(id='dateFrom' ng-model='item.dateFrom' ng-datetimepicker-config="{ dropdownSelector: '.dropdown-toggle-datefrom' }")
-          .col-md-6
-            div(uib-dropdown class="input-group")
-              a(uib-dropdown-toggle id="dateToToggle" class="dropdown-toggle-dateto")
-                input.form-control(type='text' value='{{toHumanDate(item.dateTo)}}' readonly="true" style="min-width:300px;background-color:white;" placeholder="TO")
-              ul(class="dropdown-menu" uib-dropdown-menu aria-labelledby="simple-dropdown")
-                li
-                  datetimepicker(id='dateTo' ng-model='item.dateTo' ng-datetimepicker-config="{ dropdownSelector: '.dropdown-toggle-dateto' }")
-
+          table(style="width:100%")
+            tr
+              td
+                table
+                  tr
+                    td
+                      div(uib-dropdown class="input-group")
+                        a(uib-dropdown-toggle id="dateFromToggle" class="dropdown-toggle-datefrom")
+                          input.form-control(type='text' value='{{toHumanDate(item.dateFrom)}}' readonly="true" style="min-width:300px;background-color:white;" placeholder="FROM")
+                        ul(class="dropdown-menu" uib-dropdown-menu aria-labelledby="simple-dropdown")
+                          li
+                            datetimepicker(id='dateFrom' ng-model='item.dateFrom' ng-datetimepicker-config="{ dropdownSelector: '.dropdown-toggle-datefrom' }")
+                    td
+                      i.fa.fa-eraser(aria-hidden="true" ng-click="item.dateFrom=null")
+              td
+                table
+                  tr
+                    td
+                      div(uib-dropdown class="input-group")
+                        a(uib-dropdown-toggle id="dateToToggle" class="dropdown-toggle-dateto")
+                          input.form-control(type='text' value='{{toHumanDate(item.dateTo)}}' readonly="true" style="min-width:300px;background-color:white;" placeholder="TO")
+                        ul(class="dropdown-menu" uib-dropdown-menu aria-labelledby="simple-dropdown")
+                          li
+                            datetimepicker(id='dateTo' ng-model='item.dateTo' ng-datetimepicker-config="{ dropdownSelector: '.dropdown-toggle-dateto' }")
+                    td
+                      i.fa.fa-eraser(aria-hidden="true" ng-click="item.dateTo=null")
       .form-group
         label(for='synopsis').control-label Synopsis
         localize-button(ng-model="item" ng-key="synopsis")
