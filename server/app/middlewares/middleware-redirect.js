@@ -1,6 +1,6 @@
 module.exports.forceSSL = () =>  {
   return function (req, res, next) {
-    if (env !== 'production' && env !== 'staging') {
+    if (process.env.NODE_ENV !== 'production' && process.env.NODE_ENV !== 'staging') {
       return next();
     }
     const proto = req.get('x-forwarded-proto')
