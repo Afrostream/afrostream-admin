@@ -54,6 +54,7 @@
 
 .form-group(ng-if='isSerie()')
   label.control-label Programmation
+  localize-button(ng-model="item" ng-key="schedule")
   input.form-control(type='text' ng-model='item.schedule' placeholder='Du lundi au vendredi')
 
 .form-group
