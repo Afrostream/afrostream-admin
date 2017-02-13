@@ -12,6 +12,12 @@
 
 .form-group.form-group-heading
   .row.row-header
+    label(for='sourceMp4').control-label Source Mp4 (crypted)
+  .row
+    input.form-control(id='duration' type='text' ng-model='item.sourceMp4' placeholder='https://(...)')
+
+.form-group.form-group-heading
+  .row.row-header
     label(for='duration').control-label Duration (sec)
   .row
     input.form-control(id='duration' type='number' ng-model='item.duration' placeholder='0')
