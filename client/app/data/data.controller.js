@@ -293,6 +293,8 @@ angular.module('afrostreamAdminApp')
     $scope.isAlgoliaImportable = function () {
       var importable = false;
       switch ($scope.type) {
+        case'season':
+        case'episode':
         case'movie':
         case'actor':
         case'life/pin':
