@@ -292,17 +292,18 @@ angular.module('afrostreamAdminApp')
 
     $scope.isAlgoliaImportable = function () {
       var importable = false;
-      switch ($scope.type) {
-        case'season':
-        case'episode':
-        case'movie':
-        case'actor':
-        case'life/pin':
-          importable = true;
-          break;
-        default:
-          break;
-      }
+      //remove export to algolia (rabbitMQ does it automatically)
+      //switch ($scope.type) {
+      //case'season':
+      //case'episode':
+      //case'movie':
+      //case'actor':
+      //case'life/pin':
+      //  importable = true;
+      //  break;
+      //default:
+      //  break;
+      //}
       return importable;
     };
 
