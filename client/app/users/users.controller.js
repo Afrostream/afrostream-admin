@@ -2,6 +2,7 @@
 
 angular.module('afrostreamAdminApp')
   .controller('UsersCtrl', function ($scope, $http) {
+
     $scope.passwordEditionMode = true;
     $scope.accessTokens = [];
     $scope.modalHooks.onItemLoaded = function () {
@@ -12,6 +13,31 @@ angular.module('afrostreamAdminApp')
       // load the subscriptions of selected user, to display on the page
       $scope.loadSubscriptions();
     };
+
+    /**
+     * prepare the item for an update
+     */
+    $scope.modalHooks.beforeUpdate = function() {
+      delete $scope.item.bouyguesId;
+      delete $scope.item.ise2;
+      delete $scope.item.account_code;
+      delete $scope.item.avatarImageId;
+      delete $scope.item.billing_provider;
+      delete $scope.item.bouygues;
+      delete $scope.item.facebook;
+      delete $scope.item.followers;
+      delete $scope.item.github;
+      delete $scope.item.google;
+      delete $scope.item.languageId;
+      delete $scope.item.nationality;
+      delete $scope.item.orange;
+      delete $scope.item.picture;
+      delete $scope.item.provider;
+      delete $scope.item.splashList;
+      delete $scope.item.token;
+      delete $scope.item.updatedAt;
+    }
+
     /**
      * Return a brand new randomly generated password
      * @returns {Promise}
@@ -71,6 +97,14 @@ angular.module('afrostreamAdminApp')
       }
     };
 
+    $scope.toggleCurrentFieldset = function(event) {
+      if (event.target.parentElement.classList.contains('open')) {
+        event.target.parentElement.classList.remove('open');
+      } else {
+        event.target.parentElement.classList.add('open');
+      }
+    };
+
     /**
      * Find the subscriptions for selected user
      * @returns {*}
@@ -88,6 +122,24 @@ angular.module('afrostreamAdminApp')
         });
     };
 
+    // utilities
 
+    /**
+     * get the Video quality stringified name from the quality value
+     * @param qualityIndex : databased quality value
+     * @return String
+     */
+    $scope.getQuality = function(qualityIndex) {
+      var index = parseInt(qualityIndex, 10);
+      var qualities = [
+        'Auto',
+        'Low',
+        'Medium',
+        'Normal',
+        'HD',
+        'Full HD'
+      ]
+      return qualities[index];
+    }
 
   });
