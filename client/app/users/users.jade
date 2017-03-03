@@ -3,13 +3,13 @@
   fieldset.form-group.open
     legend(ng-click='toggleCurrentFieldset($event)') User informations
     label(for='firstname') Firstname
-    input.form-control(id='firstname' type='text' ng-model='item.first_name' readonly)
+    input.form-control(id='firstname' type='text' ng-model='item.first_name')
     label(for='lastname') Lastname
-    input.form-control(id='lastname' type='text' ng-model='item.last_name' readonly)
+    input.form-control(id='lastname' type='text' ng-model='item.last_name')
     label(for='nickname') Nickname
     input.form-control(id='nickname' type='text' ng-model='item.nickname')
     label(for='email').control-label Email
-    input.form-control(id='email' type='text' ng-model='item.email' readonly)
+    input.form-control(id='email' type='text' ng-model='item.email')
 
   fieldset
     legend(ng-click='toggleCurrentFieldset($event)') Personal informations
