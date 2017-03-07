@@ -2,6 +2,11 @@
   label(for='title').control-label Title
   input.form-control(id='title' type='text' ng-model='item.title' placeholder='Title')
 
+.form-group
+  label(for='description').control-label Body
+  textarea.form-control(id='description' rows='5' ng-model='item.body' placeholder='Body')
+
+.form-group
   label(for='to').control-label To
   input.form-control(id='to' type='text' ng-model='item.to' placeholder='Registration Token or topics')
 
