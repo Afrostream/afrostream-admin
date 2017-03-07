@@ -18,6 +18,12 @@
 
 .form-group.form-group-heading
   .row.row-header
+    label(for='storageUrl').control-label Source Url (size={{item.storageUrl||'unknown'}})
+  .row
+    input.form-control(id='storageUrl' type='text' ng-model='item.storageUrl' placeholder='https://(...)')
+
+.form-group.form-group-heading
+  .row.row-header
     label(for='sourceMp4Deciphered').control-label Source Mp4 deciphered (size={{item.sourceMp4DecipheredSize||'unknown'}})
   .row
     input.form-control(id='duration' type='text' ng-model='item.sourceMp4Deciphered' placeholder='https://(...)')
