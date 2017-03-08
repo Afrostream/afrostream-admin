@@ -25,10 +25,13 @@
   label.control-label Priority
   select.form-control(type='text' ng-model='item.priority' ng-options='option as option for option in ["normal", "high"]' style="width:auto;")
 
+  label(for='messageId').control-label MessageId Firebase
+  input.form-control(disabled id='messageId' type='text' ng-model='item.messageId' placeholder='The notifications Firebase messageId.')
+
   .form-group(ng-class='{"has-error" : !wellFormed}')
     label.control-label Data
     textarea.form-control(ng-model='jsonString' rows='10')
 
   .btn-group
-    button.btn.btn-warning(type='button' ng-click='pushNotification()' ng-disabled='!(item._id && item.title && wellFormed)' )
+    button.btn.btn-warning(type='button' ng-click='pushNotification()' ng-disabled='!(item._id && item.title && wellFormed && !item.messageId)' )
       span.glyphicon.glyphicon-upload  Send
