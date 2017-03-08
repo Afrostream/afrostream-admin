@@ -27,7 +27,7 @@ angular.module('afrostreamAdminApp')
     }, true);
 
     $scope.pushNotification = function () {
-      $http.post('/api/notifications/' + $scope.item._id + '/deploy', $scope.item).then(function () {
+      $http.put('/api/notifications/' + $scope.item._id + '/deploy', $scope.item).then(function () {
         ngToast.create({
           content: 'Notification - > ' + $scope.item._id + 'deployed'
         });
