@@ -36,6 +36,12 @@ angular.module('afrostreamAdminApp')
       delete $scope.item.splashList;
       delete $scope.item.token;
       delete $scope.item.updatedAt;
+      var params = ['name', 'first_name', 'last_name', 'email'];
+      params.forEach((function(param) {
+        if ($scope.item[param] === null) {
+          delete $scope.item[param];
+        }
+      }).bind(this));
     }
 
     /**
