@@ -111,6 +111,69 @@ angular.module('afrostreamAdminApp')
       }
     };
 
+
+    $scope.cancelSubscription = function(event) {
+      var validation = confirm("Are you sure you want to cancel the current subscription ?");
+      if (validation === true) {
+        return $http({
+          method: 'PUT',
+          url: '/api/subscriptions/cancel',
+          params: {subscriptionId: event.target.getAttribute('data-subscriptionbillinguuid')}
+        })
+          .then(function (result) {
+            if (result.status == 200) {
+              alert('done! :)');
+            } else {
+              alert('Warning: get a status '+result.status+'. Please check manually if everything is ok.');
+            }
+          })
+          .catch(function() {
+            alert('Something bad happened :(')
+          });
+      }
+    };
+    $scope.expireSubscription = function(event) {
+      var validation = confirm("Are you sure you want to expire the current subscription ?");
+      if (validation === true) {
+        return $http({
+          method: 'PUT',
+          url: '/api/subscriptions/expire',
+          params: {subscriptionId: event.target.getAttribute('data-subscriptionbillinguuid')}
+        })
+          .then(function (result) {
+            if (result.status == 200) {
+              alert('done! :)');
+            } else {
+              alert('Warning: get a status '+result.status+'. Please check manually if everything is ok.');
+            }
+          })
+          .catch(function() {
+            alert('Something bad happened :(')
+          });
+      }
+    };
+    $scope.reactiveSubscription = function(event) {
+      var validation = confirm("Are you sure you want to reactive the current subscription ?");
+      if (validation === true) {
+        return $http({
+          method: 'PUT',
+          url: '/api/subscriptions/reactive',
+          params: {subscriptionId: event.target.getAttribute('data-subscriptionbillinguuid')}
+        })
+          .then(function (result) {
+            if (result.status == 200) {
+              alert('done! :)');
+            } else {
+              alert('Warning: get a status '+result.status+'. Please check manually if everything is ok.');
+            }
+          })
+          .catch(function() {
+            alert('Something bad happened :(')
+          });
+      }
+    };
+
+
     /**
      * Find the subscriptions for selected user
      * @returns {*}

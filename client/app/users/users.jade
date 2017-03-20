@@ -167,6 +167,7 @@
           th(style="padding: 8px 5px;").text-center Coupon
           th(style="padding: 8px 5px;").text-center Statut externe
           th(style="padding: 8px 5px;").text-center Options
+          th(style="padding: 8px 5px;").text-center Actions
       tbody
         tr(ng-repeat='subscription in subscriptions')
           td(style="padding: 8px 5px;").text-center
@@ -202,4 +203,9 @@
           td(style="padding: 8px 5px;").text-center
             div {{subscription.subStatus}}
           td(style="padding: 8px 5px;").text-center
-            div Annulable: {{subscription.isCancelable}} Reactivable: {{subscription.isReactivable}}
+            div Annulable: {{subscription.isCancelable || 'no'}} Reactivable: {{subscription.isReactivable || 'no'}}
+          td(style="padding: 8px 5px;").text-center
+            div
+              button(ng-if='subscription.isCancelable' ng-click='cancelSubscription($event)', data-subscriptionBillingUuid='{{subscription.subscriptionBillingUuid}}') Annuler
+              button(ng-if='subscription.isReactivable' ng-click='expireSubscription($event)', data-subscriptionBillingUuid='{{subscription.subscriptionBillingUuid}}') Expirer
+              // button(ng-click='reactiveSubscription($event)', data-subscriptionBillingUuid='{{subscription.subscriptionBillingUuid}}') Réactiver
