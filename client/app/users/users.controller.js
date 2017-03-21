@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('afrostreamAdminApp')
-  .controller('UsersCtrl', function ($scope, $http) {
+  .controller('UsersCtrl', function ($scope, $http, ngToast) {
 
     $scope.passwordEditionMode = true;
     $scope.accessTokens = [];
@@ -120,16 +120,20 @@ angular.module('afrostreamAdminApp')
           url: '/api/subscriptions/cancel',
           params: {subscriptionId: event.target.getAttribute('data-subscriptionbillinguuid')}
         })
-          .then(function (result) {
+          .then((function (result) {
             if (result.status == 200) {
-              alert('done! :)');
+              ngToast.create({
+                content: 'Done :)'
+              });
             } else {
-              alert('Warning: get a status '+result.status+'. Please check manually if everything is ok.');
+              alert('Error: '+result.statusMessage+"\nError code: "+result.statusCode);
             }
-          })
-          .catch(function() {
-            alert('Something bad happened :(')
-          });
+            this.loadSubscriptions();
+          }).bind(this))
+          .catch((function() {
+            alert('Something bad happened :(');
+            this.loadSubscriptions();
+          }).bind(this));
       }
     };
     $scope.expireSubscription = function(event) {
@@ -142,14 +146,18 @@ angular.module('afrostreamAdminApp')
         })
           .then(function (result) {
             if (result.status == 200) {
-              alert('done! :)');
+              ngToast.create({
+                content: 'Done :)'
+              });
             } else {
-              alert('Warning: get a status '+result.status+'. Please check manually if everything is ok.');
+              alert('Error: '+result.statusMessage+"\nError code: "+result.statusCode);
             }
+            this.loadSubscriptions();
           })
-          .catch(function() {
-            alert('Something bad happened :(')
-          });
+          .catch((function() {
+            this.loadSubscriptions();
+            alert('Something bad happened :(');
+          }).bind(this));
       }
     };
     $scope.reactiveSubscription = function(event) {
@@ -160,16 +168,20 @@ angular.module('afrostreamAdminApp')
           url: '/api/subscriptions/reactive',
           params: {subscriptionId: event.target.getAttribute('data-subscriptionbillinguuid')}
         })
-          .then(function (result) {
+          .then((function (result) {
             if (result.status == 200) {
-              alert('done! :)');
+              ngToast.create({
+                content: 'Done :)'
+              });
             } else {
-              alert('Warning: get a status '+result.status+'. Please check manually if everything is ok.');
+              alert('Error: '+result.statusMessage+"\nError code: "+result.statusCode);
             }
-          })
-          .catch(function() {
-            alert('Something bad happened :(')
-          });
+            this.loadSubscriptions();
+          }).bind(this))
+          .catch((function() {
+            this.loadSubscriptions();
+            alert('Something bad happened :(');
+          }).bind(this));
       }
     };
 
