@@ -207,5 +207,5 @@
           td(style="padding: 8px 5px;").text-center
             div
               button(ng-if='subscription.isCancelable' ng-click='cancelSubscription($event)', data-subscriptionBillingUuid='{{subscription.subscriptionBillingUuid}}') Annuler
-              button(ng-if='subscription.isReactivable' ng-click='expireSubscription($event)', data-subscriptionBillingUuid='{{subscription.subscriptionBillingUuid}}') Expirer
-              // button(ng-click='reactiveSubscription($event)', data-subscriptionBillingUuid='{{subscription.subscriptionBillingUuid}}') Réactiver
+              // button(ng-click='expireSubscription($event)', data-subscriptionBillingUuid='{{subscription.subscriptionBillingUuid}}') Expirer
+              button(ng-if='subscription.isReactivable' ng-click='reactiveSubscription($event)', data-subscriptionBillingUuid='{{subscription.subscriptionBillingUuid}}') Réactiver
