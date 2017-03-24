@@ -207,5 +207,22 @@
           td(style="padding: 8px 5px;").text-center
             div
               button(ng-if='subscription.isCancelable' ng-click='cancelSubscription($event)', data-subscriptionBillingUuid='{{subscription.subscriptionBillingUuid}}') Annuler
-              // button(ng-click='expireSubscription($event)', data-subscriptionBillingUuid='{{subscription.subscriptionBillingUuid}}') Expirer
+              button(ng-click='expireSubscription($event)', data-subscriptionBillingUuid='{{subscription.subscriptionBillingUuid}}') Expirer
               button(ng-if='subscription.isReactivable' ng-click='reactiveSubscription($event)', data-subscriptionBillingUuid='{{subscription.subscriptionBillingUuid}}') Réactiver
+    div#subscription-expire-submodal
+      h3 Options
+      input(type="hidden" id="subscriptionBillingUuid")
+      input(type="checkbox" id="isRefundEnabled" name="isRefundEnabled" ng-click="toggleRefund($event)")
+      label(for="isRefundEnabled") &nbsp;Refund Enabled
+      br
+      #extra-options(ng-if='isRefundEnabled')
+        input(type="checkbox" checked="checked" id="isFullRefund" name="isFullRefund" ng-click="toggleRefundProrated($event)")
+        label(for="isFullRefund") &nbsp;Full refund
+        br
+        input(type="checkbox" id="isRefundProrated" name="isRefundProrated" ng-click="toggleRefundProrated($event)")
+        label(for="isRefundProrated") &nbsp;Prorated refund 
+      br
+      button(ng-click="processExpireSubscription($event)") Validate
+      &nbsp;
+      button(ng-click="cancelExpireSubscription($event)") Cancel
+
