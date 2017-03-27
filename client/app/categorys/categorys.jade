@@ -4,6 +4,8 @@
   input.form-control(id='label' type='text' ng-model='item.label' ng-change='slugify(item.label)' placeholder='Label')
   label(for='slug').control-label Slug
   input.form-control(id='slug' type='text' ng-model='item.slug' placeholder='Slug url')
+  label(for='slug').control-label Order
+  input.form-control(type='number' id='sort' type='text' ng-model='item.sort')
 
 .form-group
   label.control-label Associated movies
