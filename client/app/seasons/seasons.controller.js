@@ -3,10 +3,10 @@
 angular.module('afrostreamAdminApp')
   .controller('SeasonsCtrl', function ($scope, $http, Movie, Episode) {
     var addAutocompleteTitle = function (episode) {
-      episode.autocompleteTitle = 'E'+(episode.episodeNumber||'?')+' - '+episode.title;
+      episode.autocompleteTitle = 'E' + (episode.episodeNumber || '?') + ' - ' + episode.title;
     };
 
-    $scope.$watch('item.seasonNumber', function() {
+    $scope.$watch('item.seasonNumber', function () {
       if ($scope.item) {
         $scope.item.sort = $scope.item.seasonNumber;
       }
@@ -35,28 +35,4 @@ angular.module('afrostreamAdminApp')
     $scope.loadMovies = function (query) {
       return Movie.query({query: query}).$promise;
     };
-
-    //// COUNTRIES ////
-    var updateScopeCountriesProps = function () {
-      $scope.countriesProps = {
-        countries : $scope.item && $scope.item.countries || [],
-        onChange: function (countries) {
-          $scope.item.countries = countries;
-        }
-      };
-    }
-    updateScopeCountriesProps();
-    $scope.$watch('item', updateScopeCountriesProps);
-
-    //// BROADCASTERS ///
-    var updateScopeBroadcastersProps = function () {
-      $scope.broadcastersProps = {
-        broadcasters : $scope.item && $scope.item.broadcasters || [],
-        onChange: function (broadcasters) {
-          $scope.item.broadcasters = broadcasters;
-        }
-      };
-    }
-    updateScopeBroadcastersProps();
-    $scope.$watch('item', updateScopeBroadcastersProps);
   });
