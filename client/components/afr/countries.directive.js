@@ -7,6 +7,7 @@ angular.module('afrostreamAdminApp')
     // FIXME: this list should be loaded from the api.
     // main code
     scope.countries = [
+      { _id: 'GB', name: 'Angleterre' },
       // FR
       { _id: 'FR', name: 'France' },
       // outre mer
