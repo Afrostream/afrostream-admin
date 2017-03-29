@@ -192,7 +192,7 @@ angular.module('afrostreamAdminApp')
       };
 
       $scope.countriesOutProps = {
-        countriesOut: $scope.item && $scope.item.countriesOut || [],
+        countries: $scope.item && $scope.item.countriesOut || [],
         onChange: function (countriesOut) {
           $scope.item.countriesOut = countriesOut;
         }
