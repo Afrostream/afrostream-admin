@@ -4,6 +4,8 @@
   input.form-control(id='label' type='text' ng-model='item.label' ng-change='slugify(item.label)' placeholder='Label')
   label(for='slug').control-label Slug
   input.form-control(id='slug' type='text' ng-model='item.slug' placeholder='Slug url')
+  label(for='type').control-label Type
+  input.form-control(id='type' type='text' ng-model='item.type')
   label(for='sort').control-label Order
   input.form-control(type='number' ng-model='item.sort')
   slider(min='0' step='1' max='100' ng-model="item.sort")
