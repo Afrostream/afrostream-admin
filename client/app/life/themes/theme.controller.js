@@ -2,10 +2,10 @@
 
 angular.module('afrostreamAdminApp')
   .controller('LifeThemeCtrl', function ($scope, LifePin) {
-
+    $scope.tags = [];
     $scope.$watch('item.keywords', function (keywords) {
       $scope.tags = [];
-      angular.forEach(keywords, function (key, value) {
+      angular.forEach(keywords, function (value, key) {
         $scope.tags.push({
           text: value
         })
@@ -14,9 +14,9 @@ angular.module('afrostreamAdminApp')
 
     $scope.$watch('tags', function (tags) {
       $scope.item.keywords = [];
-      for (var key in tags) {
-        $scope.item.keywords.push(tags[key].text);
-      }
+      angular.forEach(tags, function (value, key) {
+        $scope.item.keywords.push(value.text);
+      })
     }, true);
 
     $scope.loadLifePin = function (query) {
