@@ -4,7 +4,7 @@ angular.module('afrostreamAdminApp')
   .controller('ModalDialogCtrl', function ($scope, $sce, $log, $http, $uibModalInstance, item, type, Slug, ngToast, Image, $timeout, $uibModal) {
     // BEGIN temporary fix on dates...
     // should be generic & added to $httpProvider
-    function parseItemDates (item) {
+    function parseItemDates(item) {
       if (item.dateReleased) {
         item.dateReleased = new Date(item.dateReleased);
       }
@@ -205,7 +205,7 @@ angular.module('afrostreamAdminApp')
     //// BROADCASTERS ///
     var updateScopeBroadcastersProps = function () {
       $scope.broadcastersProps = {
-        broadcasters : $scope.item && $scope.item.broadcasters || [],
+        broadcasters: $scope.item && $scope.item.broadcasters || [],
         onChange: function (broadcasters) {
           $scope.item.broadcasters = broadcasters;
         }
@@ -284,4 +284,21 @@ angular.module('afrostreamAdminApp')
     $timeout(function () {
       $scope.getItem();
     }, 100);
+
+    $scope.tags = [];
+    $scope.$watch('item.keywords', function (keywords) {
+      $scope.tags = [];
+      angular.forEach(keywords, function (value, key) {
+        $scope.tags.push({
+          text: value
+        })
+      });
+    }, true);
+
+    $scope.$watch('tags', function (tags) {
+      $scope.item.keywords = [];
+      angular.forEach(tags, function (value, key) {
+        $scope.item.keywords.push(value.text);
+      })
+    }, true);
   });
