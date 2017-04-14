@@ -14,7 +14,6 @@
 
 
   .form-group Metas
-
     label(for='description').control-label Description
     span(ng-if="item.description.length>=0&&item.description.length<255")
       | {{item.description.length}}/255
@@ -24,8 +23,9 @@
 
     textarea.form-control(id='description' rows='5' ng-model='item.description' placeholder='Description')
 
+  .form-group
     label.control-label Keywords
-    tags-input.form-control(ng-model='tags' placeholder='Keywords')
+    tags-input(ng-model='tags' placeholder='Keywords')
 
   .form-group
     label.control-label Associated pins
