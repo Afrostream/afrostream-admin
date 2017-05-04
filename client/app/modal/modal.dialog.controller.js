@@ -286,18 +286,20 @@ angular.module('afrostreamAdminApp')
     }, 100);
 
     $scope.tags = [];
-    $scope.$watch('item.keywords', function (keywords) {
+    $scope.$watch('item', function (item) {
       $scope.tags = [];
-      angular.forEach(keywords, function (value, key) {
-        $scope.tags.push({
-          text: value
-        })
-      });
+      if (item.keywords) {
+        angular.forEach(item.keywords, function (value) {
+          $scope.tags.push({
+            text: value
+          })
+        });
+      }
     }, true);
 
     $scope.$watch('tags', function (tags) {
       $scope.item.keywords = [];
-      angular.forEach(tags, function (value, key) {
+      angular.forEach(tags, function (value) {
         $scope.item.keywords.push(value.text);
       })
     }, true);
