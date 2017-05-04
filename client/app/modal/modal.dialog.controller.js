@@ -287,8 +287,8 @@ angular.module('afrostreamAdminApp')
 
     $scope.tags = [];
     $scope.$watch('item', function (item) {
-      $scope.tags = [];
-      if (item.keywords) {
+      if (item && item.keywords) {
+        $scope.tags = [];
         angular.forEach(item.keywords, function (value) {
           $scope.tags.push({
             text: value
@@ -298,9 +298,11 @@ angular.module('afrostreamAdminApp')
     }, true);
 
     $scope.$watch('tags', function (tags) {
-      $scope.item.keywords = [];
-      angular.forEach(tags, function (value) {
-        $scope.item.keywords.push(value.text);
-      })
+      if ($scope.item && $scope.item.keywords) {
+        $scope.item.keywords = [];
+        angular.forEach(tags, function (value) {
+          $scope.item.keywords.push(value.text);
+        })
+      }
     }, true);
   });
