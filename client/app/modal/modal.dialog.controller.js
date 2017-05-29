@@ -1,16 +1,7 @@
 'use strict';
 
 angular.module('afrostreamAdminApp')
-  .controller('ModalDialogCtrl', function ($scope, $sce, $log, $http, $uibModalInstance, item, type, Slug, ngToast, Image, $timeout, $uibModal) {
-    // BEGIN temporary fix on dates...
-    // should be generic & added to $httpProvider
-    function parseItemDates(item) {
-      if (item.dateReleased) {
-        item.dateReleased = new Date(item.dateReleased);
-      }
-      return item;
-    }
-
+  .controller('ModalDialogCtrl', function ($scope, $sce, $log, $http, $uibModalInstance, item, type, Slug, ngToast, Image, $timeout, $uibModal, ModalUtils) {
     $scope.onPasteWisiwyg = function (html) {
       return $sanitize(html)
     }
@@ -23,6 +14,13 @@ angular.module('afrostreamAdminApp')
     $scope.modalType = type;
 
     $scope.modalHooks = {};
+
+    var close = function (cancel) {
+      $uibModalInstance.close();
+      if (typeof $uibModalInstance.onClose === 'function') {
+        $uibModalInstance.onClose(cancel);
+      }
+    };
 
     var getTitle = function (item) {
       return item.title || item.label || item.name || item.target || ((item.firstName || item.lastName) ? item.firstName + ' ' + item.lastName : '' );
@@ -83,23 +81,10 @@ angular.module('afrostreamAdminApp')
       close(true);
     };
 
-    $scope.addItem = function () {
-      if (typeof $scope.modalHooks.beforeAdd === 'function') {
-        $scope.modalHooks.beforeAdd();
-      }
-      $http.post('/api/' + $scope.directiveType, $scope.item).then(function (result) {
-        ngToast.create({
-          content: 'L\'objet ' + type + ' ' + getTitle(result.data) + ' à été ajoutée au catalogue'
-        });
-        if (typeof $scope.modalHooks.afterAdd === 'function') {
-          $scope.modalHooks.afterAdd(result.data);
-        }
-        close();
-      }, function (err) {
-        showError();
-        $log.debug(err);
-      });
-    };
+    $scope.addItem = ModalUtils.createHandlerAddItem({
+      $scope: $scope,
+      close: close
+    });
 
     $scope.scrapItem = function () {
       $http.post('/api/' + $scope.directiveType + '/scrap', $scope.item).then(function (result) {
@@ -113,35 +98,15 @@ angular.module('afrostreamAdminApp')
       });
     };
 
-    $scope.updateItem = function () {
-      if (typeof $scope.modalHooks.beforeUpdate === 'function') {
-        $scope.modalHooks.beforeUpdate();
-      }
-      $http.put('/api/' + $scope.directiveType + '/' + $scope.item._id, $scope.item).then(function (result) {
-        ngToast.create({
-          content: 'L\'objet  ' + type + ' ' + getTitle(result.data) + ' à été mise a jour'
-        });
-        if (typeof $scope.modalHooks.afterUpdate === 'function') {
-          $scope.modalHooks.afterUpdate(result.data);
-        }
-        close();
-      }, function (err) {
-        showError();
-        $log.debug(err);
-      });
-    };
+    $scope.updateItem = ModalUtils.createHandlerUpdateItem({
+      $scope: $scope,
+      close: close
+    });
 
-    $scope.deleteItem = function () {
-      $http.delete('/api/' + $scope.directiveType + '/' + $scope.item._id).then(function (result) {
-        ngToast.create({
-          content: 'L\'objet  ' + type + ' ' + getTitle(result.data) + ' à été supprimée du catalogue'
-        });
-        close();
-      }, function (err) {
-        showError();
-        $log.debug(err);
-      });
-    };
+    $scope.deleteItem = ModalUtils.createHandlerDeleteItem({
+      $scope: $scope,
+      close: close
+    });
 
     $scope.uploadImage = function (type, key) {
       var imgType = type || 'poster';
@@ -216,32 +181,7 @@ angular.module('afrostreamAdminApp')
 
     //// UpdateScope ////
 
-    $scope.getItem = function () {
-      $scope.directiveType = type + 's';
-
-      if (!item || !item._id) {
-        // FIXME: ... est-ce le cas ou l'on est en création ???
-        $scope.item = item; // on tente un hotfix..
-        return;
-      }
-      $http.get('/api/' + $scope.directiveType + '/' + item._id, {params: {backo: 1}}).then(function (result) {
-        // FIXME: network code inside modal/* data/* should be in a single place
-        //  & user $httpProvider to filter dates..
-        var item = result.data;
-        if (typeof $scope.modalHooks.hydrateItem === 'function') {
-          item = $scope.modalHooks.hydrateItem(item);
-        }
-        $scope.item = parseItemDates(item);
-
-        // fixme: horrible...
-        if (typeof $scope.modalHooks.onItemLoaded === 'function') {
-          $scope.modalHooks.onItemLoaded();
-        }
-      }, function (err) {
-        showError();
-        $log.debug(err);
-      });
-    };
+    $scope.getItem = ModalUtils.createHandlerGetItem($scope, item);
 
     var showError = function () {
       ngToast.create({
@@ -272,12 +212,7 @@ angular.module('afrostreamAdminApp')
       return p;
     };
 
-    var close = function (cancel) {
-      $uibModalInstance.close();
-      if (typeof $uibModalInstance.onClose === 'function') {
-        $uibModalInstance.onClose(cancel);
-      }
-    };
+
 
     // getItem is often triggered before modal hooks are binded (directives aren't yet loaded)
     //  so this timeout is a quick fix & not the proper way of mitigating the pb
