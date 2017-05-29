@@ -4,8 +4,8 @@
   "scripts": {},
   "env": {
     "NODE_ENV": "staging",
-    "AFROSTREAM_API_KEY": "488d2f13-6c01-464f-bfa4-bf8c641d7063",
-    "AFROSTREAM_API_SECRET": "17abaee4-032d-4703-be86-0af3523dcedd"
+    "AFROSTREAM_API_KEY": "fe4be408-c93a-43dc-8f57-5dbd9060cac8",
+    "AFROSTREAM_API_SECRET": "50cc564f-4803-4221-894b-714c4b272d57"
   },
   "addons": []
 }
