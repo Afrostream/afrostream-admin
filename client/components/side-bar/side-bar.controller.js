@@ -87,6 +87,10 @@ angular.module('afrostreamAdminApp')
       'state': 'life',
       'icon': 'fa-user'
     }, {
+      'title': 'Mailer',
+      'state': 'mailer',
+      'icon': 'fa-envelope'
+    }, {
       'title': 'Widgets',
       'state': 'widgets',
       'icon': 'fa-code'

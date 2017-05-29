@@ -1,0 +1,24 @@
+div(id='page-wrapper' ng-class='{open: toggle}' ng-cloak)
+  side-bar
+
+  div(id='content-wrapper')
+    navbar
+    .page-content
+      .row
+        .col-lg-3.col-md-6.col-xs-12
+          rd-widget
+            rd-widget-body
+              .widget-icon.green.pull-left
+                i.fa.fa-list
+              a(href='/mailer/lists')
+                .title Lists
+                .comment Mailer Lists
+
+        .col-lg-3.col-md-6.col-xs-12
+          rd-widget
+            rd-widget-body
+              .widget-icon.blue.pull-left
+                i.fa.fa-history
+              a(href='/mailer/transactions')
+                .title Transactions history
+                .comment Mailer Transactions logs
