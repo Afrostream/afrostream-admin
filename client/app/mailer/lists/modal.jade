@@ -2,27 +2,30 @@
   button.close(data-dismiss='modal' aria-hidden='true')
   h4.modal-title(style='color:#000;') {{item.name | limitTo:50}}
 
-.modal-body
-  form(role='form')
+.modal-body(mailer-list-form)
+  div(ng-if="loading")
+    | Please wait, loading ... :)
+  div(ng-if="!loading")
+    form(role='form')
 
-  .form-group
-    label.control-label Name
-    input.form-control(type='text' ng-model='item.name')
+    .form-group
+      label.control-label Name
+      input.form-control(type='text' ng-model='item.name')
 
-  .form-group
-    label.control-label Sync list with provider
-    div(ng-repeat="provider in providers")
+    .form-group
+      label.control-label Sync list with provider
+      div(ng-repeat="provider in providers")
+        div
+          | provider {{provider.name}}
+
+    .form-group
+      label.control-label Sync list with provider
       div
-        | provider {{provider.name}}
-
-  .form-group
-    label.control-label Sync list with provider
-    div
-      |fixme: liste des mails
-      | import
+        |fixme: liste des mails
+        | import
 
 .modal-footer
   .form-group
-    button.btn.btn-primary(ty1pe='submit' ng-click='addItem()' ng-if='!item._id') Create
-    button.btn.btn-primary(type='submit' ng-click='updateItem()' ng-if='item._id') Update
+    button.btn.btn-primary(ty1pe='submit' ng-click='addItem()' ng-if='!item._id && !loading') Create
+    button.btn.btn-primary(type='submit' ng-click='updateItem()' ng-if='item._id && !loading') Update
     button.btn.btn-primary(ng-click='cancel()') Cancel
