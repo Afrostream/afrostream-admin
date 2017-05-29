@@ -2,7 +2,6 @@
 var express = require('express');
 var path = require('path');
 var config = require('../config');
-var favicon = require('serve-favicon');
 
 var middlewareAuth = require('./middlewares/middleware-auth.js');
 var middlewareDumpPostdata = require('./middlewares/middleware-dumppostdata.js');
@@ -18,9 +17,7 @@ app.use(middlewareAuth());
 switch (process.env.NODE_ENV) {
   case 'production':
   case 'staging':
-    app.set('appPath', path.join(global.__basedir, 'dist', 'client'));
-    app.set('docPath', path.join(global.__basedir, 'dist', 'apidoc'));
-    app.use(favicon(path.join(global.__basedir, 'dist', 'client', 'favicon.ico')));
+    app.set('appPath', path.join(global.__basedir, 'client'));
     app.use(express.static(app.get('appPath')));
     break;
   default:
