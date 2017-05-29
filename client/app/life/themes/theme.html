@@ -1,0 +1,40 @@
+
+<div class="modal-header" style="background-image:url({{item.image.imgix}}?fit=crop&amp;w=1000&amp;h=200);">
+  <button class="close" data-dismiss="modal" aria-hidden="true"></button>
+  <h4 class="modal-title" style="color:#000;">{{item.title | limitTo:50}}</h4>
+</div>
+<div class="modal-body">
+  <form role="form"></form>
+  <div class="form-group">
+    <label class="control-label" for="label">Label</label>
+    <localize-button ng-model="item" ng-key="label"></localize-button>
+    <input class="form-control" id="label" type="text" ng-model="item.label" ng-change="slugify(item.label)" placeholder="Label"/>
+    <label class="control-label" for="slug">Slug</label>
+    <input class="form-control" id="slug" type="text" ng-model="item.slug" placeholder="Slug url"/>
+  </div>
+  <div class="form-group">Metas
+    <label class="control-label" for="description">Description</label><span ng-if="item.description.length&gt;=0&amp;&amp;item.description.length&lt;255">{{item.description.length}}/255</span><span ng-if="item.description.length&gt;=255" style="color:red;">{{item.description.length}}/255</span>
+    <localize-button ng-model="item" ng-key="description" ng-tag="textarea"></localize-button>
+    <textarea class="form-control" id="description" rows="5" ng-model="item.description" placeholder="Description"></textarea>
+  </div>
+  <div class="form-group">
+    <label class="control-label">Keywords</label>
+    <tags-input ng-model="tags" placeholder="Keywords"></tags-input>
+  </div>
+  <div class="form-group">
+    <label class="control-label">Associated pins</label>
+    <tags-input ng-model="item.pins" placeholder="Search pin" add-from-autocomplete-only="true" display-property="title" key-property="_id">
+      <auto-complete source="searchFields(&quot;life/pins&quot;,$query)" template="life-pins-template" min-length="0" load-on-focus="true" load-on-empty="true" max-results-to-show="32"></auto-complete>
+    </tags-input>
+    <script type="text/ng-template" id="life-pins-template">
+      <div class="tag-template"><span>{{data.title}}</span></div>
+    </script>
+  </div>
+</div>
+<div class="modal-footer">
+  <div class="form-group">
+    <button class="btn btn-primary" type="submit" ng-click="addItem()" ng-if="!item._id">Add</button>
+    <button class="btn btn-primary" type="submit" ng-click="updateItem()" ng-if="item._id">Update</button>
+    <button class="btn btn-primary" ng-click="cancel()">Cancel</button>
+  </div>
+</div>

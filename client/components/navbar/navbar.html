@@ -1,0 +1,64 @@
+
+<div class="row header">
+  <div class="col-xs-12">
+    <div class="user pull-right">
+      <div class="item uib-dropdown" ng-show="isLoggedIn()" uib-dropdown="uib-dropdown"><a class="uib-dropdown-toggle" href="#" uib-dropdown-toggle="uib-dropdown-toggle"><img src="../assets/images/avatar.jpg"/></a>
+        <ul class="uib-dropdown-menu uib-dropdown-menu-right">
+          <li class="uib-dropdown-header">{{ getCurrentUser().name }}</li>
+          <li class="divider"></li>
+          <li class="link" ng-hide="isLoggedIn()" ui-sref-active="active"><a ui-sref="signup">Sign up</a></li>
+          <li class="link" ng-hide="isLoggedIn()" ui-sref-active="active"><a ui-sref="login">Login</a></li>
+          <li class="link" ng-show="isLoggedIn()" ui-sref-active="active"><a ui-sref="settings">Parametres</a></li>
+          <li class="divider"></li>
+          <li class="link" ng-show="isLoggedIn()"><a ui-sref="logout">Logout</a></li>
+        </ul>
+      </div>
+      <div class="item uib-dropdown" ng-show="isLoggedIn()" uib-dropdown="uib-dropdown"><a class="uib-dropdown-toggle" href="#" uib-dropdown-toggle="uib-dropdown-toggle"><i class="fa fa-bell-o"></i></a>
+        <ul class="uib-dropdown-menu uib-dropdown-menu-right">
+          <li class="uib-dropdown-header">Notifications</li>
+          <li class="divider"></li>
+          <li><a ui-sref="#">Server Down!</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="meta">
+      <div class="page">Dashboard</div>
+      <div class="breadcrumb-links">Home / Dashboard</div>
+    </div>
+  </div>
+</div>
+<!--div.navbar.navbar-default.navbar-static-top(ng-controller='NavbarCtrl')-->
+<!--  div.container-->
+<!--    div.navbar-header-->
+<!--      button.navbar-toggle(type='button', ng-click='isCollapsed = !isCollapsed')-->
+<!--        span.sr-only Toggle navigation-->
+<!--        span.icon-bar-->
+<!--        span.icon-bar-->
+<!--        span.icon-bar-->
+<!--      a.navbar-brand(href='/')-->
+<!--        img(src='assets/images/logo.png', alt='Afrostream admin')-->
+<!---->
+<!--    div#navbar-main.navbar-collapse.collapse(collapse='isCollapsed')-->
+<!--      ul.nav.navbar-nav-->
+<!--        li(ng-repeat='item in menu', ui-sref-active='active')-->
+<!--          a(ui-sref='{{item.state}}') {{item.title}}-->
+<!---->
+<!--        li(ng-show='isAdmin()', ui-sref-active='active')-->
+<!--          a(ui-sref='admin') Admin-->
+<!---->
+<!--      ul.nav.navbar-nav.navbar-right-->
+<!--        li(ng-hide='isLoggedIn()', ui-sref-active='active')-->
+<!--          a(ui-sref='signup') Sign up-->
+<!---->
+<!--        li(ng-hide='isLoggedIn()', ui-sref-active='active')-->
+<!--          a(ui-sref='login') Login-->
+<!---->
+<!--        li(ng-show='isLoggedIn()')-->
+<!--          p.navbar-text Hello {{ getCurrentUser().name }}-->
+<!---->
+<!--        li(ng-show='isLoggedIn()', ui-sref-active='active')-->
+<!--          a(ui-sref='settings')-->
+<!--            span.glyphicon.glyphicon-cog-->
+<!---->
+<!--        li(ng-show='isLoggedIn()')-->
+<!--          a(ui-sref='logout') Logout-->

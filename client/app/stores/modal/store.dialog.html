@@ -1,0 +1,22 @@
+
+<div class="modal-header">
+  <button class="close" data-dismiss="modal" aria-hidden="true"></button>
+  <h4 class="modal-title">Import stores</h4>
+</div>
+<div class="modal-body">
+  <form class="form-horizontal" role="form">
+    <div class="form-group"></div>
+  </form>
+  <div class="row">
+    <ng-file-to-json result="storeList"></ng-file-to-json>
+    <div class="myGrid" ng-if="storeList" ui-grid="{ data: storeList }"></div>
+    <div class="myGrid" ng-if="importedError" ui-grid="{ data: importedError }"></div>
+  </div>
+  <div>
+    <uib-progressbar value="importProgress" type="{{importStatus}}"></uib-progressbar>
+  </div>
+</div>
+<div class="modal-footer">
+  <button class="btn btn-primary" type="submit" ng-click="importAll()" ng-disabled="!storeList">Import</button>
+  <button class="btn btn-primary" ng-click="cancel()">Cancel</button>
+</div>

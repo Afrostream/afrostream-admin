@@ -1,0 +1,20 @@
+
+<div class="modal-header">
+  <button class="close" data-dismiss="modal" aria-hidden="true"></button>
+  <h4 class="modal-title">Translate</h4>
+</div>
+<div class="modal-body">
+  <form class="form-horizontal" role="form">
+    <div class="form-group"><!-- editor -->
+      <uib-tabset>
+        <uib-tab ng-repeat="lang in langList  | filter: removeDefaultLocale" index="{{$index}}" heading="{{lang.label}}">
+          <localize-input ng-tag="{{tag}}" ng-key="{{key}}" ng-lang="{{lang.lang.toUpperCase()}}" ng-model="item.translations"></localize-input>
+        </uib-tab>
+      </uib-tabset>
+    </div><!-- div {{item | json}} -->
+  </form>
+  <div>
+    <button class="btn btn-s" type="button" ng-click="close()">Close</button>
+  </div>
+</div>
+<div class="modal-footer"></div>

@@ -1,0 +1,20 @@
+
+<div class="form-group">
+  <label class="control-label" for="firstName">First Name</label>
+  <input class="form-control" id="name" type="text" ng-model="item.firstName" placeholder="First Name"/>
+</div>
+<div class="form-group">
+  <label class="control-label" for="lastName">Last Name</label>
+  <input class="form-control" id="name" type="text" ng-model="item.lastName" placeholder="Last Name"/>
+</div>
+<div class="form-group">
+  <label class="control-label" for="imdbId">Imdb Id</label>
+  <input class="form-control" id="name" type="text" ng-model="item.imdbId" placeholder="Imdb Id"/>
+</div>
+<div class="form-group">
+  <label class="control-label" for="picture">Picture</label>
+  <div>
+    <input class="form-control" type="text" ng-model="item.picture" placeholder="Search poster" uib-typeahead="image as image.name for image in loadImages($viewValue,&quot;actor&quot;) | limitTo: 5" uib-typeahead-template-url="imagesTemplate.html" style="display:inline;width:80%;"/>
+    <button class="btn btn-s btn-primary" ng-click="uploadPicture()" style="display:inline;">Upload</button>
+  </div>
+</div>

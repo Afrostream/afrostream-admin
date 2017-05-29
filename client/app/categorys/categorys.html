@@ -1,0 +1,43 @@
+
+<div class="form-group">
+  <label class="control-label" for="label">Label</label>
+  <localize-button ng-model="item" ng-key="label"></localize-button>
+  <input class="form-control" id="label" type="text" ng-model="item.label" ng-change="slugify(item.label)" placeholder="Label"/>
+  <label class="control-label" for="slug">Slug</label>
+  <input class="form-control" id="slug" type="text" ng-model="item.slug" placeholder="Slug url"/>
+  <label class="control-label" for="type">Type</label>
+  <input class="form-control" id="type" type="text" ng-model="item.type"/>
+  <label class="control-label" for="sort">Order</label>
+  <input class="form-control" type="number" ng-model="item.sort"/>
+  <slider min="0" step="1" max="100" ng-model="item.sort"></slider>
+</div>
+<div class="form-group">
+  <label class="control-label">Associated movies</label>
+  <tags-input ng-model="item.movies" placeholder="Search movie" add-from-autocomplete-only="true" display-property="title" key-property="_id">
+    <auto-complete source="loadMovies($query)" template="movie-template" min-length="0" load-on-focus="true" load-on-empty="true" max-results-to-show="32"></auto-complete>
+  </tags-input>
+  <script type="text/ng-template" id="movie-template">
+    <div class="tag-template"><span>{{data.title}}</span></div>
+  </script>
+</div>
+<div class="form-group">
+  <label class="control-label">AdSpot (top associated movie/series/mea,ad)</label>
+  <tags-input ng-model="item.adSpots" placeholder="Search movie/season/spot" add-from-autocomplete-only="true" display-property="title" key-property="_id" max-tags="{{maxAdSpots}}" enable-editing-last-tag="false">
+    <auto-complete source="loadMovies($query)" template="movie-template" min-length="0" load-on-focus="true" load-on-empty="true" max-results-to-show="32"></auto-complete>
+  </tags-input>
+  <script type="text/ng-template" id="movie-template">
+    <div class="tag-template"><span>{{data.title}}</span></div>
+  </script>
+</div>
+<div class="form-group">
+  <label class="control-label">Countries</label>
+  <countries props="countriesProps"></countries>
+</div>
+<div class="form-group">
+  <label class="control-label">Countries Out</label>
+  <countries props="countriesOutProps"></countries>
+</div>
+<div class="form-group">
+  <label class="control-label">Broadcasters</label>
+  <broadcasters props="broadcastersProps"></broadcasters>
+</div>

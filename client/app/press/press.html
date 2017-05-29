@@ -1,0 +1,33 @@
+
+<script type="text/ng-template" id="imagesTemplate.html"><a><img ng-src="{{match.model.imgix}}?fit=crop&amp;w=100&amp;h=30"/><span ng-bind-html="match.label | typeaheadHighlight:query"></span></a></script>
+<div class="form-group">
+  <label class="control-label" for="title">Title</label>
+  <input class="form-control" id="title" type="text" ng-model="item.title" placeholder="Title"/>
+  <label class="control-label" for="partner">Partner</label>
+  <input class="form-control" id="partner" type="text" ng-model="item.partner" placeholder="Partner"/>
+  <label class="control-label" for="description">Description</label>
+  <textarea class="form-control" id="description" rows="5" ng-model="item.description" placeholder="Description"></textarea>
+  <div class="form-group">
+    <label class="control-label" for="image">Image</label>
+    <div>
+      <input class="form-control" id="image" type="text" ng-model="item.image" placeholder="Search image" uib-typeahead="image as image.name for image in loadImages($viewValue,&quot;press&quot;) | limitTo: 5" uib-typeahead-template-url="imagesTemplate.html" style="display:inline;width:80%;"/>
+      <button class="btn btn-s btn-primary" ng-click="uploadImage(&quot;press&quot;,&quot;image&quot;)" style="display:inline;">Upload</button>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="control-label" for="pdf">Pdf</label>
+    <div>
+      <input class="form-control" id="pdf" type="text" ng-model="item.pdf" placeholder="Search image" uib-typeahead="image as image.name for image in loadImages($viewValue,&quot;press&quot;) | limitTo: 5" uib-typeahead-template-url="imagesTemplate.html" style="display:inline;width:80%;"/>
+      <button class="btn btn-s btn-primary" ng-click="uploadImage(&quot;press&quot;,&quot;pdf&quot;)" style="display:inline;">Upload</button>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="control-label">Date</label>
+    <p class="input-group">
+      <input class="form-control" id="date" type="text" ng-model="item.date" is-open="opened" placeholder="DATE" uib-datepicker-popup="{{format}}" uib-datepicker-options="dateOptions" date-disabled="disabled(date, mode)" close-text="Close"/><span class="input-group-btn">
+        <button class="btn btn-default" ng-click="opened=!opened"><i class="glyphicon glyphicon-calendar"></i></button></span>
+    </p>
+  </div>
+  <label class="control-label" for="url">Url</label>
+  <input class="form-control" id="url" type="text" ng-model="item.url" placeholder="Url"/>
+</div>

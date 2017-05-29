@@ -1,0 +1,14 @@
+
+<div class="form-group">
+  <label class="control-label" for="name">Name</label>
+  <input class="form-control" id="name" type="text" ng-model="item.name" placeholder="Name"/>
+</div>
+<div class="form-group">
+  <label class="control-label" for="title">Associated Movies</label>
+  <tags-input ng-model="item.movies" placeholder="Search movie" add-from-autocomplete-only="true" display-property="title" key-property="_id">
+    <auto-complete source="loadMovies($query)" template="movie-template" min-length="0" load-on-focus="true" load-on-empty="true" max-results-to-show="32"></auto-complete>
+  </tags-input>
+  <script type="text/ng-template" id="movie-template">
+    <div class="tag-template"><span>{{data.title}}</span></div>
+  </script>
+</div>

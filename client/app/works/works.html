@@ -1,0 +1,15 @@
+
+<div class="form-group">
+  <label class="control-label" for="title">Title</label>
+  <localize-button ng-model="item" ng-key="title"></localize-button>
+  <input class="form-control" id="title" type="text" ng-model="item.title" ng-change="slugify(item.title)" placeholder="Title"/>
+  <label class="control-label" for="slug">Slug</label>
+  <input class="form-control" id="slug" type="text" ng-model="item.slug" placeholder="Slug url"/>
+  <label class="control-label" for="synopsis">Description</label>
+  <localize-button ng-model="item" ng-key="synopsis"></localize-button>
+  <textarea class="form-control" id="synopsis" rows="5" ng-model="item.description" placeholder="Description"></textarea>
+</div>
+<div class="form-group"><!-- editor -->
+  <localize-button ng-model="item" ng-key="body" ng-tag="text-angular"></localize-button>
+  <text-angular class="markdown" ng-model="item.body"></text-angular>
+</div>

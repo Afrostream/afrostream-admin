@@ -1,0 +1,8 @@
+
+<p> hi </p>
+<p>Do you approve?</p>
+<form action="/auth/oauth2/decision" method="post">
+  <input name="transaction_id" type="hidden" value="#{locals.transactionID}"/>
+  <button class="btn btn-primary" type="submit" value="Allow" id="allow">Allow</button>
+  <button class="btn btn-primary" type="submit" value="Deny" name="cancel" id="deny">Cancel</button>
+</form>

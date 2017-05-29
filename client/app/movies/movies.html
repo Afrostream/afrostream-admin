@@ -1,0 +1,113 @@
+
+<div class="form-group">
+  <label class="control-label">Licensor</label>
+  <input class="form-control" type="text" ng-model="item.licensor" placeholder="Search licensor" uib-typeahead="licensor as licensor.name for licensor in loadLicensors($viewValue) | limitTo: 5"/>
+</div>
+<div class="form-group">
+  <label class="control-label">ImdbId</label>
+  <input class="form-control" type="text" ng-model="item.imdbId"/>
+</div>
+<div class="form-group">
+  <label class="control-label">Production country</label>
+  <select class="form-control" type="text" ng-model="item.productionCountry" ng-options="o as o for o in countries" style="width:auto;"></select>
+</div>
+<div class="form-group">
+  <label class="control-label">VO/VOST/...</label>
+  <select class="form-control" type="text" ng-model="item.vXstY" ng-options="o as o for o in vXstYList" style="width:auto;"></select>
+</div>
+<div class="form-group">
+  <label class="control-label">Nouveauté</label>
+  <input class="form-control" type="checkbox" ng-model="item.bannerNew" style="width:20px;"/>
+</div>
+<div class="form-group">
+  <div>
+    <label class="control-label">CSA</label>
+  </div>
+  <div class="btn-group">
+    <div class="btn csa" ng-model="item.CSA" uib-btn-radio="1"><img src="/assets/images/CSA_1.gif"/></div>
+    <div class="btn csa" ng-model="item.CSA" uib-btn-radio="2"><img src="/assets/images/CSA_2.gif"/></div>
+    <div class="btn csa" ng-model="item.CSA" uib-btn-radio="3"><img src="/assets/images/CSA_3.gif"/></div>
+    <div class="btn csa" ng-model="item.CSA" uib-btn-radio="4"><img src="/assets/images/CSA_4.gif"/></div>
+    <div class="btn csa" ng-model="item.CSA" uib-btn-radio="5"><img src="/assets/images/CSA_5.gif"/></div>
+  </div>
+</div>
+<div class="form-group">
+  <div>
+    <label class="control-label">rating</label>
+  </div>
+  <input class="form-control" type="number" ng-model="item.rating"/>
+  <slider min="0" step="0.1" max="5" ng-model="item.rating"></slider>
+</div>
+<div class="form-group">
+  <label class="control-label">Release Year</label>
+  <input class="form-control" type="number" ng-model="item.yearReleased" min="1900" max="2100"/>
+</div>
+<div class="form-group">
+  <label class="control-label">Genre</label>
+  <select class="form-control" type="text" ng-model="item.genre" ng-options="o as o for o in genres"></select>
+</div>
+<div class="form-group">
+  <label class="control-label">Creation</label>
+  <input class="form-control" type="text" ng-model="item.creation"/>
+</div>
+<div class="form-group" ng-if="isMovie()">
+  <label class="control-label">Durée (secondes)</label>
+  <input class="form-control" type="number" ng-model="item.duration"/>
+  <slider min="0" step="10" max="10000" ng-model="item.duration"></slider>
+</div>
+<div class="form-group" ng-if="isSerie()">
+  <label class="control-label">Programmation</label>
+  <localize-button ng-model="item" ng-key="schedule"></localize-button>
+  <input class="form-control" type="text" ng-model="item.schedule" placeholder="Du lundi au vendredi"/>
+</div>
+<div class="form-group">
+  <label class="control-label">Category</label>
+  <tags-input ng-model="item.categorys" placeholder="Search category" add-from-autocomplete-only="true" display-property="label" key-property="_id">
+    <auto-complete source="loadCategorys($query)" template="category-template" min-length="0" load-on-focus="true" load-on-empty="true" max-results-to-show="32"></auto-complete>
+  </tags-input>
+  <script type="text/ng-template" id="category-template">
+    <div class="tag-template"><span>{{data.label}}</span></div>
+  </script>
+</div>
+<div class="form-group" ng-if="isSerie()">
+  <label class="control-label">Seasons</label>
+  <tags-input ng-model="item.seasons" placeholder="Search seasons" add-from-autocomplete-only="true" display-property="autocompleteTitle" key-property="_id" replace-spaces-with-dashes="false">
+    <auto-complete source="loadSeasons($query)" template="season-template" min-length="0" load-on-focus="true" load-on-empty="true" max-results-to-show="32"></auto-complete>
+  </tags-input>
+  <script type="text/ng-template" id="season-template">
+    <div class="tag-template"><span>{{data.autocompleteTitle}}</span></div>
+  </script>
+</div>
+<div class="form-group">
+  <label class="control-label">Video</label>
+  <div>
+    <input class="form-control" type="text" ng-model="item.video" placeholder="Search video" uib-typeahead="video as video.name for video in loadVideo($viewValue) | limitTo: 5" uib-typeahead-template-url="imagesTemplate.html" ng-style="isSerie()?{display:&quot;inline&quot;,width:&quot;70%&quot;}:{}"/>
+    <button class="btn btn-primary" ng-click="searchFirstVideo()" ng-if="isSerie()"><span class="fa fa-hand-o-left" style="margin-right:5px;"></span>S1E1</button>
+    <div><a ng-if="mpd" target="_backoplayer" href="https://afrostream-player.herokuapp.com/?url={{mpd}}">https://afrostream-player.herokuapp.com/?url={{mpd}}</a></div>
+  </div>
+</div>
+<div class="form-group">
+  <label class="control-label">Actors</label>
+  <tags-input ng-model="item.actors" placeholder="Search actor" add-from-autocomplete-only="true" display-property="fullName" key-property="_id">
+    <auto-complete source="loadActors($query)" template="actor-template" min-length="0" load-on-focus="true" load-on-empty="true" max-results-to-show="32"></auto-complete>
+  </tags-input>
+  <script type="text/ng-template" id="actor-template">
+    <div class="tag-template"><span>{{data.firstName + ' ' + data.lastName}}</span><span>{{data.title}}</span></div>
+  </script>
+</div>
+<div class="form-group">
+  <label class="control-label">Trailer Youtube</label>
+  <input class="form-control" type="text" ng-model="item.youtubeTrailer"/>
+</div>
+<div class="form-group">
+  <label class="control-label">Countries</label>
+  <countries props="countriesProps"></countries>
+</div>
+<div class="form-group">
+  <label class="control-label">Countries Out</label>
+  <countries props="countriesOutProps"></countries>
+</div>
+<div class="form-group">
+  <label class="control-label">Broadcasters</label>
+  <broadcasters props="broadcastersProps"></broadcasters>
+</div>

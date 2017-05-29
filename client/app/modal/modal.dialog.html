@@ -1,0 +1,156 @@
+
+<script type="text/ng-template" id="imagesTemplate.html"><a><img ng-src="{{match.model.imgix}}?fit=crop&amp;w=100&amp;h=30"/><span ng-bind-html="match.label | typeaheadHighlight:query"></span></a></script>
+<div class="modal-header" style="background-image:url({{item.poster.imgix}}?fit=crop&amp;w=1000&amp;h=200);">
+  <button class="close" data-dismiss="modal" aria-hidden="true"></button>
+  <h4 class="modal-title" style="color:#000;">{{item.title | limitTo:50}}</h4>
+</div>
+<div class="modal-body">
+  <form role="form">
+    <div ng-if="modalType === &quot;category&quot;">
+      <categorys></categorys>
+    </div>
+    <div ng-if="modalType === &quot;pres&quot;">
+      <press></press>
+    </div>
+    <div ng-if="modalType === &quot;video&quot;">
+      <videos></videos>
+    </div>
+    <div ng-if="modalType === &quot;language&quot;">
+      <languages></languages>
+    </div>
+    <div ng-if="modalType === &quot;image&quot;">
+      <images></images>
+    </div>
+    <div ng-if="modalType === &quot;licensor&quot;">
+      <licensors></licensors>
+    </div>
+    <div ng-if="modalType === &quot;client&quot;">
+      <clients></clients>
+    </div>
+    <div ng-if="modalType === &quot;user&quot;">
+      <users></users>
+    </div>
+    <div ng-if="modalType === &quot;actor&quot;">
+      <actors></actors>
+    </div>
+    <div ng-if="modalType === &quot;post&quot;">
+      <posts></posts>
+    </div>
+    <div ng-if="modalType === &quot;config&quot;">
+      <configs></configs>
+    </div>
+    <div ng-if="modalType === &quot;widget&quot;">
+      <widgets></widgets>
+    </div>
+    <div ng-if="modalType === &quot;work&quot;">
+      <works></works>
+    </div>
+    <div ng-if="modalType === &quot;store&quot;">
+      <stores></stores>
+    </div>
+    <div ng-if="modalType === &quot;notification&quot;">
+      <notifications></notifications>
+    </div>
+    <div ng-if="modalType !== &quot;pres&quot; &amp;&amp; modalType !== &quot;category&quot; &amp;&amp; modalType !== &quot;video&quot; &amp;&amp; modalType !== &quot;language&quot; &amp;&amp; modalType !== &quot;image&quot; &amp;&amp; modalType !== &quot;licensor&quot; &amp;&amp; modalType !== &quot;client&quot; &amp;&amp; modalType !== &quot;user&quot; &amp;&amp; modalType !== &quot;actor&quot; &amp;&amp; modalType !== &quot;post&quot; &amp;&amp; modalType !== &quot;config&quot; &amp;&amp; modalType !== &quot;widget&quot; &amp;&amp; modalType !== &quot;work&quot; &amp;&amp; modalType !== &quot;store&quot; &amp;&amp; modalType !== &quot;notification&quot;">
+      <div class="form-group">
+        <label class="control-label" for="type">Type</label>
+      </div>
+      <div class="form-group">
+        <div class="btn-group">
+          <label class="btn btn-primary" ng-model="item.type" btn-radio="&quot;movie&quot;" ng-if="isFilm()">Movie</label>
+          <label class="btn btn-primary" ng-model="item.type" btn-radio="&quot;serie&quot;" ng-if="isFilm()">Série</label>
+          <label class="btn btn-primary" ng-model="item.type" btn-radio="&quot;season&quot;" ng-if="isSeason()">Season</label>
+          <label class="btn btn-primary" ng-model="item.type" btn-radio="&quot;episode&quot;" ng-if="isEpisode()">Episode</label>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="control-label" for="title">Title</label>
+        <localize-button ng-model="item" ng-key="title"></localize-button>
+        <input class="form-control" id="title" type="text" ng-model="item.title" ng-change="slugify(item.title)" placeholder="Title"/>
+        <label class="control-label" for="slug">Slug</label>
+        <input class="form-control" id="slug" type="text" ng-model="item.slug" placeholder="Slug url"/>
+      </div>
+      <div class="form-group">
+        <label class="control-label" for="thumb">Logo</label>
+        <div>
+          <input class="form-control" type="text" ng-model="item.logo" placeholder="Search logo" uib-typeahead="image as image.name for image in loadImages($viewValue, &quot;logo&quot;) | limitTo: 30" uib-typeahead-template-url="imagesTemplate.html" style="display:inline;width:80%;"/>
+          <button class="btn btn-s btn-primary" ng-click="uploadImage(&quot;logo&quot;)" style="display:inline;">Upload</button>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="control-label" for="thumb">Thumb</label>
+        <div>
+          <input class="form-control" type="text" ng-model="item.thumb" placeholder="Search thumb" uib-typeahead="image as image.name for image in loadImages($viewValue, &quot;thumb&quot;) | limitTo: 30" uib-typeahead-template-url="imagesTemplate.html" style="display:inline;width:80%;"/>
+          <button class="btn btn-s btn-primary" ng-click="uploadImage(&quot;thumb&quot;)" style="display:inline;">Upload</button>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="control-label" for="poster">Poster</label>
+        <div>
+          <input class="form-control" type="text" ng-model="item.poster" placeholder="Search poster" uib-typeahead="image as image.name for image in loadImages($viewValue,&quot;poster&quot;) | limitTo: 5" uib-typeahead-template-url="imagesTemplate.html" style="display:inline;width:80%;"/>
+          <button class="btn btn-s btn-primary" ng-click="uploadImage(&quot;poster&quot;)" style="display:inline;">Upload</button>
+        </div>
+        <h6 class="control-label">Poster Profiles (16:31 adSpots)</h6>
+        <div class="row fix-height" ng-if="item.poster">
+          <div class="img-ratio-adspot col-md-3"><img class="img-thumbnail" ng-src="{{item.poster.imgix}}{{extractProfile(item.poster,&quot;16:31&quot;)}}" ng-click="cropImage(item.poster,&quot;16:31&quot;)"/></div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="control-label">Dates</label>
+        <div class="row">
+          <table style="width:100%;">
+            <tr>
+              <td>
+                <table>
+                  <tr>
+                    <td>
+                      <div class="input-group" uib-dropdown="uib-dropdown"><a class="dropdown-toggle-datefrom" uib-dropdown-toggle="uib-dropdown-toggle" id="dateFromToggle">
+                          <input class="form-control" type="text" value="{{toHumanDate(item.dateFrom)}}" readonly="true" style="min-width:300px;background-color:white;" placeholder="FROM"/></a>
+                        <ul class="dropdown-menu" uib-dropdown-menu="uib-dropdown-menu" aria-labelledby="simple-dropdown">
+                          <li>
+                            <datetimepicker id="dateFrom" ng-model="item.dateFrom" ng-datetimepicker-config="{ dropdownSelector: '.dropdown-toggle-datefrom' }"></datetimepicker>
+                          </li>
+                        </ul>
+                      </div>
+                    </td>
+                    <td><i class="fa fa-eraser" aria-hidden="true" ng-click="item.dateFrom=null"></i></td>
+                  </tr>
+                </table>
+              </td>
+              <td>
+                <table>
+                  <tr>
+                    <td>
+                      <div class="input-group" uib-dropdown="uib-dropdown"><a class="dropdown-toggle-dateto" uib-dropdown-toggle="uib-dropdown-toggle" id="dateToToggle">
+                          <input class="form-control" type="text" value="{{toHumanDate(item.dateTo)}}" readonly="true" style="min-width:300px;background-color:white;" placeholder="TO"/></a>
+                        <ul class="dropdown-menu" uib-dropdown-menu="uib-dropdown-menu" aria-labelledby="simple-dropdown">
+                          <li>
+                            <datetimepicker id="dateTo" ng-model="item.dateTo" ng-datetimepicker-config="{ dropdownSelector: '.dropdown-toggle-dateto' }"></datetimepicker>
+                          </li>
+                        </ul>
+                      </div>
+                    </td>
+                    <td><i class="fa fa-eraser" aria-hidden="true" ng-click="item.dateTo=null"></i></td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="control-label" for="synopsis">Synopsis</label>
+        <localize-button ng-model="item" ng-key="synopsis"></localize-button>
+        <textarea class="form-control" id="synopsis" rows="4" ng-model="item.synopsis" placeholder="Description"></textarea>
+      </div>
+      <movies ng-if="isFilm()"></movies>
+      <seasons ng-if="isSeason()"></seasons>
+      <episodes ng-if="isEpisode()"></episodes>
+    </div>
+  </form>
+</div>
+<div class="modal-footer">
+  <button class="btn btn-primary" type="submit" ng-click="addItem()" ng-if="!item._id">Add</button>
+  <button class="btn btn-primary" type="submit" ng-click="updateItem()" ng-if="item._id">Update</button>
+  <button class="btn btn-primary" ng-click="cancel()">Cancel</button>
+</div>

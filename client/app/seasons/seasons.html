@@ -1,0 +1,60 @@
+
+<div class="form-group">
+  <label class="control-label">Short Title (ex: En intégral)</label>
+  <localize-button ng-model="item" ng-key="shortTitle"></localize-button>
+  <input class="form-control" type="string" ng-maxlength="32" ng-model="item.shortTitle"/>
+</div>
+<!--.form-group-->
+<!--  label.control-label Movie-->
+<!--  tags-input(ng-model='item.movie' placeholder='Search movie' add-from-autocomplete-only='true' display-property='title' key-property='_id')-->
+<!--    auto-complete(source='loadMovies($query)' template='movie-template' min-length='0'-->
+<!--    load-on-focus='true'-->
+<!--    load-on-empty='true'-->
+<!--    max-results-to-show='32')-->
+<!--  script(type='text/ng-template' id='movie-template')-->
+<!--    .tag-template-->
+<!--      span {{data.title}}-->
+<div class="form-group">
+  <label class="control-label">Season Number</label>
+  <input class="form-control" type="number" min="0" ng-model="item.seasonNumber"/>
+</div>
+<div class="form-group">
+  <label class="control-label">Number Of Episodes</label>
+  <input class="form-control" type="number" ng-model="item.numberOfEpisodes"/>
+</div>
+<div class="form-group">
+  <label class="control-label">Movie</label>
+  <input class="form-control" type="text" ng-model="item.movie" placeholder="Search movie" uib-typeahead="movie as movie.title for movie in loadMovies($viewValue) | limitTo: 5"/>
+</div>
+<div class="form-group" ng-show="!item._id">
+  <div class="checkbox">
+    <label>
+      <input type="checkbox" ng-model="autoEpisodes"/><span>Auto generate episodes</span>
+    </label>
+  </div>
+</div>
+<div class="form-group" ng-if="!autoEpisodes">
+  <label class="control-label">Episodes</label>
+  <tags-input ng-model="item.episodes" placeholder="Search episode" add-from-autocomplete-only="true" display-property="autocompleteTitle" key-property="_id" replace-spaces-with-dashes="false">
+    <auto-complete source="loadEpisodes($query)" template="episode-template" min-length="0" load-on-focus="true" load-on-empty="true" max-results-to-show="32"></auto-complete>
+  </tags-input>
+  <script type="text/ng-template" id="episode-template">
+    <div class="tag-template"><span>{{data.autocompleteTitle}}</span></div>
+  </script>
+</div>
+<div class="form-group" ng-if="autoEpisodes">
+  <label class="control-label">Auto generate Episodes</label>
+  <slider min="0" step="1" max="100" ng-model="item.episodes"></slider>
+</div>
+<div class="form-group">
+  <label class="control-label">Countries</label>
+  <countries props="countriesProps"></countries>
+</div>
+<div class="form-group">
+  <label class="control-label">Countries Out</label>
+  <countries props="countriesOutProps"></countries>
+</div>
+<div class="form-group">
+  <label class="control-label">Broadcasters</label>
+  <broadcasters props="broadcastersProps"></broadcasters>
+</div>

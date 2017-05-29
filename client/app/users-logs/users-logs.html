@@ -1,0 +1,84 @@
+
+<div id="page-wrapper" ng-class="{open: toggle}" ng-cloak="ng-cloak">
+  <side-bar></side-bar>
+  <div id="content-wrapper">
+    <navbar></navbar>
+    <div class="page-content">
+      <div class="row">
+        <div class="col-lg-12">
+          <h3>Users Logs</h3>
+          <div>
+            <div ng-repeat="activeUsersByDay in countActiveUsersByDays30 track by $index" ng-style="{float:'left', textAlign: 'center', backgroundColor: activeUsersByDay.color,marginRight:activeUsersByDay.marginRight + 'px',width:'20px',height:'20px',display:'inline'}" title="{{activeUsersByDay.date}} → {{activeUsersByDay.count}} users"></div>
+          </div>
+          <table class="table">
+            <colgroup>
+              <col class="col-md-1"/>
+              <col class="col-md-1"/>
+              <col class="col-md-1"/>
+              <col class="col-md-1"/>
+            </colgroup>
+            <thead>
+              <tr>
+                <th class="text-center">Total Users</th>
+                <th class="text-center">Active Users Last 7 days</th>
+                <th class="text-center">Active Users Last 30 days</th>
+                <th class="text-center">Signin Last 7 days</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="text-center">
+                  <div>{{countUsers}}</div>
+                </td>
+                <td class="text-center">
+                  <div>{{countActiveUsers7}}</div>
+                </td>
+                <td class="text-center">
+                  <div>{{countActiveUsers30}}</div>
+                </td>
+                <td class="text-center">
+                  <div>{{countSignin7}}</div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <table class="table">
+            <colgroup>
+              <col class="col-md-2"/>
+              <col class="col-md-1"/>
+              <col class="col-md-4"/>
+              <col class="col-md-1"/>
+              <col class="col-md-4"/>
+              <!-- col.col-md-1-->
+            </colgroup>
+            <thead>
+              <tr>
+                <th class="text-center">Login Date</th>
+                <th class="text-center">ID</th>
+                <th class="text-center">Email</th>
+                <th class="text-center">User IP</th>
+                <th class="text-center">User Agent</th>
+                <!-- th.text-center Actions-->
+              </tr>
+            </thead>
+            <tbody>
+              <tr ng-repeat="accessToken in accessTokens | DataFormater">
+                <td class="text-center">
+                  <div>{{accessToken.createdAt| date : "yyyy/MM/dd HH:mm:ss"}}</div>
+                </td>
+                <td class="text-center"><span>{{accessToken.userId}}</span></td>
+                <td class="text-center"><span>{{accessToken.user.email}}</span></td>
+                <td class="text-center"><span>{{accessToken.data.userIp}}</span></td>
+                <td class="text-center"><span>{{accessToken.data.userAgent}}</span></td>
+                <!--td.pull-right
+                button.btn.btn-xs.btn-primary(ng-click='editIndex(accessToken.user._id)' uib-tooltip='Edit' )
+                    span.glyphicon.glyphicon-pencil
+                -->
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

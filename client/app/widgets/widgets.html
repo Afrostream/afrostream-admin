@@ -1,0 +1,51 @@
+
+<div id="page-wrapper" ng-class="{open: toggle}" ng-cloak="ng-cloak">
+  <side-bar></side-bar>
+  <div id="content-wrapper">
+    <navbar></navbar>
+    <div class="page-content">
+      <div class="row">
+        <div class="col-lg-12">
+          <rd-widget>
+            <rd-widget-header icon="fa-tasks" title="{{type}}">
+              <div class="row">
+                <input class="form-control input-sm" type="text" placeholder="Find a {{type}} here." ng-model="$parent.$parent.searchField"/>
+              </div>
+              <div class="row">
+                <button class="btn btn-xs btn-primary pull-right" ng-click="newIndex()"><span class="glyphicon glyphicon-plus"></span><span>Add new</span></button>
+              </div>
+            </rd-widget-header>
+            <rd-widget-body class="medium no-padding">
+              <div class="table-responsive">
+                <table class="table">
+                  <colgroup>
+                    <col class="col-md-1"/>
+                    <col class="col-md-1"/>
+                    <col class="col-md-1"/>
+                  </colgroup>
+                  <thead>
+                    <tr>
+                      <th class="text-center">ID</th>
+                      <th class="text-center">Name</th>
+                      <th class="text-center">Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr ng-repeat="item in items | filter:searchField">
+                      <td class="text-center"><span>{{item._id}}</span></td>
+                      <td class="text-center"><strong>{{item.data.name}}</strong></td>
+                      <td class="pull-right">
+                        <button class="btn btn-xs btn-primary" ng-click="editIndex(item)" uib-tooltip="Edit"><span class="glyphicon glyphicon-pencil"></span></button>
+                        <button class="btn btn-xs btn-danger" ng-click="deleteIndex(item.genericTitle, item)"><span class="glyphicon glyphicon-trash"></span></button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </rd-widget-body>
+          </rd-widget>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,43 @@
+
+<script type="text/ng-template" id="couponsTemplate.html"><a><span ng-bind-html="match.model.name | typeaheadHighlight:query"></span></a></script>
+<div class="form-group">
+  <label class="control-label" for="name">Name</label>
+  <input class="form-control" id="name" type="text" ng-model="item.data.name" placeholder="Widget name"/>
+</div>
+<div class="form-group">
+  <label class="control-label" for="coupon">Coupon</label>
+  <div>
+    <input class="form-control" id="coupon" type="text" ng-model="item.data.coupon" placeholder="Search Coupon" uib-typeahead="coupon as coupon.name for coupon in coupons" uib-typeahead-template-url="couponsTemplate.html" style="display:inline;width:80%;"/>
+  </div>
+</div>
+<div class="form-group" ng-if="hasCoupon()">
+  <div class="form-group">
+    <label class="control-label" for="class">Class</label>
+    <input class="form-control" id="class" type="text" ng-model="item.data.class" placeholder="Widget class"/>
+  </div>
+  <div class="form-group">
+    <label class="control-label" for="label">Button Label</label>
+    <input class="form-control" id="label" type="text" ng-model="item.data.label" placeholder="Widget Button label"/>
+  </div>
+  <div class="form-group">
+    <label class="control-label" for="image">Image</label>
+    <div>
+      <input class="form-control" id="image" type="text" ng-model="item.image" placeholder="Search image" uib-typeahead="image as image.name for image in loadImages($viewValue,&quot;widget&quot;) | limitTo: 5" uib-typeahead-template-url="imagesTemplate.html" style="display:inline;width:80%;"/>
+      <button class="btn btn-s btn-primary" ng-click="uploadWidget()" style="display:inline;">Upload</button>
+    </div>
+  </div>
+  <div class="form-group" ng-if="item.image">
+    <label class="control-label" for="width">Width</label>
+    <input class="form-control" id="width" type="number" ng-model="item.data.width" placeholder="Widget width"/>
+    <label class="control-label" for="height">Height</label>
+    <input class="form-control" id="height" type="number" ng-model="item.data.height" placeholder="Widget height"/>
+  </div>
+  <div class="form-group">
+    <label class="control-label">Embed Widget</label>
+    <textarea class="form-control" ng-model="jsonString" rows="10"></textarea>
+  </div>
+  <div class="form-group">
+    <label class="control-label">Demo Widget</label>
+    <div ng-bind-html="deliberatelyTrustDangerousSnippet()"></div>
+  </div>
+</div>

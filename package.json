@@ -73,16 +73,11 @@
     "npm": "3.10.7"
   },
   "scripts": {
+    "postinstall": "bower install",
     "start": "node server/server.js",
-    "localstaging": ". ~/.nvm/nvm.sh && nvm use 6.9.1 && export AFROSTREAM_BACK_END_BASEURL=\"http://localhost:5602\" && grunt serve:localstaging",
-    "staging": ". ~/.nvm/nvm.sh && nvm use 6.9.1 && grunt serve:staging",
-    "postinstall": "bower install && grunt build",
-    "dev": ". ~/.nvm/nvm.sh && nvm use 6.9.1 && grunt serve",
-    "test": "grunt test",
-    "seed": "export SEED_DB=true && npm run dev",
-    "cron-daily-queries": "node server/cron/daily-queries.js",
-    "cron-stats-usersVideos": "node server/cron/stats-usersVideos.js",
-    "update_vxsty": "node server/bin/update_vxsty.js"
+    "localstaging": "node server/staging.js",
+    "staging": "node server/server.js",
+    "dev": "node server/server.js"
   },
   "private": true
 }

@@ -1,0 +1,99 @@
+
+<div id="page-wrapper" ng-class="{open: toggle}" ng-cloak="ng-cloak">
+  <side-bar></side-bar>
+  <div id="content-wrapper">
+    <navbar></navbar>
+    <div class="page-content">
+      <div class="row">
+        <div class="col-lg-3 col-md-6 col-xs-12">
+          <rd-widget>
+            <rd-widget-body>
+              <div class="widget-icon green pull-left"><i class="fa fa-trophy"></i></div>
+              <div class="title">{{licensors}}</div>
+              <div class="comment">Licensors</div>
+            </rd-widget-body>
+          </rd-widget>
+        </div>
+        <div class="col-lg-3 col-md-6 col-xs-12">
+          <rd-widget>
+            <rd-widget-body>
+              <div class="widget-icon red pull-left"><i class="fa fa-users"></i></div>
+              <div class="title">{{users}}</div>
+              <div class="comment">Users</div>
+            </rd-widget-body>
+          </rd-widget>
+        </div>
+        <div class="col-lg-3 col-md-6 col-xs-12">
+          <rd-widget>
+            <rd-widget-body>
+              <div class="widget-icon blue pull-left"><i class="fa fa-bookmark"></i></div>
+              <div class="title">{{categorys}}</div>
+              <div class="comment">Categorys</div>
+            </rd-widget-body>
+          </rd-widget>
+        </div>
+        <div class="col-lg-3 col-md-6 col-xs-12">
+          <rd-widget>
+            <rd-widget-body>
+              <div class="widget-icon orange pull-left"><i class="fa fa-camera"></i></div>
+              <div class="title">{{movies}}</div>
+              <div class="comment">Movies</div>
+            </rd-widget-body>
+          </rd-widget>
+        </div>
+        <div class="col-lg-3 col-md-6 col-xs-12">
+          <rd-widget>
+            <rd-widget-body>
+              <div class="widget-icon purple pull-left"><i class="fa fa-film"></i></div>
+              <div class="title">{{seasons}}</div>
+              <div class="comment">Seasons</div>
+            </rd-widget-body>
+          </rd-widget>
+        </div>
+        <div class="col-lg-3 col-md-6 col-xs-12">
+          <rd-widget>
+            <rd-widget-body>
+              <div class="widget-icon green pull-left"><i class="fa fa-film"></i></div>
+              <div class="title">{{episodes}}</div>
+              <div class="comment">Episodes</div>
+            </rd-widget-body>
+          </rd-widget>
+        </div>
+        <div class="col-lg-3 col-md-6 col-xs-12">
+          <rd-widget>
+            <rd-widget-body>
+              <div class="widget-icon blue pull-left"><i class="fa fa-file-video-o"></i></div>
+              <div class="title">{{videos}}</div>
+              <div class="comment">Videos</div>
+            </rd-widget-body>
+          </rd-widget>
+        </div>
+      </div>
+      <!--.row-->
+      <!--  .col-lg-6-->
+      <!--    rd-widget-->
+      <!--      rd-widget-header(icon='fa-users' title='Users')-->
+      <!--        .row-->
+      <!--          input.form-control.input-sm(type='text' placeholder='Find a user here.' ng-model='$parent.$parent.searchField')-->
+      <!--      rd-widget-body.medium.no-padding-->
+      <!--        .table-responsive-->
+      <!--          table.table-->
+      <!--            thead-->
+      <!--              tr-->
+      <!--                th.text-center ID-->
+      <!--                th.text-center Username-->
+      <!--                th.text-center Email-->
+      <!--                th.text-center Role-->
+      <!--            tbody-->
+      <!--              tr(ng-repeat='item in users | filter:searchField')-->
+      <!--                td.text-center-->
+      <!--                  span {{item._id}}-->
+      <!--                td.text-center-->
+      <!--                  span {{item.name}}-->
+      <!--                td.text-center-->
+      <!--                  span {{item.email}}-->
+      <!--                td.text-center-->
+      <!--                  span {{item.role}}-->
+    </div>
+  </div>
+</div>

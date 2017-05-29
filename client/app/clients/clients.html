@@ -1,0 +1,17 @@
+
+<div class="form-group">
+  <label class="control-label" for="label">Name</label>
+  <input class="form-control" id="label" type="text" ng-model="item.name" placeholder="Name of client"/>
+</div>
+<div class="form-group" ng-if="item._id">
+  <label class="control-label" for="id">Client Id</label>
+  <input class="form-control" id="id" type="text" ng-model="item._id" disabled="disabled"/>
+</div>
+<div class="form-group" ng-if="item.secret">
+  <label class="control-label" for="secret">Client SECRET KEY</label>
+  <input class="form-control" id="secret" type="text" ng-model="item.secret" disabled="disabled"/>
+</div>
+<div class="form-group" ng-if="item._id">
+  <label class="control-label" for="redirect">Redirect Url</label>
+  <input class="form-control" id="redirect" type="text" ng-model="item.redirectUrl"/>
+</div>

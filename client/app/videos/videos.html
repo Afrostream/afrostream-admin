@@ -1,0 +1,94 @@
+
+<div class="form-group form-group-heading">
+  <div class="row row-header">
+    <label class="control-label" for="name">Name</label>
+  </div>
+  <div class="row">
+    <input class="form-control" id="name" type="text" ng-model="item.name" placeholder="Name"/>
+  </div>
+</div>
+<div class="form-group form-group-heading">
+  <div class="row row-header">
+    <label class="control-label" for="encodingId">EncodingId</label>
+  </div>
+  <div class="row">
+    <input class="form-control" id="encodingId" type="text" ng-model="item.encodingId" placeholder="0b8fe46d..."/>
+  </div>
+</div>
+<div class="form-group form-group-heading">
+  <div class="row row-header">
+    <label class="control-label" for="sourceMp4">Source Mp4 crypted (size={{item.sourceMp4Size||'unknown'}})</label>
+  </div>
+  <div class="row">
+    <input class="form-control" id="duration" type="text" ng-model="item.sourceMp4" placeholder="https://(...)"/>
+  </div>
+</div>
+<div class="form-group form-group-heading">
+  <div class="row row-header">
+    <label class="control-label" for="storageUrl">Source Url (size={{item.storageUrl||'unknown'}})</label>
+  </div>
+  <div class="row">
+    <input class="form-control" id="storageUrl" type="text" ng-model="item.storageUrl" placeholder="https://(...)"/>
+  </div>
+</div>
+<div class="form-group form-group-heading">
+  <div class="row row-header">
+    <label class="control-label" for="sourceMp4Deciphered">Source Mp4 deciphered (size={{item.sourceMp4DecipheredSize||'unknown'}})</label>
+  </div>
+  <div class="row">
+    <input class="form-control" id="duration" type="text" ng-model="item.sourceMp4Deciphered" placeholder="https://(...)"/>
+  </div>
+</div>
+<div class="form-group form-group-heading">
+  <div class="row row-header">
+    <label class="control-label" for="duration">Duration (sec)</label>
+  </div>
+  <div class="row">
+    <input class="form-control" id="duration" type="number" ng-model="item.duration" placeholder="0"/>
+  </div>
+</div>
+<div class="form-group form-group-heading">
+  <div class="row row-header">
+    <label class="control-label">Captions</label>
+    <button class="btn btn-xs btn-primary pull-right" ng-click="newElem(item.captions)"><span class="glyphicon glyphicon-plus"></span></button>
+    <button class="btn btn-xs btn-primary pull-right" ng-click="uploadCaptions(item.captions)"><span class="glyphicon glyphicon-upload">Upload</span></button>
+  </div>
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="row" ng-repeat="caption in item.captions">
+        <div class="col-md-6">
+          <label class="control-label" for="src">Source</label>
+          <input class="form-control input-sm" id="src" type="text" ng-model="caption.src" placeholder="Source url"/>
+        </div>
+        <div class="col-md-4">
+          <label class="control-label" for="type">Lang</label>
+          <select class="form-control input-sm" id="lang" type="text" ng-model="caption.langId" placeholder="Lang key" ng-options="f._id as f.label for f in languages"></select>
+        </div>
+        <div class="col-md-2">
+          <div class="button-group-vertical">
+            <button class="btn btn-xs btn-danger" ng-click="removeElem(caption,item.captions,&quot;caption&quot;,$index)"><span class="glyphicon glyphicon-trash pull-right"></span></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-12">
+      <div ng-if="item &amp;&amp; item.captions.length &amp;&amp; item._id">
+        <label class="btn btn-primary" ng-click="packCaptions()">Pack captions</label>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="form-group">
+  <label class="control-label">Countries</label>
+  <countries props="countriesProps"></countries>
+</div>
+<div class="form-group">
+  <label class="control-label">Countries Out</label>
+  <countries props="countriesOutProps"></countries>
+</div>
+<div class="form-group">
+  <label class="control-label">Broadcasters</label>
+  <broadcasters props="broadcastersProps"></broadcasters>
+</div>

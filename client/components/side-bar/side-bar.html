@@ -1,0 +1,19 @@
+
+<div id="sidebar-wrapper">
+  <ul class="sidebar">
+    <li class="sidebar-main"><a ng-click="toggleSidebar()"><span class="menu-icon glyphicon glyphicon-transfer"></span></a></li>
+    <li class="sidebar-title"><span>Navigation</span></li>
+    <li class="sidebar-list" ng-repeat="item in menu" ui-sref-active="active"><a ui-sref="{{item.state}}">{{item.title}}<span class="{{item.icon}} menu-icon fa"></span></a></li>
+  </ul>
+  <!-- sidebaris hidden (unused yet)
+  .sidebar-footer
+    .col-xs-4
+      a(href='https://github.com/Afrostream/afrostream-back-end' target='_blank') Github
+    .col-xs-4
+      a(href='https://github.com/Afrostream/afrostream-back-end/README.md' target='_blank') About
+    .col-xs-4
+      a(href='#')
+        span
+          i.fa.fa-2.fa-y-combinator
+  -->
+</div>
