@@ -3,9 +3,7 @@
   "description": "Api Front for afrostream",
   "scripts": {},
   "env": {
-    "NODE_ENV": "staging",
-    "AFROSTREAM_API_KEY": "488d2f13-6c01-464f-bfa4-bf8c641d7063",
-    "AFROSTREAM_API_SECRET": "17abaee4-032d-4703-be86-0af3523dcedd"
+    "NODE_ENV": "staging"
   },
   "addons": []
 }
