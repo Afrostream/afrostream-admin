@@ -38,8 +38,8 @@
   "scripts": {
     "postinstall": "bower install",
     "start": "node server/server.js",
-    "localstaging": "node server/staging.js",
-    "staging": "node server/server.js",
+    "localstaging": "node server/server-localstaging.js",
+    "staging": "node server/server-staging.js",
     "dev": "node server/server.js"
   },
   "private": true
