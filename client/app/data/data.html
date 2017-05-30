@@ -54,7 +54,7 @@
                   <tbody ng-model="items" directive-if="{'ui-sortable': 'sortable === true'}" ui-sortable="sortableOptions">
                     <tr dir-paginate="item in items | filter: filterListFunction | itemsPerPage : itemsPerPage | DataFormater" total-items="totalItems" current-page="pagination.current" pagination-id="itemsPagination">
                       <td class="text-center"><span>{{item._id}}</span></td>
-                      <td ng-if="hasThumb()" ng-class="item.genericThumb &amp;&amp; item.genericThumb.imgix ? &quot;thumbnail&quot; : &quot;&quot;"><img class="poster img-responsive" src="{{item.genericThumb.imgix}}?fit=crop&amp;w=200&amp;h=160"/></td>
+                      <td ng-if="hasThumb()" ng-class="item.genericThumb && item.genericThumb.imgix ? &quot;thumbnail&quot; : &quot;&quot;"><img class="poster img-responsive" src="{{item.genericThumb.imgix}}?fit=crop&amp;w=200&amp;h=160"/></td>
                       <td class="text-center"><strong>{{item.genericTitle}}</strong><br/><span class="text-muted">{{item.synopsis | limitTo:100}}{{item.synopsis.length > 100 ? '...' : ''}}</span></td>
                       <td class="text-center" ng-if="hasMail()"><strong>{{item.email}}</strong></td>
                       <td class="text-center" ng-if="type == 'video'">

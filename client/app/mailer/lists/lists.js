@@ -8,7 +8,7 @@ angular.module('afrostreamAdminApp')
         templateUrl: 'app/data/data.html',
         controller: 'DataCtrl',
         type: 'mailer/list',
-        modalTemplateUrl: 'app/mailer/lists/modal.html',
+        modalTemplateUrl: 'app/mailer/lists/modal/template.html',
         modalCtrl: 'MailerListModalCtrl',
         resolve: {
           countries: 'DataEmpty',
