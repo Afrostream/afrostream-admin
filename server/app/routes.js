@@ -1,11 +1,10 @@
-'use strict';
-var express = require('express');
-var router = express.Router();
-var path = require('path');
-var errors = require('./../components/errors/index');
-var backend = require('./backend.js');
+const express = require('express');
+const router = express.Router();
+const path = require('path');
+const errors = require('./../components/errors/index');
+const backend = require('./backend.js');
 
-var backendProxy = function (options) {
+const backendProxy = function (options) {
   return function (req, res) {
     backend.proxy(req, res, {
       token: req.userAccessToken,
@@ -22,14 +21,10 @@ var backendProxy = function (options) {
   };
 };
 
-var noCache = function (req, res, next) {
-  res.noCache();
-  next();
-};
-// API
-
-// all user routes require the afro token.
-var userTokenRequired = function (req, res, next) {
+/*
+ * API
+ */
+const userTokenRequired = function (req, res, next) {
   if (!req.userAccessToken) {
     console.error('Unauthorized: missing Access-Token on ' + req.url);
     res.status(401).send('Unauthorized');
@@ -38,21 +33,13 @@ var userTokenRequired = function (req, res, next) {
   next();
 };
 
-
-var i = 0;
-router.get('/test/highwinds', function (req, res) {
-  res.noCache();
-  res.json({
-    nbHits: ++i,
-    now: Date.now()
-  });
-});
-
 router.use('/api/*', userTokenRequired, backendProxy());
+
 /*
  * AUTH
  */
-var authController = require('./auth/auth.controller.js');
+const authController = require('./auth/auth.controller.js');
+const noCache = (req, res, next) => { res.noCache(); next(); };
 
 router.post('/auth/refresh', noCache, authController.refresh);
 router.post('/auth/signup', noCache, authController.signup);
@@ -68,6 +55,5 @@ router.route(/^\/(categorys|licensors|movies|seasons|episodes|videos|languages|i
 
 // undefined routes should return a 404
 router.route('.*').get(errors[404]);
-
 
 module.exports = router;
