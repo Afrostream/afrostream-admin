@@ -81,7 +81,7 @@
 <div class="form-group">
   <label class="control-label">Video</label>
   <div>
-    <input class="form-control" type="text" ng-model="item.video" placeholder="Search video" uib-typeahead="video as video.name for video in loadVideo($viewValue) | limitTo: 5" uib-typeahead-template-url="imagesTemplate.html" ng-style="isSerie()?{display:&quot;inline&quot;,width:&quot;70%&quot;}:{}"/>
+    <input class="form-control" type="text" ng-model="item.video" placeholder="Search video" uib-typeahead="video as video.name for video in loadVideo($viewValue) | limitTo: 5" uib-typeahead-template-url="imagesTemplate.html" ng-style="isSerie()?{display:'inline',width:'70%'}:{}"/>
     <button class="btn btn-primary" ng-click="searchFirstVideo()" ng-if="isSerie()"><span class="fa fa-hand-o-left" style="margin-right:5px;"></span>S1E1</button>
     <div><a ng-if="mpd" target="_backoplayer" href="https://afrostream-player.herokuapp.com/?url={{mpd}}">https://afrostream-player.herokuapp.com/?url={{mpd}}</a></div>
   </div>

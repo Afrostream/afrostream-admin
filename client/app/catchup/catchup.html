@@ -39,10 +39,10 @@
                 <td class="text-center"><strong>{{item.genericTitle}}</strong><br/><span class="text-muted">{{item.synopsis | limitTo:100}}{{item.synopsis.length > 100 ? '...' : ''}}</span></td>
                 <td class="text-center"><strong>{{item.type}}</strong></td>
                 <td class="text-center">
-                  <button class="btn btn-xs btn-default" ng-click="activateIndex(item, &quot;movie&quot;)" uib-tooltip="{{item.active ? &quot;remove from prod&quot; : &quot;push in prod&quot;}}"><span ng-class="item.active ? &quot;text-success&quot;:&quot;text-danger&quot;"><i class="fa" ng-class="item.active ? &quot;fa-toggle-on&quot;: &quot;fa-toggle-off&quot;"></i></span></button>
+                  <button class="btn btn-xs btn-default" ng-click="activateIndex(item, 'movie')" uib-tooltip="{{item.active ? 'remove from prod' : 'push in prod'}}"><span ng-class="item.active ? 'text-success':'text-danger'"><i class="fa" ng-class="item.active ? 'fa-toggle-on': 'fa-toggle-off'"></i></span></button>
                 </td>
                 <td class="pull-right">
-                  <button class="btn btn-xs btn-primary" ng-click="editIndex(item, &quot;movie&quot;)" uib-tooltip="Edit"><span class="glyphicon glyphicon-pencil"></span></button>
+                  <button class="btn btn-xs btn-primary" ng-click="editIndex(item, 'movie')" uib-tooltip="Edit"><span class="glyphicon glyphicon-pencil"></span></button>
                 </td>
               </tr>
             </tbody>
@@ -80,10 +80,10 @@
                 <td class="text-center"><strong>{{item.genericTitle}}</strong><br/><span class="text-muted">{{item.synopsis | limitTo:100}}{{item.synopsis.length > 100 ? '...' : ''}}</span></td>
                 <td class="text-center"><strong>{{item.seasonNumber}}</strong></td>
                 <td class="text-center">
-                  <button class="btn btn-xs btn-default" ng-click="activateIndex(item, &quot;season&quot;)" uib-tooltip="{{item.active ? &quot;remove from prod&quot; : &quot;push in prod&quot;}}"><span ng-class="item.active ? &quot;text-success&quot;:&quot;text-danger&quot;"><i class="fa" ng-class="item.active ? &quot;fa-toggle-on&quot;: &quot;fa-toggle-off&quot;"></i></span></button>
+                  <button class="btn btn-xs btn-default" ng-click="activateIndex(item, 'season')" uib-tooltip="{{item.active ? 'remove from prod' : 'push in prod'}}"><span ng-class="item.active ? 'text-success':'text-danger'"><i class="fa" ng-class="item.active ? 'fa-toggle-on': 'fa-toggle-off'"></i></span></button>
                 </td>
                 <td class="pull-right">
-                  <button class="btn btn-xs btn-primary" ng-click="editIndex(item, &quot;season&quot;)" uib-tooltip="Edit"><span class="glyphicon glyphicon-pencil"></span></button>
+                  <button class="btn btn-xs btn-primary" ng-click="editIndex(item, 'season')" uib-tooltip="Edit"><span class="glyphicon glyphicon-pencil"></span></button>
                 </td>
               </tr>
             </tbody>
@@ -127,10 +127,10 @@
                 <td class="text-center"><strong>{{item.season.title}}</strong></td>
                 <td class="text-center"><strong>{{item.season.seasonNumber}}</strong></td>
                 <td class="text-center">
-                  <button class="btn btn-xs btn-default" ng-click="activateIndex(item, &quot;episode&quot;)" uib-tooltip="{{item.active ? &quot;remove from prod&quot; : &quot;push in prod&quot;}}"><span ng-class="item.active ? &quot;text-success&quot;:&quot;text-danger&quot;"><i class="fa" ng-class="item.active ? &quot;fa-toggle-on&quot;: &quot;fa-toggle-off&quot;"></i></span></button>
+                  <button class="btn btn-xs btn-default" ng-click="activateIndex(item, 'episode')" uib-tooltip="{{item.active ? 'remove from prod' : 'push in prod'}}"><span ng-class="item.active ? 'text-success':'text-danger'"><i class="fa" ng-class="item.active ? 'fa-toggle-on': 'fa-toggle-off'"></i></span></button>
                 </td>
                 <td class="pull-right">
-                  <button class="btn btn-xs btn-primary" ng-click="editIndex(item, &quot;episode&quot;)" uib-tooltip="Edit"><span class="glyphicon glyphicon-pencil"></span></button>
+                  <button class="btn btn-xs btn-primary" ng-click="editIndex(item, 'episode')" uib-tooltip="Edit"><span class="glyphicon glyphicon-pencil"></span></button>
                 </td>
               </tr>
             </tbody>
@@ -156,10 +156,10 @@
                 <td class="text-center"><span>{{item._id}}</span></td>
                 <td class="text-center"><strong>{{item.name}}</strong></td>
                 <td class="text-center">
-                  <button class="btn btn-xs btn-default" ng-click="activateIndex(item, &quot;video&quot;)" uib-tooltip="{{item.active ? &quot;remove from prod&quot; : &quot;push in prod&quot;}}"><span ng-class="item.active ? &quot;text-success&quot;:&quot;text-danger&quot;"><i class="fa" ng-class="item.active ? &quot;fa-toggle-on&quot;: &quot;fa-toggle-off&quot;"></i></span></button>
+                  <button class="btn btn-xs btn-default" ng-click="activateIndex(item, 'video')" uib-tooltip="{{item.active ? 'remove from prod' : 'push in prod'}}"><span ng-class="item.active ? 'text-success':'text-danger'"><i class="fa" ng-class="item.active ? 'fa-toggle-on': 'fa-toggle-off'"></i></span></button>
                 </td>
                 <td class="pull-right">
-                  <button class="btn btn-xs btn-primary" ng-click="editIndex(item, &quot;video&quot;)" uib-tooltip="Edit"><span class="glyphicon glyphicon-pencil"></span></button>
+                  <button class="btn btn-xs btn-primary" ng-click="editIndex(item, 'video')" uib-tooltip="Edit"><span class="glyphicon glyphicon-pencil"></span></button>
                 </td>
               </tr>
             </tbody>

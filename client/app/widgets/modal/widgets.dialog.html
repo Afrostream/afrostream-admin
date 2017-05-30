@@ -22,7 +22,7 @@
   <div class="form-group">
     <label class="control-label" for="image">Image</label>
     <div>
-      <input class="form-control" id="image" type="text" ng-model="item.image" placeholder="Search image" uib-typeahead="image as image.name for image in loadImages($viewValue,&quot;widget&quot;) | limitTo: 5" uib-typeahead-template-url="imagesTemplate.html" style="display:inline;width:80%;"/>
+      <input class="form-control" id="image" type="text" ng-model="item.image" placeholder="Search image" uib-typeahead="image as image.name for image in loadImages($viewValue,'widget') | limitTo: 5" uib-typeahead-template-url="imagesTemplate.html" style="display:inline;width:80%;"/>
       <button class="btn btn-s btn-primary" ng-click="uploadWidget()" style="display:inline;">Upload</button>
     </div>
   </div>

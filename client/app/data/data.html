@@ -54,7 +54,7 @@
                   <tbody ng-model="items" directive-if="{'ui-sortable': 'sortable === true'}" ui-sortable="sortableOptions">
                     <tr dir-paginate="item in items | filter: filterListFunction | itemsPerPage : itemsPerPage | DataFormater" total-items="totalItems" current-page="pagination.current" pagination-id="itemsPagination">
                       <td class="text-center"><span>{{item._id}}</span></td>
-                      <td ng-if="hasThumb()" ng-class="item.genericThumb && item.genericThumb.imgix ? &quot;thumbnail&quot; : &quot;&quot;"><img class="poster img-responsive" src="{{item.genericThumb.imgix}}?fit=crop&amp;w=200&amp;h=160"/></td>
+                      <td ng-if="hasThumb()" ng-class="item.genericThumb && item.genericThumb.imgix ? 'thumbnail' : ''"><img class="poster img-responsive" src="{{item.genericThumb.imgix}}?fit=crop&amp;w=200&amp;h=160"/></td>
                       <td class="text-center"><strong>{{item.genericTitle}}</strong><br/><span class="text-muted">{{item.synopsis | limitTo:100}}{{item.synopsis.length > 100 ? '...' : ''}}</span></td>
                       <td class="text-center" ng-if="hasMail()"><strong>{{item.email}}</strong></td>
                       <td class="text-center" ng-if="type == 'video'">
@@ -64,7 +64,7 @@
                       <td class="text-center" ng-if="type == 'episode'"><strong>{{item.season.seasonNumber}}</strong></td>
                       <td class="text-center" ng-if="type == 'episode'"><strong>{{item.episodeNumber}}</strong></td>
                       <td class="text-center" ng-if="type != 'store'">
-                        <button class="btn btn-xs btn-default" ng-click="activateIndex(item)" uib-tooltip="{{item.active ? &quot;remove from prod&quot; : &quot;push in prod&quot;}}"><span ng-class="item.active ? &quot;text-success&quot;:&quot;text-danger&quot;"><i class="fa" ng-class="item.active ? &quot;fa-toggle-on&quot;: &quot;fa-toggle-off&quot;"></i></span></button>
+                        <button class="btn btn-xs btn-default" ng-click="activateIndex(item)" uib-tooltip="{{item.active ? 'remove from prod' : 'push in prod'}}"><span ng-class="item.active ? 'text-success':'text-danger'"><i class="fa" ng-class="item.active ? 'fa-toggle-on': 'fa-toggle-off'"></i></span></button>
                       </td>
                       <td class="pull-right">
                         <button class="btn btn-xs btn-primary" ng-click="editIndex(item)" uib-tooltip="Edit"><span class="glyphicon glyphicon-pencil"></span></button>

@@ -24,7 +24,7 @@
   <div class="form-group">
     <label class="control-label">Associated pins</label>
     <tags-input ng-model="item.pins" placeholder="Search pin" add-from-autocomplete-only="true" display-property="title" key-property="_id">
-      <auto-complete source="searchFields(&quot;life/pins&quot;,$query)" template="life-pins-template" min-length="0" load-on-focus="true" load-on-empty="true" max-results-to-show="32"></auto-complete>
+      <auto-complete source="searchFields('life/pins',$query)" template="life-pins-template" min-length="0" load-on-focus="true" load-on-empty="true" max-results-to-show="32"></auto-complete>
     </tags-input>
     <script type="text/ng-template" id="life-pins-template">
       <div class="tag-template"><span>{{data.title}}</span></div>

@@ -6,61 +6,61 @@
 </div>
 <div class="modal-body">
   <form role="form">
-    <div ng-if="modalType === &quot;category&quot;">
+    <div ng-if="modalType === 'category'">
       <categorys></categorys>
     </div>
-    <div ng-if="modalType === &quot;pres&quot;">
+    <div ng-if="modalType === 'pres'">
       <press></press>
     </div>
-    <div ng-if="modalType === &quot;video&quot;">
+    <div ng-if="modalType === 'video'">
       <videos></videos>
     </div>
-    <div ng-if="modalType === &quot;language&quot;">
+    <div ng-if="modalType === 'language'">
       <languages></languages>
     </div>
-    <div ng-if="modalType === &quot;image&quot;">
+    <div ng-if="modalType === 'image'">
       <images></images>
     </div>
-    <div ng-if="modalType === &quot;licensor&quot;">
+    <div ng-if="modalType === 'licensor'">
       <licensors></licensors>
     </div>
-    <div ng-if="modalType === &quot;client&quot;">
+    <div ng-if="modalType === 'client'">
       <clients></clients>
     </div>
-    <div ng-if="modalType === &quot;user&quot;">
+    <div ng-if="modalType === 'user'">
       <users></users>
     </div>
-    <div ng-if="modalType === &quot;actor&quot;">
+    <div ng-if="modalType === 'actor'">
       <actors></actors>
     </div>
-    <div ng-if="modalType === &quot;post&quot;">
+    <div ng-if="modalType === 'post'">
       <posts></posts>
     </div>
-    <div ng-if="modalType === &quot;config&quot;">
+    <div ng-if="modalType === 'config'">
       <configs></configs>
     </div>
-    <div ng-if="modalType === &quot;widget&quot;">
+    <div ng-if="modalType === 'widget'">
       <widgets></widgets>
     </div>
-    <div ng-if="modalType === &quot;work&quot;">
+    <div ng-if="modalType === 'work'">
       <works></works>
     </div>
-    <div ng-if="modalType === &quot;store&quot;">
+    <div ng-if="modalType === 'store'">
       <stores></stores>
     </div>
-    <div ng-if="modalType === &quot;notification&quot;">
+    <div ng-if="modalType === 'notification'">
       <notifications></notifications>
     </div>
-    <div ng-if="modalType !== &quot;pres&quot; && modalType !== &quot;category&quot; && modalType !== &quot;video&quot; && modalType !== &quot;language&quot; && modalType !== &quot;image&quot; && modalType !== &quot;licensor&quot; && modalType !== &quot;client&quot; && modalType !== &quot;user&quot; && modalType !== &quot;actor&quot; && modalType !== &quot;post&quot; && modalType !== &quot;config&quot; && modalType !== &quot;widget&quot; && modalType !== &quot;work&quot; && modalType !== &quot;store&quot; && modalType !== &quot;notification&quot;">
+    <div ng-if="modalType !== 'pres' && modalType !== 'category' && modalType !== 'video' && modalType !== 'language' && modalType !== 'image' && modalType !== 'licensor' && modalType !== 'client' && modalType !== 'user' && modalType !== 'actor' && modalType !== 'post' && modalType !== 'config' && modalType !== 'widget' && modalType !== 'work' && modalType !== 'store' && modalType !== 'notification'">
       <div class="form-group">
         <label class="control-label" for="type">Type</label>
       </div>
       <div class="form-group">
         <div class="btn-group">
-          <label class="btn btn-primary" ng-model="item.type" btn-radio="&quot;movie&quot;" ng-if="isFilm()">Movie</label>
-          <label class="btn btn-primary" ng-model="item.type" btn-radio="&quot;serie&quot;" ng-if="isFilm()">Série</label>
-          <label class="btn btn-primary" ng-model="item.type" btn-radio="&quot;season&quot;" ng-if="isSeason()">Season</label>
-          <label class="btn btn-primary" ng-model="item.type" btn-radio="&quot;episode&quot;" ng-if="isEpisode()">Episode</label>
+          <label class="btn btn-primary" ng-model="item.type" btn-radio="'movie'" ng-if="isFilm()">Movie</label>
+          <label class="btn btn-primary" ng-model="item.type" btn-radio="'serie'" ng-if="isFilm()">Série</label>
+          <label class="btn btn-primary" ng-model="item.type" btn-radio="'season'" ng-if="isSeason()">Season</label>
+          <label class="btn btn-primary" ng-model="item.type" btn-radio="'episode'" ng-if="isEpisode()">Episode</label>
         </div>
       </div>
       <div class="form-group">
@@ -73,26 +73,26 @@
       <div class="form-group">
         <label class="control-label" for="thumb">Logo</label>
         <div>
-          <input class="form-control" type="text" ng-model="item.logo" placeholder="Search logo" uib-typeahead="image as image.name for image in loadImages($viewValue, &quot;logo&quot;) | limitTo: 30" uib-typeahead-template-url="imagesTemplate.html" style="display:inline;width:80%;"/>
-          <button class="btn btn-s btn-primary" ng-click="uploadImage(&quot;logo&quot;)" style="display:inline;">Upload</button>
+          <input class="form-control" type="text" ng-model="item.logo" placeholder="Search logo" uib-typeahead="image as image.name for image in loadImages($viewValue, 'logo') | limitTo: 30" uib-typeahead-template-url="imagesTemplate.html" style="display:inline;width:80%;"/>
+          <button class="btn btn-s btn-primary" ng-click="uploadImage('logo')" style="display:inline;">Upload</button>
         </div>
       </div>
       <div class="form-group">
         <label class="control-label" for="thumb">Thumb</label>
         <div>
-          <input class="form-control" type="text" ng-model="item.thumb" placeholder="Search thumb" uib-typeahead="image as image.name for image in loadImages($viewValue, &quot;thumb&quot;) | limitTo: 30" uib-typeahead-template-url="imagesTemplate.html" style="display:inline;width:80%;"/>
-          <button class="btn btn-s btn-primary" ng-click="uploadImage(&quot;thumb&quot;)" style="display:inline;">Upload</button>
+          <input class="form-control" type="text" ng-model="item.thumb" placeholder="Search thumb" uib-typeahead="image as image.name for image in loadImages($viewValue, 'thumb') | limitTo: 30" uib-typeahead-template-url="imagesTemplate.html" style="display:inline;width:80%;"/>
+          <button class="btn btn-s btn-primary" ng-click="uploadImage('thumb')" style="display:inline;">Upload</button>
         </div>
       </div>
       <div class="form-group">
         <label class="control-label" for="poster">Poster</label>
         <div>
-          <input class="form-control" type="text" ng-model="item.poster" placeholder="Search poster" uib-typeahead="image as image.name for image in loadImages($viewValue,&quot;poster&quot;) | limitTo: 5" uib-typeahead-template-url="imagesTemplate.html" style="display:inline;width:80%;"/>
-          <button class="btn btn-s btn-primary" ng-click="uploadImage(&quot;poster&quot;)" style="display:inline;">Upload</button>
+          <input class="form-control" type="text" ng-model="item.poster" placeholder="Search poster" uib-typeahead="image as image.name for image in loadImages($viewValue,'poster') | limitTo: 5" uib-typeahead-template-url="imagesTemplate.html" style="display:inline;width:80%;"/>
+          <button class="btn btn-s btn-primary" ng-click="uploadImage('poster')" style="display:inline;">Upload</button>
         </div>
         <h6 class="control-label">Poster Profiles (16:31 adSpots)</h6>
         <div class="row fix-height" ng-if="item.poster">
-          <div class="img-ratio-adspot col-md-3"><img class="img-thumbnail" ng-src="{{item.poster.imgix}}{{extractProfile(item.poster,&quot;16:31&quot;)}}" ng-click="cropImage(item.poster,&quot;16:31&quot;)"/></div>
+          <div class="img-ratio-adspot col-md-3"><img class="img-thumbnail" ng-src="{{item.poster.imgix}}{{extractProfile(item.poster,'16:31')}}" ng-click="cropImage(item.poster,'16:31')"/></div>
         </div>
       </div>
       <div class="form-group">

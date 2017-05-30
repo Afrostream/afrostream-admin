@@ -10,15 +10,15 @@
   <div class="form-group">
     <label class="control-label" for="image">Image</label>
     <div>
-      <input class="form-control" id="image" type="text" ng-model="item.image" placeholder="Search image" uib-typeahead="image as image.name for image in loadImages($viewValue,&quot;press&quot;) | limitTo: 5" uib-typeahead-template-url="imagesTemplate.html" style="display:inline;width:80%;"/>
-      <button class="btn btn-s btn-primary" ng-click="uploadImage(&quot;press&quot;,&quot;image&quot;)" style="display:inline;">Upload</button>
+      <input class="form-control" id="image" type="text" ng-model="item.image" placeholder="Search image" uib-typeahead="image as image.name for image in loadImages($viewValue,'press') | limitTo: 5" uib-typeahead-template-url="imagesTemplate.html" style="display:inline;width:80%;"/>
+      <button class="btn btn-s btn-primary" ng-click="uploadImage('press','image')" style="display:inline;">Upload</button>
     </div>
   </div>
   <div class="form-group">
     <label class="control-label" for="pdf">Pdf</label>
     <div>
-      <input class="form-control" id="pdf" type="text" ng-model="item.pdf" placeholder="Search image" uib-typeahead="image as image.name for image in loadImages($viewValue,&quot;press&quot;) | limitTo: 5" uib-typeahead-template-url="imagesTemplate.html" style="display:inline;width:80%;"/>
-      <button class="btn btn-s btn-primary" ng-click="uploadImage(&quot;press&quot;,&quot;pdf&quot;)" style="display:inline;">Upload</button>
+      <input class="form-control" id="pdf" type="text" ng-model="item.pdf" placeholder="Search image" uib-typeahead="image as image.name for image in loadImages($viewValue,'press') | limitTo: 5" uib-typeahead-template-url="imagesTemplate.html" style="display:inline;width:80%;"/>
+      <button class="btn btn-s btn-primary" ng-click="uploadImage('press','pdf')" style="display:inline;">Upload</button>
     </div>
   </div>
   <div class="form-group">

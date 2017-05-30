@@ -44,13 +44,13 @@
               <div class="progress-bar" role="progressbar" type="dynamic" ng-style="{ 'width': item.isUploading * item.progress + '%' }"></div>
             </div>
           </td>
-          <td class="text-center" ng-if="type == &quot;image&quot;">
+          <td class="text-center" ng-if="type == 'image'">
             <div class="btn-group">
-              <button class="btn btn-xs btn-info" ng-model="item.file.imgType" btn-radio="&quot;poster&quot;"><span>Poster</span></button>
-              <button class="btn btn-xs btn-info" ng-model="item.file.imgType" btn-radio="&quot;thumb&quot;"><span>Thumb</span></button>
-              <button class="btn btn-xs btn-info" ng-model="item.file.imgType" btn-radio="&quot;logo&quot;"><span>Logo</span></button>
-              <button class="btn btn-xs btn-info" ng-model="item.file.imgType" btn-radio="&quot;actor&quot;"><span>Actor</span></button>
-              <button class="btn btn-xs btn-info" ng-model="item.file.imgType" btn-radio="&quot;pin&quot;"><span>Pin</span></button>
+              <button class="btn btn-xs btn-info" ng-model="item.file.imgType" btn-radio="'poster'"><span>Poster</span></button>
+              <button class="btn btn-xs btn-info" ng-model="item.file.imgType" btn-radio="'thumb'"><span>Thumb</span></button>
+              <button class="btn btn-xs btn-info" ng-model="item.file.imgType" btn-radio="'logo'"><span>Logo</span></button>
+              <button class="btn btn-xs btn-info" ng-model="item.file.imgType" btn-radio="'actor'"><span>Actor</span></button>
+              <button class="btn btn-xs btn-info" ng-model="item.file.imgType" btn-radio="'pin'"><span>Pin</span></button>
             </div>
           </td>
           <td class="text-center"><span ng-show="item.isSuccess"><i class="glyphicon glyphicon-ok"></i></span><span ng-show="item.isCancel"><i class="glyphicon glyphicon-ban-circle"></i></span><span ng-show="item.isError"><i class="glyphicon glyphicon-remove"></i></span></td>

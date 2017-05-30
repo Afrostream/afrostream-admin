@@ -19,14 +19,14 @@
       </div>
       <div class="form-group">
         <div class="btn-group">
-          <label class="btn btn-primary" ng-model="item.type" btn-radio="&quot;website&quot;">Website</label>
-          <label class="btn btn-primary" ng-model="item.type" btn-radio="&quot;article&quot;">Article</label>
-          <label class="btn btn-primary" ng-model="item.type" btn-radio="&quot;video&quot;">Video</label>
-          <label class="btn btn-primary" ng-model="item.type" btn-radio="&quot;rich&quot;">Rich media</label>
-          <label class="btn btn-primary" ng-model="item.type" btn-radio="&quot;audio&quot;">Audio</label>
-          <label class="btn btn-primary" ng-model="item.type" btn-radio="&quot;event&quot;">Event</label>
-          <label class="btn btn-primary" ng-model="item.type" btn-radio="&quot;image&quot;">Image</label>
-          <label class="btn btn-primary" ng-model="item.type" btn-radio="&quot;ads&quot;">Ads</label>
+          <label class="btn btn-primary" ng-model="item.type" btn-radio="'website'">Website</label>
+          <label class="btn btn-primary" ng-model="item.type" btn-radio="'article'">Article</label>
+          <label class="btn btn-primary" ng-model="item.type" btn-radio="'video'">Video</label>
+          <label class="btn btn-primary" ng-model="item.type" btn-radio="'rich'">Rich media</label>
+          <label class="btn btn-primary" ng-model="item.type" btn-radio="'audio'">Audio</label>
+          <label class="btn btn-primary" ng-model="item.type" btn-radio="'event'">Event</label>
+          <label class="btn btn-primary" ng-model="item.type" btn-radio="'image'">Image</label>
+          <label class="btn btn-primary" ng-model="item.type" btn-radio="'ads'">Ads</label>
         </div>
       </div>
       <div class="form-group">
@@ -34,16 +34,16 @@
       </div>
       <div class="form-group">
         <div class="btn-group">
-          <label class="btn btn-primary" ng-model="item.role" btn-radio="&quot;free&quot;">free</label>
-          <label class="btn btn-primary" ng-model="item.role" btn-radio="&quot;user&quot;">user</label>
-          <label class="btn btn-primary" ng-model="item.role" btn-radio="&quot;premium&quot;">premium</label>
-          <label class="btn btn-primary" ng-model="item.role" btn-radio="&quot;vip&quot;">vip</label>
+          <label class="btn btn-primary" ng-model="item.role" btn-radio="'free'">free</label>
+          <label class="btn btn-primary" ng-model="item.role" btn-radio="'user'">user</label>
+          <label class="btn btn-primary" ng-model="item.role" btn-radio="'premium'">premium</label>
+          <label class="btn btn-primary" ng-model="item.role" btn-radio="'vip'">vip</label>
         </div>
       </div>
       <div class="form-group">
         <label class="control-label">Theme</label>
         <tags-input ng-model="item.themes" placeholder="Search theme" add-from-autocomplete-only="true" display-property="label" key-property="_id">
-          <auto-complete source="searchFields(&quot;life/themes&quot;,$query)" template="life-themes-template" min-length="0" load-on-focus="true" load-on-empty="true" max-results-to-show="32"></auto-complete>
+          <auto-complete source="searchFields('life/themes',$query)" template="life-themes-template" min-length="0" load-on-focus="true" load-on-empty="true" max-results-to-show="32"></auto-complete>
         </tags-input>
         <script type="text/ng-template" id="life-themes-template">
           <div class="tag-template"><span>{{data && data.label}}</span></div>
@@ -51,7 +51,7 @@
       </div>
       <div class="form-group">
         <label class="control-label">User</label>
-        <input class="form-control" type="text" ng-model="item.user" placeholder="Search user" uib-typeahead="user as user.email for user in searchFields(&quot;users&quot;,$viewValue) | limitTo: 5"/>
+        <input class="form-control" type="text" ng-model="item.user" placeholder="Search user" uib-typeahead="user as user.email for user in searchFields('users',$viewValue) | limitTo: 5"/>
       </div>
       <label class="control-label" for="title">Title</label>
       <localize-button ng-model="item" ng-key="title"></localize-button>
@@ -67,7 +67,7 @@
             <label class="image-radio" for="{{'img_'+imgKey}}"><img class="img-thumbnail img-responsive img-scrap" ng-src="{{imgValue}}"/></label>
           </div>
         </div>
-        <button class="btn btn-s btn-primary" ng-click="uploadImage(&quot;pin&quot;,&quot;image&quot;)" style="display:inline;">Upload</button>
+        <button class="btn btn-s btn-primary" ng-click="uploadImage('pin','image')" style="display:inline;">Upload</button>
       </div>
     </div>
     <div class="form-group"><!-- editor -->

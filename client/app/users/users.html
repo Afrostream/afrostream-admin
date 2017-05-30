@@ -16,8 +16,8 @@
     <label for="gender">gender</label>
     <div class="form-group">
       <div class="btn-group">
-        <label class="btn btn-primary" ng-model="item.gender" btn-radio="&quot;men&quot;">Man</label>
-        <label class="btn btn-primary" ng-model="item.gender" btn-radio="&quot;women&quot;">Woman</label>
+        <label class="btn btn-primary" ng-model="item.gender" btn-radio="'men'">Man</label>
+        <label class="btn btn-primary" ng-model="item.gender" btn-radio="'women'">Woman</label>
       </div>
     </div>
     <div class="form-group">
@@ -98,8 +98,8 @@
     <legend ng-click="toggleCurrentFieldset($event)">Various</legend>
     <div class="form-group">
       <div class="btn-group">
-        <label class="btn btn-primary" ng-model="item.token.role" btn-radio="&quot;user&quot;" disabled="disabled">User</label>
-        <label class="btn btn-primary" ng-model="item.token.role" btn-radio="&quot;admin&quot;" disabled="disabled">Admin</label>
+        <label class="btn btn-primary" ng-model="item.token.role" btn-radio="'user'" disabled="disabled">User</label>
+        <label class="btn btn-primary" ng-model="item.token.role" btn-radio="'admin'" disabled="disabled">Admin</label>
       </div>
     </div>
     <input id="beta" type="checkbox" ng-model="item.beta"/>

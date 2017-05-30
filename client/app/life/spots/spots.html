@@ -17,16 +17,16 @@
   </div>
   <div class="form-group">
     <div class="btn-group">
-      <label class="btn btn-primary" ng-model="item.type" btn-radio="&quot;banner&quot;">Banner</label>
-      <label class="btn btn-primary" ng-model="item.type" btn-radio="&quot;horizontal&quot;">Rectangle</label>
-      <label class="btn btn-primary" ng-model="item.type" btn-radio="&quot;carre&quot;">Carre</label>
-      <label class="btn btn-primary" ng-model="item.type" btn-radio="&quot;vertical&quot;">Vertical</label>
+      <label class="btn btn-primary" ng-model="item.type" btn-radio="'banner'">Banner</label>
+      <label class="btn btn-primary" ng-model="item.type" btn-radio="'horizontal'">Rectangle</label>
+      <label class="btn btn-primary" ng-model="item.type" btn-radio="'carre'">Carre</label>
+      <label class="btn btn-primary" ng-model="item.type" btn-radio="'vertical'">Vertical</label>
     </div>
   </div>
   <div class="form-group">
     <label class="control-label">Theme</label>
     <tags-input ng-model="item.themes" placeholder="Search theme" add-from-autocomplete-only="true" display-property="label" key-property="_id">
-      <auto-complete source="searchFields(&quot;life/themes&quot;,$query)" template="life-themes-template" min-length="0" load-on-focus="true" load-on-empty="true" max-results-to-show="32"></auto-complete>
+      <auto-complete source="searchFields('life/themes',$query)" template="life-themes-template" min-length="0" load-on-focus="true" load-on-empty="true" max-results-to-show="32"></auto-complete>
     </tags-input>
     <script type="text/ng-template" id="life-themes-template">
       <div class="tag-template"><span>{{data && data.label}}</span></div>
@@ -35,8 +35,8 @@
   <div class="form-group">
     <label class="control-label" for="image">Image</label>
     <div><img class="img-thumbnail img-responsive" ng-src="{{item.image.imgix}}"/>
-      <input class="form-control" type="text" ng-model="item.image" placeholder="Search image" uib-typeahead="image as image.name for image in loadImages($viewValue, &quot;spot&quot;) | limitTo: 30" uib-typeahead-template-url="imagesTemplate.html" style="display:inline;width:80%;"/>
-      <button class="btn btn-s btn-primary" ng-click="uploadImage(&quot;spot&quot;,&quot;image&quot;)" style="display:inline;">Upload</button>
+      <input class="form-control" type="text" ng-model="item.image" placeholder="Search image" uib-typeahead="image as image.name for image in loadImages($viewValue, 'spot') | limitTo: 30" uib-typeahead-template-url="imagesTemplate.html" style="display:inline;width:80%;"/>
+      <button class="btn btn-s btn-primary" ng-click="uploadImage('spot','image')" style="display:inline;">Upload</button>
     </div>
   </div>
   <div class="form-group">

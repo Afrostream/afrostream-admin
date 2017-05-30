@@ -19,10 +19,10 @@
   <label class="control-label" for="sound">Sound</label>
   <input class="form-control" id="sound" type="text" ng-model="item.sound" placeholder="The sound to play when the device receives the notification."/>
   <label class="control-label">Priority</label>
-  <select class="form-control" type="text" ng-model="item.priority" ng-options="option as option for option in [&quot;normal&quot;, &quot;high&quot;]" style="width:auto;"></select>
+  <select class="form-control" type="text" ng-model="item.priority" ng-options="option as option for option in ['normal', 'high']" style="width:auto;"></select>
   <label class="control-label" for="messageId">MessageId Firebase</label>
   <input class="form-control" disabled="disabled" id="messageId" type="text" ng-model="item.messageId" placeholder="The notifications Firebase messageId."/>
-  <div class="form-group" ng-class="{&quot;has-error&quot; : !wellFormed}">
+  <div class="form-group" ng-class="{'has-error' : !wellFormed}">
     <label class="control-label">Data</label>
     <textarea class="form-control" ng-model="jsonString" rows="10"></textarea>
   </div>
