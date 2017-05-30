@@ -29,7 +29,6 @@
     "xmlbuilder": "https://registry.npmjs.org/xmlbuilder/-/xmlbuilder-2.5.2.tgz"
   },
   "devDependencies": {
-    "connect-livereload": "^0.6.0",
     "mocha": "^3.0.2"
   },
   "engines": {

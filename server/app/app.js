@@ -21,10 +21,8 @@ switch (process.env.NODE_ENV) {
     app.use(express.static(app.get('appPath')));
     break;
   default:
-    var middlewareLiveReload = require('connect-livereload');
     var middlewareErrorHandler = require('errorhandler');
 
-    app.use(middlewareLiveReload());
     app.use(middlewareErrorHandler());
     app.set('appPath', path.join(global.__basedir, 'client'));
     app.use(express.static(path.join(global.__basedir, '.tmp')));
