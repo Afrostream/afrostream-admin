@@ -16,7 +16,7 @@ angular.module('afrostreamAdminApp')
       angular.extend(modalScope, scope);
 
       return $uibModal.open({
-        templateUrl: 'components/modal/modal.html',
+        templateUrl: '/components/modal/modal.html',
         windowClass: modalClass,
         scope: modalScope
       });

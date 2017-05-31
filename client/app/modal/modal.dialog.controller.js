@@ -112,7 +112,7 @@ angular.module('afrostreamAdminApp')
       var imgType = type || 'poster';
       var imgKey = key || imgType;
       var m = $uibModal.open({
-        templateUrl: 'app/images/modal/upload.html',
+        templateUrl: 'app/images/modal/upload.dialog.html',
         controller: 'ImagesUploadDialogCtrl',
         size: 'lg',
         scope: $scope,
