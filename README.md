@@ -24,14 +24,13 @@ grunt build && sleep 1 && npm run localstaging
 
 # TODO
 
-- remplacer les templates jade par du html
-- clean les css pour avoir 1 seul fichier
-- supprimer grunt, en ayant une simple page qui charge l'ensemble des js
-  => pas de compilation => pas de difficulté a debugger / reload / etc
-    (actuellement le hot reload fonctionne super mal, obligé de rebuilder ...)
+- refactor afrostream-request
+  passing request as arguments of request => NODE_DEBUG=http <= dies in Maximum call stack size exceed...
+- rename 
+
 - renommer tout ce qui est factory "factory" , service "service", etc...
    (actuellement .service peut contenir des factory, etc)
-- ajouter un eslint
+- add eslint
 
 eventuellement:
 - passer sur une autre techno, ex: react + redux pour être iso front
