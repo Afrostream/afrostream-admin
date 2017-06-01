@@ -125,7 +125,7 @@ angular.module('afrostreamAdminApp')
     });
 
     var modalOpts = {
-      templateUrl: $state.current.modalTemplateUrl || '/app/modal/modal.dialog.html', // Url du template HTML
+      templateUrl: $state.current.modalTemplateUrl || '/app/modal/modal.html', // Url du template HTML
       controller: $state.current.modalCtrl || 'ModalDialogCtrl',
       size: 'lg',
       scope: $scope,
