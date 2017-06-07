@@ -11,13 +11,13 @@
       <button class="btn btn-primary" type="submit" ng-click="updateItem()" ng-if="item._id && !loading">Update</button>
     </div>
     <div class="form-group" ng-if="item._id && !loading">
-      <label class="control-label">Sync list with provider</label>
+      <label class="control-label">Providers</label>
         <table style="margin-top:10px">
           <tr ng-repeat="asso in assoProviders">
             <td width="100" style="text-align:center">{{asso.provider.name}}</td>
             <td>
                 <button class="btn btn-primary" type="submit" ng-if="!asso.linked" style="margin-top:0;background-color:green" ng-click="link(asso.provider)">CREATE</button>
-                <button class="btn btn-danger" type="submit" ng-if="asso.linked" style="margin-top:0">DELETE</button>
+                <button class="btn btn-danger" type="submit" ng-if="asso.linked" style="margin-top:0" ng-click="unlink(asso.provider)">DELETE</button>
             </td>
             <td>
               <div ng-if="asso.info.link">
@@ -33,7 +33,6 @@
 </div>
 <div class="modal-footer">
   <div class="form-group">
-
     <button class="btn btn-primary" ng-click="cancel()">Cancel</button>
   </div>
 </div>

@@ -96,18 +96,43 @@ angular.module('afrostreamAdminApp')
         data: provider
       })
         .then(function () {
-          $scope.loading = false;
           return $scope.getItem();
         })
         .then(function () {
           updateAssoProviders();
         })
         .then(
-          function () { }
+          function () {
+            $scope.loading = false;
+          }
         , function (err) {
-          $scope.loading = false;
-          $scope.error = err.message;
-        });
+            $scope.loading = false;
+            $scope.error = err.message;
+          });
+    }
+
+    $scope.unlink = function (provider) {
+      $scope.error = '';
+      $scope.loading = true;
+
+      $http({
+        method: 'DELETE',
+        url: '/api/mailer/lists/'+$scope.item._id+'/providers/'+provider._id
+      })
+        .then(function () {
+          return $scope.getItem();
+        })
+        .then(function () {
+          updateAssoProviders();
+        })
+        .then(
+          function () {
+            $scope.loading = false;
+          }
+        , function (err) {
+            $scope.loading = false;
+            $scope.error = err.message;
+          });
     }
 
   });
