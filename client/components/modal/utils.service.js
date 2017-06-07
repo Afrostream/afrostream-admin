@@ -39,7 +39,7 @@ angular.module('afrostreamAdminApp')
                  $scope.item = item; // on tente un hotfix..
                  return;
                }
-               $http.get('/api/' + $scope.directiveType + '/' + item._id, {params: {backo: 1}}).then(function (result) {
+               return $http.get('/api/' + $scope.directiveType + '/' + item._id, {params: {backo: 1}}).then(function (result) {
                  // FIXME: network code inside modal/* data/* should be in a single place
                  //  & user $httpProvider to filter dates..
                  var item = result.data;
