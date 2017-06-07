@@ -63,13 +63,13 @@
                       <td class="text-center" ng-if="type == 'season'"><strong>{{item.seasonNumber}}</strong></td>
                       <td class="text-center" ng-if="type == 'episode'"><strong>{{item.season.seasonNumber}}</strong></td>
                       <td class="text-center" ng-if="type == 'episode'"><strong>{{item.episodeNumber}}</strong></td>
-                      <td class="text-center" ng-if="type != 'store'">
+                      <td class="text-center" ng-if="type != 'store' && type != 'mailer/list'">
                         <button class="btn btn-xs btn-default" ng-click="activateIndex(item)" uib-tooltip="{{item.active ? 'remove from prod' : 'push in prod'}}"><span ng-class="item.active ? 'text-success':'text-danger'"><i class="fa" ng-class="item.active ? 'fa-toggle-on': 'fa-toggle-off'"></i></span></button>
                       </td>
                       <td class="pull-right">
                         <button class="btn btn-xs btn-primary" ng-click="editIndex(item)" uib-tooltip="Edit"><span class="glyphicon glyphicon-pencil"></span></button>
-                        <button class="btn btn-xs btn-info" ng-click="cloneIndex(item)" uib-tooltip="Clone" ng-if="!hasMail()"><span class="fa fa-clone"></span></button>
-                        <button class="btn btn-xs btn-danger" ng-click="deleteIndex(item.genericTitle, item)" uib-tooltip="Delete"><span class="glyphicon glyphicon-trash"></span></button>
+                        <button class="btn btn-xs btn-info" ng-click="cloneIndex(item)" uib-tooltip="Clone" ng-if="!hasMail() && type != 'mailer/list'"><span class="fa fa-clone"></span></button>
+                        <button class="btn btn-xs btn-danger" ng-click="deleteIndex(item.genericTitle, item)" uib-tooltip="Delete" ng-if="type != 'mailer/list'"><span class="glyphicon glyphicon-trash"></span></button>
                       </td>
                     </tr>
                   </tbody>
