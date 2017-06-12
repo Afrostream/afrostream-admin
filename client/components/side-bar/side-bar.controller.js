@@ -7,6 +7,14 @@ angular.module('afrostreamAdminApp')
       'state': 'main',
       'icon': 'fa-tachometer'
     }, {
+      'title': 'Mailer',
+      'state': 'mailer',
+      'icon': 'fa-envelope'
+    }, {
+      'title': 'PF',
+      'state': 'pf',
+      'icon': 'fa-cogs'
+    }, {
       'title': 'Categorys',
       'state': 'categorys',
       'icon': 'fa-bookmark'
@@ -86,10 +94,6 @@ angular.module('afrostreamAdminApp')
       'title': 'Life',
       'state': 'life',
       'icon': 'fa-user'
-    }, {
-      'title': 'Mailer',
-      'state': 'mailer',
-      'icon': 'fa-envelope'
     }, {
       'title': 'Widgets',
       'state': 'widgets',

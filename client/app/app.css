@@ -456,3 +456,28 @@ footer.footer {
 .sidebar-footer .fa-2 {
   font-size: 2em;
 }
+
+.pf {
+  padding-left:30px
+}
+.pf .search-form td {
+  padding-bottom:10px;
+}
+.pf .search-form .search-name {
+  padding-right:10px;
+  text-align: right;
+}
+
+.pf .search-results .result-row {
+  width:100%;
+  border: 5px solid gray;
+}
+
+.pf .search-results th {
+  text-align:center;
+  background-color:#EFEFEF;
+}
+
+.pf .search-results .backo-info {
+  width:100%;
+}

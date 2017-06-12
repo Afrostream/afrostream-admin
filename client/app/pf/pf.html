@@ -1,0 +1,103 @@
+<div id="page-wrapper" ng-class="{open: toggle}" ng-cloak="ng-cloak">
+  <side-bar></side-bar>
+  <div id="content-wrapper">
+    <navbar></navbar>
+    <div class="pf">
+
+      <h2> PF Browser </h2>
+
+      <div class="search-form">
+        <h3>Search pf content info</h3>
+
+        <table border=0 cellpadding=3>
+          <tr><td class="search-name">by title </td><td><input type="text" name="title" ng-model="searchTitle"/></td><td><button class="btn btn-primary" type="button" ng-click="search()" style="margin:0;margin-left:20px">SEARCH</button></td></tr>
+          <tr><td class="search-name">by video id</td><td><input type="text" name="videoId" ng-model="searchVideoId"/></td><td><button class="btn btn-primary" type="button" ng-click="search()" style="margin:0;margin-left:20px">SEARCH</button></td></tr>
+          <tr><td class="search-name">by episode id</td><td><input type="text" name="episodeId" ng-model="searchEpisodeId"/></td><td><button class="btn btn-primary" type="button" ng-click="search()" style="margin:0;margin-left:20px">SEARCH</button></td></tr>
+          <tr><td class="search-name">by movie id</td><td><input type="text" name="movieId" ng-model="searchMovieId"/></td><td><button class="btn btn-primary" type="button" ng-click="search()" style="margin:0;margin-left:20px">SEARCH</button></td></tr>
+          <tr><td class="search-name">by PF md5Hash</td><td><input type="text" name="pfMd5Hash" ng-model="searchPfMd5Hash"/></td><td><button class="btn btn-primary" type="button" ng-click="search()" style="margin:0;margin-left:20px">SEARCH</button></td></tr>
+          <tr><td class="search-name">by PF contentId</td><td><input type="text" name="pfContentId" ng-model="searchPfContentId"/></td><td><button class="btn btn-primary" type="button" ng-click="search()" style="margin:0;margin-left:20px">SEARCH</button></td></tr>
+          <!--<tr><td class="search-name">by PF uuid</td><td><input type="text" name="pfUuid" ng-model="searchPfUuid"/></td><td><button class="btn btn-primary" type="button" ng-click="search()" style="margin:0;margin-left:20px">SEARCH</button></td></tr> -->
+        </table>
+      </div>
+
+      <div class="search-results">
+        <h3>Results</h3>
+
+          <div ng-repeat="pfContent in pfContentList" class="result-row">
+
+            <table class="backo-info" width="100%">
+              <tr><th colspan="4">BACKO INFO</th></tr>
+              <tr><td>Movie Id</td><td>Movie title</td><td>type</td><td>link</td></tr>
+              <tr><td>unknown</td><td>unknown</td><td>unknown</td><td>unknown</td></tr>
+              <tr><td>Season Id</td><td>Season title</td><td>Season number</td><td>link</td></tr>
+              <tr><td>unknown</td><td>unknown</td><td>unknown</td><td>unknown</td></tr>
+              <tr><td>Episode Id</td><td>Episode title</td><td>Episode number</td><td>link</td></tr>
+              <tr><td>unknown</td><td>unknown</td><td>unknown</td><td>unknown</td></tr>
+            </table>
+            <br/>
+            <table width="100%">
+              <tr>
+                <th colspan="2">PF Infos</th>
+              </tr>
+              <tr>
+                <td width="100">id</td><td><a target="_blank" href="http://p-afsmsch-001.afrostream.tv:4000/api/contents/{{pfContent.contentId}}">{{pfContent.contentId}}</a></td>
+              </tr>
+              <tr><td>STATE</td><td><b>{{pfContent.state}}</b></td></tr>
+              <tr><td>DRM</td><td>{{pfContent.drm}}</td></tr>
+              <tr><td>md5Hash</td><td>{{pfContent.md5Hash}}</td></tr>
+              <tr><td>filename</td><td>{{pfContent.filename}}</td></tr>
+              <tr><td>size</td><td>{{pfContent.size}}</td></tr>
+              <tr>
+                <td valign="top">broadcasters</td>
+                <td>
+                  <table>
+                    <tr><th width="200">BROADCASTER</th><td width="30"></td><th  width="400">PROFILES</th></tr>
+                    <tr ng-repeat="broadcaster in pfContent.broadcasters">
+                      <td>{{broadcaster.name}}</td>
+                      <td></td>
+                      <td><span ng-repeat="profile in broadcaster.profiles">{{profile.name}}</span></td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
+            <br/>
+            <table width="100%">
+              <tr>
+                <td width="100" valign="top">actions</td>
+                <td>
+                  <button class="btn btn-primary" type="button">UPLOAD .ts</button>
+                  <br/>
+                  <button class="btn btn-primary" type="button">TRANSCODE AFROSTREAM</button>
+                  <button class="btn btn-primary" type="button">TRANSCODE BOUYGUES</button>
+                  <button class="btn btn-primary" type="button">TRANSCODE ORANGE</button>
+                  <button class="btn btn-primary" type="button">TRANSCODE ORANGECI</button>
+                  <button class="btn btn-primary" type="button">TRANSCODE BOUYGUESMIAMI</button>
+                </td>
+              </tr>
+            </table>
+            <br/>
+            <table width="300">
+              <tr><th colspan="2">PF Links</th></tr>
+              <tr><td>API PF Content</td><td><a target="_blank" href="http://p-afsmsch-001.afrostream.tv:4000/api/contents/{{pfContent.contentId}}">link</a></td></tr>
+              <tr><td>API PF Assets</td><td><a target="_blank" href="http://p-afsmsch-001.afrostream.tv:4000/api/contents/{{pfContent.contentId}}/assets">link</a></td></tr>
+            </table>
+
+
+<!--
+                FIXME:
+                  - info sur le content côté PF
+                    - son status
+                    - ses streams
+                  - la liste de ses assets, => sur quel profil a été broadcasté
+                  - possibilité de call TRANSCODE vers une plateforme
+                  - possibilité d'upload ingrid
+                  - liens vers la nvl api PF
+                  - liens vers l'ancienne api PF
+-->
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
