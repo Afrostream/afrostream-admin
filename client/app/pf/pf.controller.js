@@ -135,7 +135,7 @@ angular.module('afrostreamAdminApp')
           broadcasters: broadcasterNames.join(',')
         }
       });
-    }
+    };
 
     $scope.transcode = function (options) {
       if (options.profile) {
@@ -153,5 +153,13 @@ angular.module('afrostreamAdminApp')
           }
         });
       }
-    }
+    };
+
+    $scope.uploadToBouyguesSFTP = function (options) {
+      return $http.get('/api/nodePF/uploadToBouyguesSFTP', {
+        params: {
+          contentId: options.pfContent.contentId
+        }
+      });
+    };
   });
