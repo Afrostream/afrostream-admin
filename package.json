@@ -29,7 +29,8 @@
     "xmlbuilder": "https://registry.npmjs.org/xmlbuilder/-/xmlbuilder-2.5.2.tgz"
   },
   "devDependencies": {
-    "mocha": "^3.0.2"
+    "mocha": "^3.0.2",
+    "nodemon": "^1.11.0"
   },
   "engines": {
     "node": "6.9.1",
@@ -38,9 +39,9 @@
   "scripts": {
     "postinstall": "bower install",
     "start": "node server/server.js",
-    "localstaging": "node server/server-localstaging.js",
+    "localstaging": "node_modules/.bin/nodemon server/server-localstaging.js",
     "staging": "node server/server-staging.js",
-    "dev": "node server/server.js"
+    "dev": "node_modules/.bin/nodemon server/server.js"
   },
   "private": true
 }
