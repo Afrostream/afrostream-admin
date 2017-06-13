@@ -2,6 +2,34 @@
 
 angular.module('afrostreamAdminApp')
   .controller('PfCtrl', function ($scope, $http, $interval, jobs) {
+    $scope.loading = true;
+    $scope.profileList = [];
+    $scope.broadcasterList = [];
+    $http.get('/api/nodePF/profiles').then(function (result) {
+      $scope.profileList = result.data;
+      $scope.profileList.sort(function (profileA, profileB) {
+
+        var nameA = profileA.broadcaster + profileA.name;
+        var nameB = profileB.broadcaster + profileB.name;
+
+        if (nameA > nameB) return 1;
+        if (nameA < nameB) return -1;
+        return 0;
+      });
+
+      $scope.loading = false;
+      $scope.broadcasterList = result.data.reduce(
+        function (p, c) {
+          var broadcasterName = c.broadcaster;
+          if (p.indexOf(broadcasterName) === -1 && broadcasterName) {
+            p.push(broadcasterName);
+          }
+          return p;
+        }, []).map(function (broadcasterName) {
+          return { name: broadcasterName };
+        });
+    });
+
     $scope.search = {};
     $scope.searchByContentId = function () {
       $scope.pfContentIdList = [ $scope.search.pfContentId ];
@@ -9,27 +37,27 @@ angular.module('afrostreamAdminApp')
     };
 
     $scope.pfContentIdList = [];
-    $scope.searchTitle = '';
-    $scope.searchVideoId = '';
-    $scope.searchEpisodeId = '';
-    $scope.searchMovieId = '';
-    $scope.searchPfMd5Hash = '7684d1d07b72e4f912545362c2cb2ded';
-    $scope.searchPfContentId = '';
+    $scope.search = {};
+    $scope.search.title = '';
+    $scope.search.videoId = '';
+    $scope.search.episodeId = '';
+    $scope.search.movieId = '';
+    $scope.search.pfMd5Hash = '';
+    $scope.search.pfContentId = '';
 
     //var baseUrl = 'http://p-afsmsch-001.afrostream.tv:4042';
     // /api/contents/12858'?populate=assets.preset.profile
-
     $scope.pfContentList = [];
 
     $scope.search = function () {
       $http.get('/api/nodePF/contents', {
         params: {
-          title: $scope.searchTitle,
-          videoId: $scope.searchVideoId,
-          episodeId: $scope.searchEpisodeId,
-          movieId: $scope.searchMovieId,
-          pfMd5Hash: $scope.searchPfMd5Hash,
-          contentId: $scope.searchPfContentId
+          title: $scope.search.title,
+          videoId: $scope.search.videoId,
+          episodeId: $scope.search.episodeId,
+          movieId: $scope.search.movieId,
+          pfMd5Hash: $scope.search.pfMd5Hash,
+          contentId: $scope.search.pfContentId
         }
       }).then(function (result) {
         /*
@@ -92,7 +120,38 @@ angular.module('afrostreamAdminApp')
 
           return content;
         });
-        console.log($scope.pfContentList);
       });
     };
+
+    $scope.transcodeAllBroadcasters = function (options) {
+      var broadcasterNames = $scope.broadcasterList.map(
+        function (broadcaster) {
+          return broadcaster.name
+        }
+      );
+      return $http.get('/api/pf/transcode', {
+        params: {
+          pfMd5Hash: options.pfContent.md5Hash,
+          broadcasters: broadcasterNames.join(',')
+        }
+      });
+    }
+
+    $scope.transcode = function (options) {
+      if (options.profile) {
+        return $http.get('/api/pf/transcode', {
+          params: {
+            pfMd5Hash: options.pfContent.md5Hash,
+            profileIds: options.profile.profileId
+          }
+        });
+      } else {
+        return $http.get('/api/pf/transcode', {
+          params: {
+            pfMd5Hash: options.pfContent.md5Hash,
+            broadcasters: options.broadcaster.name
+          }
+        });
+      }
+    }
   });
