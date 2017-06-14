@@ -7,8 +7,17 @@
     <div class="form-group">
       <label class="control-label">Name</label>
       <input class="form-control" type="text" ng-model="item.name" style="display:inline;width:60%"/>
-      <button class="btn btn-primary" type="submit" ng-click="addItem()" ng-if="!item._id && !loading">Create</button>
-      <button class="btn btn-primary" type="submit" ng-click="updateItem()" ng-if="item._id && !loading">Update</button>
+    </div>
+    <div class="form-group">
+      <label class="control-label">Query (optionnal)</label>
+      <table width="100%">
+        <tr><td>
+          <textarea class="form-control" ng-model="item.query" placeholder='SELECT email FROM "Users" WHERE email is not null' style="height:100px;width:100%"></textarea>
+          </td>
+          <td>
+          <button class="btn btn-primary" type="button" style="height:100px;background-color:green;margin:0;margin-left:5px;" ng-disabled="!item.query" ng-click="">RUN</button>
+        </td></tr>
+      </table>
     </div>
     <div class="form-group" ng-if="item._id && !loading">
       <label class="control-label">Providers</label>
@@ -33,6 +42,8 @@
 </div>
 <div class="modal-footer">
   <div class="form-group">
+    <button class="btn btn-primary" type="submit" ng-click="addItem()" ng-if="!item._id && !loading">Create</button>
+    <button class="btn btn-primary" type="submit" ng-click="updateItem()" ng-if="item._id && !loading">Update</button>
     <button class="btn btn-primary" ng-click="cancel()">Cancel</button>
   </div>
 </div>
