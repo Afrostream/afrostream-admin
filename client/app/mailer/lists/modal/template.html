@@ -12,12 +12,51 @@
       <label class="control-label">Query (optionnal)</label>
       <table width="100%">
         <tr><td>
-          <textarea class="form-control" ng-model="item.query" placeholder='SELECT email FROM "Users" WHERE email is not null' style="height:100px;width:100%"></textarea>
+          <textarea class="form-control" ng-model="item.query" placeholder='SELECT email FROM "Users" WHERE email is not null' style="height:100px;width:100%" ng-change="disableRun=true"></textarea>
           </td>
           <td>
-          <button class="btn btn-primary" type="button" style="height:100px;background-color:green;margin:0;margin-left:5px;" ng-disabled="!item.query" ng-click="">RUN</button>
+          <!--<button class="btn btn-primary" type="button" style="height:100px;margin:0;margin-left:5px;" ng-click="updateQuery(item.query)">UPDATE</button>-->
+          <button class="btn btn-primary" type="button" style="height:100px;background-color:green;margin:0;margin-left:5px;" ng-disabled="!item.query" ng-click="run(item.query)">RUN</button>
         </td></tr>
       </table>
+    </div>
+    <div class="form-group">
+      <label class="control-label">List infos</label>
+      <div>
+      {{item.numberOfSubscribers||0}} subscribers <button class="btn btn-primary" type="button" style="height:20px;background-color:#ABABAB;margin:0;margin-left:5px;padding:0;border:0;width:100px" ng-disabled="!item.numberOfSubscribers" ng-click="displayAssoSubscriberList()">display</button>
+      <div ng-if="assoSubscribersList.length" style="overflow:scroll;height:200px;width:100%">
+        <table border=1>
+          <tr>
+            <th>uuid</th>
+            <th>email</th>
+            <th>state</th>
+            <th>active date</th>
+            <th>unsubscribed date</th>
+            <th>disabled</th>
+          </tr>
+          <tr ng-repeat="assoSubscriber in assoSubscribersList">
+            <td>
+              {{assoSubscriber.subscriber.referenceUuid}}
+            </td>
+            <td>
+              {{assoSubscriber.subscriber.referenceEmail}}
+            </td>
+            <td>
+              {{assoSubscriber.state}}
+            </td>
+            <td>
+              {{assoSubscriber.dateActive}}
+            </td>
+            <td>
+              {{assoSubscriber.dateUnsubscribed}}
+            </td>
+            <td>
+              {{assoSubscriber.disabled?"disabled":"active"}}
+            </td>
+          </tr>
+        </table>
+      </div>
+      </div>
     </div>
     <div class="form-group" ng-if="item._id && !loading">
       <label class="control-label">Providers</label>

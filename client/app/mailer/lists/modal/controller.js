@@ -4,7 +4,11 @@ angular.module('afrostreamAdminApp')
   .controller('MailerListModalCtrl', function ($scope, $http, item, type, ngToast, $timeout, $uibModalInstance, ModalUtils) {
     // modal generic
     $scope.modalType = type;
-    $scope.modalHooks = {};
+    $scope.modalHooks = {
+      afterUpdate: function (data) {
+        $scope.disableRun = false;
+      }
+    };
 
     $scope.cancel = function () {
       close(true);
@@ -46,6 +50,8 @@ angular.module('afrostreamAdminApp')
     $scope.loading = true;
     $scope.assoProviders = [ ];
     $scope.error = '';
+    $scope.assoSubscribersList = [];
+    $scope.disableRun = false;
 
     $http.get('/api/mailer/providers', { params: { canHandleList: "true" } } )
       .then(function (result) {
@@ -86,6 +92,25 @@ angular.module('afrostreamAdminApp')
       }
     }
 
+    $scope.updateQuery = function (query) {
+      $scope.error = '';
+      $scope.loading = true;
+
+      $http.put('/api/mailer/lists/' + $scope.item._id + '/updateQuery', {query: query})
+        .then(function () {
+          return $scope.getItem();
+        })
+        .then(
+          function () {
+            $scope.loading = false;
+            $scope.disableRun = false;
+          }
+        , function (err) {
+            $scope.loading = false;
+            $scope.error = err.message;
+          });
+    };
+
     $scope.link = function (provider) {
       $scope.error = '';
       $scope.loading = true;
@@ -109,7 +134,7 @@ angular.module('afrostreamAdminApp')
             $scope.loading = false;
             $scope.error = err.message;
           });
-    }
+    };
 
     $scope.unlink = function (provider) {
       $scope.error = '';
@@ -133,6 +158,55 @@ angular.module('afrostreamAdminApp')
             $scope.loading = false;
             $scope.error = err.message;
           });
-    }
+    };
+
+
+    $scope.run = function (query) {
+      $scope.error = '';
+      $scope.loading = true;
+
+      $http.put('/api/mailer/lists/' + $scope.item._id + '/updateQuery', {query: query})
+        .then(function () {
+          return $http({
+            method: 'GET',
+            url: '/api/mailer/lists/'+$scope.item._id+'/runQuery'
+          });
+        })
+        .then(
+          function () {
+            return $scope.getItem();
+          }
+        )
+        .then(
+          function () {
+            $scope.assoSubscribersList = [];
+            $scope.loading = false;
+          }
+        , function (err) {
+            $scope.loading = false;
+            $scope.error = err.message;
+          });
+    };
+
+    $scope.displayAssoSubscriberList = function () {
+      $scope.error = '';
+      $http({
+        method: 'GET',
+        url: '/api/mailer/lists/'+$scope.item._id+'/assoSubscribers'
+      })
+      .then(
+        function (response) {
+          $scope.assoSubscribersList = response.data;
+        }
+      )
+      .then(
+        function () {
+
+        }
+      , function (err) {
+          $scope.loading = false;
+          $scope.error = err.message;
+        });
+    };
 
   });
