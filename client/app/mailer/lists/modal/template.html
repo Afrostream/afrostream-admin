@@ -62,15 +62,16 @@
       <label class="control-label">Providers</label>
         <table style="margin-top:10px">
           <tr ng-repeat="asso in assoProviders">
-            <td width="100" style="text-align:center">{{asso.provider.name}}</td>
+            <td width="100" style="text-align:center">
+              <a target="_blank" ng-if="asso.info.link" href="{{asso.info.link}}">{{asso.provider.name}}</a>
+              <span ng-if="!asso.info.link">{{asso.provider.name}}</span>
+            </td>
             <td>
                 <button class="btn btn-primary" type="submit" ng-if="!asso.linked" style="margin-top:0;background-color:green" ng-click="link(asso.provider)">CREATE</button>
                 <button class="btn btn-danger" type="submit" ng-if="asso.linked" style="margin-top:0" ng-click="unlink(asso.provider)">DELETE</button>
             </td>
             <td>
-              <div ng-if="asso.info.link">
-                <a target="_blank" href="{{asso.info.link}}">link</a>
-              </div>
+              <button class="btn btn-primary" type="submit" ng-if="asso.linked" style="margin-top:0;background-color:green" ng-click="sync(asso.provider)">SYNC</button>
             </td>
           </tr>
         </table>

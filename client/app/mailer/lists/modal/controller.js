@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('afrostreamAdminApp')
-  .controller('MailerListModalCtrl', function ($scope, $http, item, type, ngToast, $timeout, $uibModalInstance, ModalUtils) {
+  .controller('MailerListModalCtrl', function ($scope, $http, item, type, ngToast, $timeout, $uibModalInstance, ModalUtils, $rootScope, $uibModal) {
     // modal generic
     $scope.modalType = type;
     $scope.modalHooks = {
@@ -136,28 +136,64 @@ angular.module('afrostreamAdminApp')
           });
     };
 
-    $scope.unlink = function (provider) {
-      $scope.error = '';
-      $scope.loading = true;
+    // fixme: this code was copy/pasted.
+    function openModal(scope, modalClass) {
+      var modalScope = $rootScope.$new();
+      scope = scope || {};
+      modalClass = modalClass || 'modal-default';
 
-      $http({
-        method: 'DELETE',
-        url: '/api/mailer/lists/'+$scope.item._id+'/providers/'+provider._id
-      })
-        .then(function () {
-          return $scope.getItem();
+      angular.extend(modalScope, scope);
+
+      return $uibModal.open({
+        templateUrl: '/components/modal/modal.html',
+        windowClass: modalClass,
+        scope: modalScope
+      });
+    }
+
+    $scope.unlink = function (provider) {
+      var modal;
+
+      modal = openModal({
+        modal: {
+          dismissable: true,
+          title: 'Confirm Delete',
+          html: '<p>Are you sure you want to delete <strong>' + provider.name + '</strong> ?</p>',
+          buttons: [{
+            classes: 'btn-danger',
+            text: 'Delete',
+            click: function (e) { modal.close(e); }
+          }, {
+            classes: 'btn-default',
+            text: 'Cancel',
+            click: function (e) { modal.dismiss(e); }
+          }]
+        }
+      }, 'modal-danger');
+
+      modal.result.then(function () {
+        $scope.error = '';
+        $scope.loading = true;
+
+        $http({
+          method: 'DELETE',
+          url: '/api/mailer/lists/'+$scope.item._id+'/providers/'+provider._id
         })
-        .then(function () {
-          updateAssoProviders();
-        })
-        .then(
-          function () {
-            $scope.loading = false;
-          }
-        , function (err) {
-            $scope.loading = false;
-            $scope.error = err.message;
-          });
+          .then(function () {
+            return $scope.getItem();
+          })
+          .then(function () {
+            updateAssoProviders();
+          })
+          .then(
+            function () {
+              $scope.loading = false;
+            }
+          , function (err) {
+              $scope.loading = false;
+              $scope.error = err.message;
+            });
+      });
     };
 
 
