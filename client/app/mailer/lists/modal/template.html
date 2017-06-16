@@ -71,7 +71,9 @@
                 <button class="btn btn-danger" type="submit" ng-if="asso.linked" style="margin-top:0" ng-click="unlink(asso.provider)">DELETE</button>
             </td>
             <td>
-              <button class="btn btn-primary" type="submit" ng-if="asso.linked" style="margin-top:0;background-color:green" ng-click="sync(asso.provider)">SYNC</button>
+              <button class="btn btn-primary" type="submit" ng-if="asso.linked && !sync.status[asso.provider._id].sync.id" style="margin-top:0;background-color:green" ng-click="startSync(asso.provider)">SYNC</button>
+              <button class="btn btn-danger" type="submit" ng-if="asso.linked && sync.status[asso.provider._id].sync.id" style="margin-top:0;" ng-click="stopSync(asso.provider)">STOP</button>
+              {{sync.status[asso.provider._id].sync.progress*100||0}}%
             </td>
           </tr>
         </table>

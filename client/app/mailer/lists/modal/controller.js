@@ -1,12 +1,15 @@
 'use strict';
 
 angular.module('afrostreamAdminApp')
-  .controller('MailerListModalCtrl', function ($scope, $http, item, type, ngToast, $timeout, $uibModalInstance, ModalUtils, $rootScope, $uibModal) {
+  .controller('MailerListModalCtrl', function ($scope, $http, item, type, ngToast, $timeout, $interval, $uibModalInstance, ModalUtils, $rootScope, $uibModal) {
     // modal generic
     $scope.modalType = type;
     $scope.modalHooks = {
       afterUpdate: function (data) {
         $scope.disableRun = false;
+      },
+      onItemLoaded: function (data) {
+        pool();
       }
     };
 
@@ -245,4 +248,82 @@ angular.module('afrostreamAdminApp')
         });
     };
 
+    $scope.sync = {
+      status: { /* providerId: { status } */ }
+    };
+
+    function pool() {
+      $scope.error = '';
+      return $http({
+        method: 'GET',
+        url: '/api/mailer/lists/'+$scope.item._id+'/sync/'
+      })
+      .then(
+        function (response) {
+          $scope.sync.status = response.data.reduce(function (p, c) {
+            p[c.providerId] = c.pApiStatus;
+            return p;
+          }, {});
+        }
+      , function (err) {
+          $scope.loading = false;
+          $scope.error = err.message;
+        });
+    }
+
+    $scope.startSync = function (provider) {
+      $scope.error = '';
+      startPooling();
+      return $http({
+        method: 'GET',
+        url: '/api/mailer/lists/'+$scope.item._id+'/providers/'+provider._id+'/sync/start'
+      })
+      .then(
+        function (response) {
+          pool();
+        },
+        function (response) {
+          $scope.error = err.message;
+        }
+      )
+      .then(
+        function () { }
+      , function (err) {
+        $scope.error = err.message;
+      });
+    };
+    $scope.stopSync = function (provider) {
+      $scope.error = '';
+      return $http({
+        method: 'GET',
+        url: '/api/mailer/lists/'+$scope.item._id+'/providers/'+provider._id+'/sync/stop'
+      })
+      .then(
+        function (response) {
+          return pool();
+        }
+      , function (err) {
+          $scope.error = err.message;
+        });
+    };
+
+    var poolSyncId = null;
+
+    function startPooling() {
+      if (poolSyncId) {
+        stopPooling();
+      }
+      poolSyncId = $interval(pool, 5000);
+    }
+
+    function stopPooling() {
+      if (poolSyncId) {
+        $interval.cancel(poolSyncId);
+        poolSyncId = null;
+      }
+    }
+
+    startPooling();
+
+    $scope.$on('$destroy', stopPooling);
   });
