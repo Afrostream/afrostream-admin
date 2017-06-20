@@ -10,6 +10,7 @@ angular.module('afrostreamAdminApp')
       },
       onItemLoaded: function (data) {
         pool();
+        updateAssoProviders();
       }
     };
 
@@ -43,11 +44,7 @@ angular.module('afrostreamAdminApp')
     //  so this timeout is a quick fix & not the proper way of mitigating the pb
     $timeout(function () {
       $scope.getItem()
-        .then(function () {
-          updateAssoProviders();
-        });
     }, 100);
-
 
     /////////////////////////// specific code ///////////////
     $scope.loading = true;
@@ -273,7 +270,6 @@ angular.module('afrostreamAdminApp')
 
     $scope.startSync = function (provider) {
       $scope.error = '';
-      startPooling();
       return $http({
         method: 'GET',
         url: '/api/mailer/lists/'+$scope.item._id+'/providers/'+provider._id+'/sync/start'
@@ -303,7 +299,7 @@ angular.module('afrostreamAdminApp')
           return pool();
         }
       , function (err) {
-          $scope.error = err.message;
+          $scope.error = err && err.message;
         });
     };
 
@@ -323,7 +319,7 @@ angular.module('afrostreamAdminApp')
       }
     }
 
-    startPooling();
+    //startPooling();
 
     $scope.$on('$destroy', stopPooling);
   });
