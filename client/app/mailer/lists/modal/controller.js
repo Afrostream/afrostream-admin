@@ -85,6 +85,7 @@ angular.module('afrostreamAdminApp')
               info: {
                 link: link
               },
+              asso: asso,
               linked: linked
             };
           }

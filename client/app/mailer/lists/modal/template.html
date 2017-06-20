@@ -20,6 +20,15 @@
         </td></tr>
       </table>
     </div>
+
+    <div>
+      <div class="form-group">
+        <button class="btn btn-primary" type="submit" ng-click="addItem()" ng-if="!item._id && !loading">Create</button>
+        <button class="btn btn-primary" type="submit" ng-click="updateItem()" ng-if="item._id && !loading">Update</button>
+        <button class="btn btn-primary" ng-click="cancel()">Cancel</button>
+      </div>
+    </div>
+
     <div class="form-group">
       <label class="control-label">List infos</label>
       <div>
@@ -58,34 +67,32 @@
       </div>
       </div>
     </div>
-    <div class="form-group" ng-if="item._id && !loading">
-      <label class="control-label">Providers</label>
-        <table style="margin-top:10px">
-          <tr ng-repeat="asso in assoProviders">
-            <td width="100" style="text-align:center">
-              <a target="_blank" ng-if="asso.info.link" href="{{asso.info.link}}">{{asso.provider.name}}</a>
-              <span ng-if="!asso.info.link">{{asso.provider.name}}</span>
-            </td>
-            <td>
-                <button class="btn btn-primary" type="submit" ng-if="!asso.linked" style="margin-top:0;background-color:green" ng-click="link(asso.provider)">CREATE</button>
-                <button class="btn btn-danger" type="submit" ng-if="asso.linked" style="margin-top:0" ng-click="unlink(asso.provider)">DELETE</button>
-            </td>
-            <td>
-              <button class="btn btn-primary" type="submit" ng-if="asso.linked && !sync.status[asso.provider._id].sync.id" style="margin-top:0;background-color:green" ng-click="startSync(asso.provider)">SYNC</button>
-              <button class="btn btn-danger" type="submit" ng-if="asso.linked && sync.status[asso.provider._id].sync.id" style="margin-top:0;" ng-click="stopSync(asso.provider)">STOP</button>
-              {{sync.status[asso.provider._id].sync.progress*100||0}}%
-            </td>
-          </tr>
-        </table>
-        <div ng-if="error">ERROR {{error}}</div>
-      </div>
-    </div>
   </div>
 </div>
-<div class="modal-footer">
-  <div class="form-group">
-    <button class="btn btn-primary" type="submit" ng-click="addItem()" ng-if="!item._id && !loading">Create</button>
-    <button class="btn btn-primary" type="submit" ng-click="updateItem()" ng-if="item._id && !loading">Update</button>
-    <button class="btn btn-primary" ng-click="cancel()">Cancel</button>
+<div class="modal-body" style="border-top:1px solid gray">
+  <div class="form-group" ng-if="item._id && !loading">
+    <label class="control-label">Providers</label>
+      <table style="margin-top:10px">
+        <tr ng-repeat="assoProvider in assoProviders">
+          <td width="100" style="text-align:center">
+            <a target="_blank" ng-if="assoProvider.info.link" href="{{assoProvider.info.link}}">{{assoProvider.provider.name}}</a>
+            <span ng-if="!assoProvider.info.link">{{assoProvider.provider.name}}</span>
+          </td>
+          <td>
+            (automation: {{assoProvider.asso.automation?'on':'off'}})
+          </td>
+          <td>
+              <button class="btn btn-primary" type="submit" ng-if="!assoProvider.linked" style="margin-top:0;background-color:green" ng-click="link(assoProvider.provider)">CREATE</button>
+              <button class="btn btn-danger" type="submit" ng-if="assoProvider.linked" style="margin-top:0" ng-click="unlink(assoProvider.provider)">DELETE</button>
+          </td>
+          <td>
+            <button class="btn btn-primary" type="submit" ng-if="assoProvider.linked && !sync.status[assoProvider.provider._id].sync.id" style="margin-top:0;background-color:green" ng-click="startSync(assoProvider.provider)">SYNC</button>
+            <button class="btn btn-danger" type="submit" ng-if="assoProvider.linked && sync.status[assoProvider.provider._id].sync.id" style="margin-top:0;" ng-click="stopSync(assoProvider.provider)">STOP</button>
+            {{sync.status[assoProvider.provider._id].sync.progress*100||0}}%
+          </td>
+        </tr>
+      </table>
+      <div ng-if="error">ERROR {{error}}</div>
+    </div>
   </div>
 </div>
