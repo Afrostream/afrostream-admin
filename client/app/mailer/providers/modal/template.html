@@ -1,0 +1,13 @@
+<div class="modal-body" mailer-list-form="mailer-list-form">
+  <form role="form"></form>
+  <div class="form-group">
+    <label class="control-label">Title: {{item.name}}</label>
+  </div>
+</div>
+<div class="modal-footer">
+  <div class="form-group">
+    <button class="btn btn-primary" type="submit" ng-click="addItem()" ng-if="!item._id && !loading">Create</button>
+    <button class="btn btn-primary" type="submit" ng-click="updateItem()" ng-if="item._id && !loading">Update</button>
+    <button class="btn btn-primary" ng-click="cancel()">Cancel</button>
+  </div>
+</div>

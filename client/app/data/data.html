@@ -15,7 +15,7 @@
                 <button class="btn btn-xs btn-primary pull-left" ng-if="type == 'life/pin'" ng-click="filterUserToggle('all')" ng-class="{active: filterList == 'all'}"><span>All Pins</span></button>
                 <button class="btn btn-xs btn-primary pull-left" ng-if="type == 'life/pin'" ng-click="filterUserToggle('mine')" ng-class="{active: filterList == 'mine'}"><span>My Pins</span></button>
                 <button class="btn btn-xs btn-primary pull-left" ng-if="type == 'life/pin'" ng-click="filterUserToggle('others')" ng-class="{active: filterList == 'others'}"><span>Other Pins</span></button>
-                <button class="btn btn-xs btn-primary pull-right" ng-click="newIndex()"><span class="glyphicon glyphicon-plus"></span><span>Add new</span></button>
+                <button class="btn btn-xs btn-primary pull-right" ng-click="newIndex()" ng-if="type != 'mailer/provider'"><span class="glyphicon glyphicon-plus"></span><span>Add new</span></button>
               </div>
               <div class="row" ng-if="isAlgoliaImportable()">
                 <button class="btn btn-xs btn-primary pull-right" ng-click="importAlgolia()"><span class="glyphicon glyphicon-send"></span><span>Import All to algolia</span></button>
@@ -63,13 +63,13 @@
                       <td class="text-center" ng-if="type == 'season'"><strong>{{item.seasonNumber}}</strong></td>
                       <td class="text-center" ng-if="type == 'episode'"><strong>{{item.season.seasonNumber}}</strong></td>
                       <td class="text-center" ng-if="type == 'episode'"><strong>{{item.episodeNumber}}</strong></td>
-                      <td class="text-center" ng-if="type != 'store' && type != 'mailer/list'">
+                      <td class="text-center" ng-if="type != 'store' && type != 'mailer/list' && type != 'mailer/provider'">
                         <button class="btn btn-xs btn-default" ng-click="activateIndex(item)" uib-tooltip="{{item.active ? 'remove from prod' : 'push in prod'}}"><span ng-class="item.active ? 'text-success':'text-danger'"><i class="fa" ng-class="item.active ? 'fa-toggle-on': 'fa-toggle-off'"></i></span></button>
                       </td>
                       <td class="pull-right">
                         <button class="btn btn-xs btn-primary" ng-click="editIndex(item)" uib-tooltip="Edit"><span class="glyphicon glyphicon-pencil"></span></button>
-                        <button class="btn btn-xs btn-info" ng-click="cloneIndex(item)" uib-tooltip="Clone" ng-if="!hasMail() && type != 'mailer/list'"><span class="fa fa-clone"></span></button>
-                        <button class="btn btn-xs btn-danger" ng-click="deleteIndex(item.genericTitle, item)" uib-tooltip="Delete" ng-if="type != 'mailer/list'"><span class="glyphicon glyphicon-trash"></span></button>
+                        <button class="btn btn-xs btn-info" ng-click="cloneIndex(item)" uib-tooltip="Clone" ng-if="!hasMail() && type != 'mailer/list'  && type != 'mailer/provider'"><span class="fa fa-clone"></span></button>
+                        <button class="btn btn-xs btn-danger" ng-click="deleteIndex(item.genericTitle, item)" uib-tooltip="Delete" ng-if="type != 'mailer/list' && type != 'mailer/provider'"><span class="glyphicon glyphicon-trash"></span></button>
                       </td>
                     </tr>
                   </tbody>
