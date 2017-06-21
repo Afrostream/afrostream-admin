@@ -247,6 +247,7 @@ angular.module('afrostreamAdminApp')
     };
 
     $scope.sync = {
+      disableUntilStatus: false,
       status: { /* providerId: { status } */ }
     };
 
@@ -262,14 +263,17 @@ angular.module('afrostreamAdminApp')
             p[c.providerId] = c.pApiStatus;
             return p;
           }, {});
+          $scope.sync.disableUntilStatus = false;
         }
       , function (err) {
           $scope.loading = false;
           $scope.error = err.message;
+          $scope.sync.disableUntilStatus = false;
         });
     }
 
     $scope.startSync = function (provider) {
+      $scope.sync.disableUntilStatus = true;
       $scope.error = '';
       return $http({
         method: 'GET',
@@ -280,12 +284,14 @@ angular.module('afrostreamAdminApp')
           pool();
         },
         function (response) {
+          $scope.sync.disableUntilStatus = false;
           $scope.error = err.message;
         }
       )
       .then(
         function () { }
       , function (err) {
+        $scope.sync.disableUntilStatus = false;
         $scope.error = err.message;
       });
     };
@@ -320,7 +326,7 @@ angular.module('afrostreamAdminApp')
       }
     }
 
-    //startPooling();
+    startPooling();
 
     $scope.$on('$destroy', stopPooling);
   });

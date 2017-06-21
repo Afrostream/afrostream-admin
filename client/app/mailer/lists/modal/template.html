@@ -32,7 +32,7 @@
     <div class="form-group">
       <label class="control-label">List infos</label>
       <div>
-      {{item.numberOfSubscribers||0}} subscribers <button class="btn btn-primary" type="button" style="height:20px;background-color:#ABABAB;margin:0;margin-left:5px;padding:0;border:0;width:100px" ng-disabled="!item.numberOfSubscribers" ng-click="displayAssoSubscriberList()">display</button>
+      {{item.numberOfSubscribers||0}} subscribers <button class="btn btn-primary" type="button" style="height:20px;background-color:#ABABAB;margin:0;margin-left:5px;padding:0;border:0;width:100px" ng-click="displayAssoSubscriberList()">display</button>
       <div ng-if="assoSubscribersList.length" style="overflow:scroll;height:200px;width:100%">
         <table border=1>
           <tr>
@@ -86,8 +86,8 @@
               <button class="btn btn-danger" type="submit" ng-if="assoProvider.linked" style="margin-top:0" ng-click="unlink(assoProvider.provider)">DELETE</button>
           </td>
           <td>
-            <button class="btn btn-primary" type="submit" ng-if="assoProvider.linked && !sync.status[assoProvider.provider._id].sync.id" style="margin-top:0;background-color:green" ng-click="startSync(assoProvider.provider)">SYNC</button>
-            <button class="btn btn-danger" type="submit" ng-if="assoProvider.linked && sync.status[assoProvider.provider._id].sync.id" style="margin-top:0;" ng-click="stopSync(assoProvider.provider)">STOP</button>
+            <button class="btn btn-danger" type="submit" ng-if="!sync.disableUntilStatus &&assoProvider.linked && sync.status[assoProvider.provider._id].sync.id" style="margin-top:0;" ng-click="stopSync(assoProvider.provider)">STOP</button>
+            <button class="btn btn-primary" type="submit" ng-if="!sync.disableUntilStatus && assoProvider.linked && !sync.status[assoProvider.provider._id].sync.id" style="margin-top:0;background-color:green" ng-click="startSync(assoProvider.provider)">SYNC</button>
             {{sync.status[assoProvider.provider._id].sync.progress*100||0}}%
           </td>
         </tr>
