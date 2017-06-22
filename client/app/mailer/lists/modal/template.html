@@ -43,7 +43,7 @@
             <th>unsubscribed date</th>
             <th>disabled</th>
           </tr>
-          <tr ng-repeat="assoSubscriber in assoSubscribersList">
+          <tr ng-repeat="assoSubscriber in assoSubscribersList" ng-style="{backgroundColor:assoSubscriber.dateUnsubscribed?'gray':'white'}">
             <td>
               {{assoSubscriber.subscriber.referenceUuid}}
             </td>
@@ -79,7 +79,7 @@
             <span ng-if="!assoProvider.info.link">{{assoProvider.provider.name}}</span>
           </td>
           <td>
-            (automation: {{assoProvider.asso.automation?'on':'off'}})
+            (automation: {{assoProvider.asso.automation?'on':'off'}}, canReactive: {{assoProvider.asso.canReactive?'on':'off'}})
           </td>
           <td>
               <button class="btn btn-primary" type="submit" ng-if="!assoProvider.linked" style="margin-top:0;background-color:green" ng-click="link(assoProvider.provider)">CREATE</button>
