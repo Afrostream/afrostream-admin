@@ -66,7 +66,7 @@ angular.module('afrostreamAdminApp')
       if ($scope.item && $scope.providers) {
         $scope.assoProviders = $scope.providers.map(
           function (provider) {
-            var asso = $scope.item.assoProviders.filter(
+            var asso = ($scope.item.assoProviders || []).filter(
               function (asso) {
                 return asso && asso.providerId == provider._id;
               }
