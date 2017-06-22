@@ -15,7 +15,7 @@ angular.module('afrostreamAdminApp')
 
     $scope.editIndex = function (item, type) {
       var modalOpts = {
-        templateUrl: '/component/modal/modal.html', // Url du template HTML
+        templateUrl: '/components/modal/modal.html', // Url du template HTML
         controller: 'ModalDialogCtrl',
         size: 'lg',
         scope: $scope,
