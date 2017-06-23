@@ -9,6 +9,12 @@
       <input class="form-control" type="text" ng-model="item.name" style="display:inline;width:60%"/>
     </div>
     <div class="form-group">
+      <label class="control-label">Cron</label>
+      <div>
+     <input id="playerAutoNext" type="checkbox" ng-model="item.cron"><span style="padding-left:5px;">active</span></input>
+    </div>
+    </div>
+    <div class="form-group">
       <label class="control-label">Query (optionnal)</label>
       <table width="100%">
         <tr><td>
