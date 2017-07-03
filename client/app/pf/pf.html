@@ -53,7 +53,15 @@
                 <a target="_blank" href="http://p-afsmsch-001.afrostream.tv:4042/api/contents/{{pfContent.contentId}}?populate=streams,assets.preset.profile,assets.streams">nodePF</a>
               </td>
             </tr>
-            <tr><td>STATE</td><td><b>{{pfContent.state}}</b></td></tr>
+            <tr>
+              <td>STATE</td>
+              <td>
+                <b>{{pfContent.state}}</b>
+                <span>&nbsp;<button class="btn btn-primary"  style="font-size:8px;margin:0" type="button"
+                                    ng-if="pfContent.state!='ready'" ng-click="updateContentState(pfContent.contentId, 'ready')">READY</button>
+                </span>
+              </td>
+            </tr>
             <tr><td>updatedAt</td><td><b>{{pfContent.updatedAt}}</b></td></tr>
             <tr><td>DRM</td><td>{{pfContent.drm}}</td></tr>
             <tr><td>md5Hash</td><td>{{pfContent.md5Hash}}</td></tr>
@@ -77,7 +85,7 @@
           <br/>
 
           <table width="100%">
-            <tr>
+            <tr style="background-color:#EFEFEF">
               <td width="100" valign="top" style="padding-top:15px">TRANSCODE</td>
               <td>
                 <div style="width:100%;margin-bottom: 10px;">
@@ -89,13 +97,34 @@
                   </button>
                 </div>
                 <div style="width:100%;border-top: dashed 1px gray;margin-bottom: 10px;">
-                  <button class="btn btn-primary" type="button" ng-repeat="profile in profileList" style="display:block;font-size:8px" ng-click="transcode({pfContent:pfContent, profile:profile})">
+                  <button class="btn btn-primary" type="button" ng-repeat="profile in profileList" style="font-size:8px" ng-click="transcode({pfContent:pfContent, profile:profile})">
                     {{profile.broadcaster}}|{{profile.name}}
                   </button>
                 </div>
               </td>
             </tr>
-            <tr>
+            <tr style="background-color:#EFEFEF">
+              <td width="100" valign="top">Assets</td>
+              <td>
+                <table border=1 style="border-color:gray">
+                  <tr><th>assetId</th><th>presetId</th><th>state</th><th>updatedAt</th><th>filename</th><th>action</th></tr>
+                  <tr ng-repeat="asset in pfContent.assets">
+                    <td>{{asset.assetId}}</td>
+                    <td>{{asset.presetId}}</td>
+                    <td>{{asset.state}}</td>
+                    <td>{{asset.updatedAt}}</td>
+                    <td>{{asset.filename}}</td>
+                    <td>
+                      <button class="btn btn-primary"  style="font-size:8px;margin:0" type="button"
+                              ng-if="asset.state!='ready'" ng-click="updateAssetState(asset.assetId, 'ready')">READY</button>
+                      <button class="btn btn-primary"  style="font-size:8px;margin:0" type="button"
+                              ng-if="asset.state!='failed'" ng-click="updateAssetState(asset.assetId, 'failed')">FAILED</button>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+            <tr style="background-color:#EFEFEF">
               <td width="100" valign="top">Bouygues ingrid</td>
               <td>
                 <button class="btn btn-primary" type="button" ng-click="uploadToBouyguesSFTP({pfContent:pfContent})">UPLOAD .ts</button>

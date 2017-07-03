@@ -141,7 +141,7 @@ angular.module('afrostreamAdminApp')
       if (options.profile) {
         return $http.get('/api/pf/transcode', {
           params: {
-            pfMd5Hash: options.pfContent.md5Hash,
+            pfMd5Hash: options.pfaContent.md5Hash,
             profileIds: options.profile.profileId
           }
         });
@@ -160,6 +160,28 @@ angular.module('afrostreamAdminApp')
         params: {
           contentId: options.pfContent.contentId
         }
+      });
+    };
+
+    $scope.updateAssetState = function (assetId, state) {
+      return $http.get('/api/nodePF/updateAssetState', {
+        params: {
+          assetId: assetId,
+          state: state
+        }
+      }).then(function (result) {
+        $scope.search();
+      });
+    };
+
+    $scope.updateContentState = function (contentId, state) {
+      return $http.get('/api/nodePF/updateContentState', {
+        params: {
+          contentId: contentId,
+          state: state
+        }
+      }).then(function (result) {
+        $scope.search();
       });
     };
   });
