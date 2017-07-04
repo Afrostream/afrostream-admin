@@ -236,23 +236,21 @@
           <td class="text-center" style="padding: 8px 5px;">
             <div>
               <button ng-if="subscription.isCancelable" ng-click="cancelSubscription($event)" data-subscriptionBillingUuid="{{subscription.subscriptionBillingUuid}}">Annuler</button>
-              <button ng-click="expireSubscription($event)" data-subscriptionBillingUuid="{{subscription.subscriptionBillingUuid}}">Expirer</button>
+              <button ng-click="expireSubscription(subscription)">Expirer</button>
               <button ng-if="subscription.isReactivable" ng-click="reactiveSubscription($event)" data-subscriptionBillingUuid="{{subscription.subscriptionBillingUuid}}">Réactiver</button>
             </div>
           </td>
         </tr>
       </tbody>
     </table>
-    <div id="subscription-expire-submodal">
+    <div id="subscription-expire-submodal" ng-class="{active:expiredModal.opened}">
       <h3>Options</h3>
-      <input type="hidden" id="subscriptionBillingUuid"/>
-      <input type="checkbox" id="isRefundEnabled" name="isRefundEnabled" ng-click="toggleRefund($event)"/>
-      <label for="isRefundEnabled">&nbsp;Refund Enabled</label><br/>
-      <div id="extra-options" ng-if="isRefundEnabled">
-        <input type="checkbox" checked="checked" id="isFullRefund" name="isFullRefund" ng-click="toggleRefundProrated($event)"/>
-        <label for="isFullRefund">&nbsp;Full refund</label><br/>
-        <input type="checkbox" id="isRefundProrated" name="isRefundProrated" ng-click="toggleRefundProrated($event)"/>
-        <label for="isRefundProrated">&nbsp;Prorated refund</label>
+      <input type="hidden"/>
+      <input type="checkbox" ng-model="expiredModal.isRefundEnabled"/>
+      <label>&nbsp;Refund Enabled</label><br/>
+      <div id="extra-options" ng-if="expiredModal.isRefundEnabled">
+        <input type="checkbox" ng-model="expiredModal.isFullRefund">
+        <label>&nbsp;Full refund</label><br/>
       </div><br/>
       <button ng-click="processExpireSubscription($event)">Validate</button>
       <button ng-click="cancelExpireSubscription($event)">Cancel</button>

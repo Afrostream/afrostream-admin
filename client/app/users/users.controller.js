@@ -128,62 +128,43 @@ angular.module('afrostreamAdminApp')
             } else {
               alert('Error: '+result.statusMessage+"\nError code: "+result.statusCode);
             }
-            this.loadSubscriptions();
+            $scope.loadSubscriptions();
           }).bind(this))
           .catch((function() {
             alert('Something bad happened :(');
-            this.loadSubscriptions();
+            $scope.loadSubscriptions();
           }).bind(this));
       }
     };
-    $scope.expireSubscription = function(event) {
-      var uuid = event.target.getAttribute('data-subscriptionbillinguuid');
-      var submodal = document.getElementById('subscription-expire-submodal');
-      submodal.classList.remove('active'); // if already opened by another one, because we dont have overlay
-      var uuidField = document.getElementById('subscriptionBillingUuid');
-      uuidField.value = uuid;
-      // make initial choices
-      this.isRefundEnabled = false;
-      document.getElementById('isRefundEnabled')['checked'] = false;
-      // active submodal
-      submodal.classList.add('active');
-    }
-    $scope.toggleRefund = function(event) {
-      this.isRefundEnabled = event.target["checked"];
-    }
-    $scope.toggleRefundProrated = function(event) {
-      var isRefundProrated = document.getElementById('isRefundProrated');
-      var isFullRefund = document.getElementById('isFullRefund');
-      if (event.target === isRefundProrated) {
-        isFullRefund["checked"] = !isFullRefund["checked"];
-      } else {
-        isRefundProrated["checked"] = !isRefundProrated["checked"];
-      }
+
+    $scope.expiredModal = {
+      opened: false,
+      subscriptionBillingUuid: null,
+      isRefundEnabled: false,
+      isFullRefund: false
+    };
+
+    $scope.expireSubscription = function(subscription) {
+      $scope.expiredModal.opened = true;
+      $scope.expiredModal.subscriptionBillingUuid = subscription.subscriptionBillingUuid;
     }
     $scope.cancelExpireSubscription = function(event) {
-      var submodal = document.getElementById('subscription-expire-submodal');
-      submodal.classList.remove('active');
+      $scope.expiredModal.opened = false;
     }
     $scope.processExpireSubscription = function(event) {
-      var isRefundProrated = false;
-      var uuidField = document.getElementById('subscriptionBillingUuid');
-      var submodal = document.getElementById('subscription-expire-submodal');
-      var isRefundEnabled = document.getElementById('isRefundEnabled')["checked"];
-      var refundProratedField = document.getElementById('isRefundProrated');
-      if (refundProratedField) {
-        var isRefundProrated = refundProratedField["checked"] && isRefundEnabled;
-      }
-      submodal.classList.remove('active');
+      $scope.expiredModal.opened = false;
+
       var validation = confirm("Are you sure you want to expire the current subscription ?");
+
       if (validation === true) {
         return $http({
           method: 'PUT',
           url: '/api/subscriptions/expire',
           params: {
-            subscriptionId: uuidField.value,
+            subscriptionId: $scope.expiredModal.subscriptionBillingUuid,
             forceBeforeEndsDate: true,
-            isRefundEnabled: isRefundEnabled,
-            isRefundProrated: isRefundProrated
+            isRefundEnabled: $scope.expiredModal.isRefundEnabled,
+            isRefundProrated: $scope.expiredModal.isRefundEnabled && !$scope.expiredModal.isFullRefund
           }
         })
           .then(function (result) {
@@ -194,14 +175,17 @@ angular.module('afrostreamAdminApp')
             } else {
               alert('Error: '+result.statusMessage+"\nError code: "+result.statusCode);
             }
-            this.loadSubscriptions();
+            $scope.loadSubscriptions();
           })
           .catch((function() {
-            this.loadSubscriptions();
+            $scope.loadSubscriptions();
             alert('Something bad happened :(');
           }).bind(this));
       }
     };
+
+    /// FIXME: needs refactoring
+
     $scope.reactiveSubscription = function(event) {
       var validation = confirm("Are you sure you want to reactive the current subscription ?");
       if (validation === true) {
@@ -218,10 +202,10 @@ angular.module('afrostreamAdminApp')
             } else {
               alert('Error: '+result.statusMessage+"\nError code: "+result.statusCode);
             }
-            this.loadSubscriptions();
+            $scope.loadSubscriptions();
           }).bind(this))
           .catch((function() {
-            this.loadSubscriptions();
+            $scope.loadSubscriptions();
             alert('Something bad happened :(');
           }).bind(this));
       }
