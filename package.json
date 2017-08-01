@@ -37,11 +37,13 @@
     "npm": "3.10.7"
   },
   "scripts": {
-    "postinstall": "bower install",
+    "postinstall": "bower install --allow-root",
     "start": "node server/server.js",
     "localstaging": "node_modules/.bin/nodemon server/server-localstaging.js",
     "staging": "node server/server-staging.js",
-    "dev": "node_modules/.bin/nodemon server/server.js"
+    "dev": "node_modules/.bin/nodemon server/server.js",
+    "docker-build": "docker build -t afrostream/afrostream-admin .",
+    "docker-run": "docker run -i -t --net=host --init afrostream/afrostream-admin:latest"
   },
   "private": true
 }
