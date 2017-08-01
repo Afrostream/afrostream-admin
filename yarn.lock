@@ -60,6 +60,13 @@ acorn@^2.1.0:
     better-assert "^1.0.2"
     lodash "^4.12.0"
 
+"afrostream-node-config@git+https://afrostream-tech:39378b0626f1b2d4c733eeb5c5be73908b3c8c53@github.com/Afrostream/afrostream-node-config.git#v4.0.0":
+  version "4.0.0"
+  resolved "git+https://afrostream-tech:39378b0626f1b2d4c733eeb5c5be73908b3c8c53@github.com/Afrostream/afrostream-node-config.git#2eafa3ff0b88302c60a300f236bb82e1e9fb5782"
+  dependencies:
+    better-assert "^1.0.2"
+    lodash "^4.12.0"
+
 "afrostream-node-middleware-allowcrossdomain@git+https://afrostream-tech:39378b0626f1b2d4c733eeb5c5be73908b3c8c53@github.com/Afrostream/afrostream-node-middleware-allowcrossdomain.git#v1.0.0":
   version "1.0.0"
   resolved "git+https://afrostream-tech:39378b0626f1b2d4c733eeb5c5be73908b3c8c53@github.com/Afrostream/afrostream-node-middleware-allowcrossdomain.git#c680397e1319f8a3e30f22e582b71f765a9b7acf"
